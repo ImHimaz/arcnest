@@ -1,0 +1,20 @@
+// Label: Code
+// elite/paragraph → Block Classes, under "Not found". The big "404": white
+// fading to lilac; its "0" (a Dot span) is lime.
+@use "../../styles/abstracts" as *;
+
+.elite-section--not-found .elite-paragraph--not-found-code {
+	margin: 0 0 8px;
+	background: linear-gradient(180deg, var(--wp--preset--color--base) 20%, rgb(201 166 217 / 0.45) 100%);
+	background-clip: text;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+
+	@include text-style("error-code");
+
+	// The lime "0", a touch apart from the 4s.
+	.elite-span--dot {
+		margin-inline: 0.04em;
+		-webkit-text-fill-color: currentcolor;
+	}
+}

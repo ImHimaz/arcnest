@@ -1,0 +1,10 @@
+// Label: Card Head
+// elite/div → Block Classes, under "Comparison". The card's title and tag.
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .elite-div--compare-card-head > .div-inner {
+	display: flex;
+	gap: 4px;
+	align-items: center;
+	justify-content: space-between;
+}

@@ -1,0 +1,7 @@
+// Label: Rounded
+// elite/image → Block Classes (multi-select).
+@use "../../styles/abstracts" as *;
+
+.elite-image--rounded img {
+	border-radius: $radius-xl;
+}

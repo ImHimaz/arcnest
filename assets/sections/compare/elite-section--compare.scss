@@ -1,0 +1,51 @@
+// Label: Comparison
+// elite/section → Block Classes. This class loads the folder (styles and
+// view.js) on pages that use it; the parts below are styled under it.
+// "The problem" (pattern "Comparison"): the heading and a line, then a page
+// builder's numbers against Arcnest's in two cards, which slide in from
+// either side as they scroll into view (view.js) while their scores count up
+// (Elite Counter).
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare {
+	// The cards start off to the side (their entrance): no wider page on
+	// phones meanwhile.
+	overflow-x: clip;
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		padding-top: clamp(72px, 10vw, 144px);
+		padding-bottom: clamp(72px, 10vw, 144px);
+	}
+
+	h2 {
+		margin: 0;
+	}
+}
+
+// The cards' entrance: only once view.js has marked a section below the
+// fold, so without JS, in the editor, with reduced motion or already on
+// screen at load, they're simply shown.
+@media screen and (prefers-reduced-motion: no-preference) {
+
+	.elite-section--compare.is-reveal .elite-div--compare-card {
+		opacity: 0;
+		transform: translateX(-32px);
+	}
+
+	.elite-section--compare.is-reveal .elite-div--compare-good {
+		transform: translateX(32px);
+	}
+
+	.elite-section--compare.is-reveal.is-visible .elite-div--compare-card {
+		transition:
+			opacity 0.75s cubic-bezier(0.2, 0.7, 0.2, 1),
+			transform 0.75s cubic-bezier(0.2, 0.7, 0.2, 1);
+		opacity: 1;
+		transform: none;
+	}
+
+	.elite-section--compare.is-reveal.is-visible .elite-div--compare-good {
+		transition-delay: 0.08s;
+	}
+}

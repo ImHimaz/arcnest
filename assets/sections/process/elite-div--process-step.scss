@@ -1,0 +1,27 @@
+// Label: Step
+// elite/div → Block Classes, under "Process". One step: its number, then its
+// title, line and duration, between thin lines.
+@use "../../styles/abstracts" as *;
+
+.elite-section--process .elite-div--process-step {
+	border-top: 1px solid rgb(255 255 255 / 0.12);
+
+	&:last-child {
+		border-bottom: 1px solid rgb(255 255 255 / 0.12);
+	}
+
+	> .div-inner {
+		display: grid;
+		grid-template-columns: 48px minmax(0, 1fr);
+		gap: 16px;
+		padding: 28px 0;
+	}
+
+	@include media-breakpoint-up(md) {
+
+		> .div-inner {
+			grid-template-columns: 72px minmax(0, 1fr);
+			padding: 36px 0;
+		}
+	}
+}

@@ -1,0 +1,25 @@
+// Label: Visual
+// elite/column → Block Classes, under "Theme". The panel: under the text on
+// phones and tablets (at most 560px wide), beside it from laptops.
+@use "../../styles/abstracts" as *;
+
+.elite-section--theme .elite-column--theme-visual {
+	// 48px plus the page's gutter (16px on phones, 20px on tablets).
+	margin-top: 64px;
+
+	> .column-inner {
+		max-width: 560px;
+	}
+
+	@include media-breakpoint-up(md) {
+		margin-top: 68px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		margin-top: 0;
+
+		> .column-inner {
+			max-width: none;
+		}
+	}
+}

@@ -1,0 +1,13 @@
+// Label: Ghost
+// elite/button → Block Classes. Outlined in white, for dark backgrounds.
+@use "../../styles/abstracts" as *;
+
+.elite-button--ghost .elite-button__link {
+	border-color: rgb(255 255 255 / 0.35);
+	background: transparent;
+	color: var(--wp--preset--color--base);
+
+	&:hover {
+		border-color: var(--wp--preset--color--base);
+	}
+}

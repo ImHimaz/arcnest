@@ -1,0 +1,12 @@
+// Every Elite Section's container (loads with the block; no editor
+// option): the site's 1280px content width and side padding, the same as
+// the header and footer, instead of Bootstrap's stepped widths. The extra
+// gutter keeps the columns' content on those edges (the row's negative
+// margins and the columns' padding cancel out).
+@use "../../styles/abstracts" as *;
+
+.elite-section > .section-inner > .container {
+	width: min(1280px + 24px, 100% - var(--wp--style--root--padding-left) - var(--wp--style--root--padding-right) + 24px);
+	max-width: none;
+	padding-inline: 12px;
+}

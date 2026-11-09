@@ -1,0 +1,20 @@
+// Label: Boxed
+// elite/accordion → Block Classes (multi-select). Each item a separate card;
+// the open one is highlighted.
+@use "../../styles/abstracts" as *;
+
+.elite-accordion--boxed {
+	--acc-gap: 12px;
+}
+
+.elite-accordion--boxed .elite-accordion__item {
+	padding-inline: 20px;
+	border: 1px solid $border-color;
+	border-radius: $radius-lg;
+	background-color: var(--wp--preset--color--base);
+	transition: box-shadow $duration-fast $ease;
+
+	&.is-open {
+		box-shadow: 0 8px 24px rgb(17 24 39 / 10%);
+	}
+}

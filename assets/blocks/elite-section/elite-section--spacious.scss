@@ -1,0 +1,13 @@
+// Label: Spacious
+// elite/section → Block Classes. Generous room above and below the content
+// (inside the section: sections touch, so the space keeps its background).
+@use "../../styles/abstracts" as *;
+
+.elite-section--spacious {
+
+	// Padding: on .section-inner. Spacing set in the CMS wins.
+	.section-inner {
+		padding-top: clamp(72px, 10vw, 144px);
+		padding-bottom: clamp(72px, 10vw, 144px);
+	}
+}

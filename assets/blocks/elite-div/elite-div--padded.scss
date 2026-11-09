@@ -1,0 +1,8 @@
+// Label: Padded
+// elite/div → Block Classes (multi-select).
+// Example of padding in a modifier. Padding set in the CMS (Padding panel)
+// always wins over this, side by side.
+
+.elite-div--padded .div-inner {
+	padding: 32px;
+}

@@ -1,0 +1,10 @@
+// Label: Lead
+// elite/paragraph → Block Classes, under "Not found". The line under the
+// heading.
+@use "../../styles/abstracts" as *;
+
+.elite-section--not-found .elite-paragraph--not-found-lead {
+	max-width: 560px;
+	margin: 24px auto 0;
+	color: rgb(255 255 255 / 0.75);
+}

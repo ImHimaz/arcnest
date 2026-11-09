@@ -1,0 +1,22 @@
+// Label: Hover lift
+// elite/card → Block Classes (multi-select). Lifts on hover and keyboard
+// focus; no movement for visitors who reduce motion.
+@use "../../styles/abstracts" as *;
+
+.elite-card--hover-lift > .card-inner {
+	transition:
+		transform $duration-fast $ease,
+		box-shadow $duration-fast $ease;
+}
+
+.elite-card--hover-lift:is(:hover, :focus-within) > .card-inner {
+	box-shadow: 0 16px 32px rgb(17 24 39 / 16%);
+	transform: translateY(-4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.elite-card--hover-lift:is(:hover, :focus-within) > .card-inner {
+		transform: none;
+	}
+}

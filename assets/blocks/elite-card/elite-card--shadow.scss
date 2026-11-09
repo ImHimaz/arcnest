@@ -1,0 +1,10 @@
+// Label: Shadow
+// elite/card → Block Classes (multi-select). Padding set in the CMS wins.
+@use "../../styles/abstracts" as *;
+
+.elite-card--shadow > .card-inner {
+	padding: 24px;
+	border-radius: $radius-lg;
+	background-color: var(--wp--preset--color--base);
+	box-shadow: 0 8px 24px rgb(17 24 39 / 10%);
+}

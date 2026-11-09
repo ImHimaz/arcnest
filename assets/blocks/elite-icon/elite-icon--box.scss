@@ -1,0 +1,11 @@
+// Label: Box
+// elite/icon → Block Classes (multi-select). A white icon at half size on a
+// rounded primary square.
+@use "../../styles/abstracts" as *;
+
+.elite-icon--box {
+	--e-icon-scale: 50%;
+	border-radius: $radius-lg;
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--base);
+}

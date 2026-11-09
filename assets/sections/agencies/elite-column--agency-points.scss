@@ -1,0 +1,17 @@
+// Label: Points
+// elite/column → Block Classes, under "Agencies". The points: under the
+// text on phones and tablets, beside it from laptops.
+@use "../../styles/abstracts" as *;
+
+.elite-section--agencies .elite-column--agency-points {
+	// 16px plus the page's gutter (16px on phones, 20px on tablets).
+	margin-top: 32px;
+
+	@include media-breakpoint-up(md) {
+		margin-top: 36px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		margin-top: 0;
+	}
+}

@@ -1,0 +1,8 @@
+// Label: Lead
+// elite/paragraph → Block Classes, under "Process".
+@use "../../styles/abstracts" as *;
+
+.elite-section--process .elite-paragraph--process-lead {
+	margin: 24px 0 0;
+	color: rgb(255 255 255 / 0.65);
+}

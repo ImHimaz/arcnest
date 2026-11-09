@@ -1,0 +1,61 @@
+// Plain HTML elements, site-wide. Keep selectors low (`:where()`, element
+// names) so block classes and editor settings win.
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+:where(img, svg, video) {
+	max-width: 100%;
+	height: auto;
+}
+
+.screen-reader-text:focus {
+	clip-path: none;
+}
+
+// Keyboard focus: one lime ring everywhere.
+:focus-visible {
+	outline: 3px solid var(--wp--preset--color--accent);
+	outline-offset: 3px;
+}
+
+// Buttons (colours, size and shape are theme.json's `elements.button`):
+// lift on hover; the default lime one glows.
+:where(.wp-element-button, .wp-block-button__link) {
+	transition:
+		transform 0.2s ease,
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		color 0.2s ease,
+		box-shadow 0.2s ease;
+
+	&:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 10px 30px -10px rgb(215 223 35 / 0.7);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	:where(.wp-element-button, .wp-block-button__link) {
+		transition: none;
+
+		&:hover {
+			transform: none;
+		}
+	}
+}
+
+// Header, content and footer touch: sections bring their own spacing (and
+// the home hero slides up under the header).
+.wp-site-blocks > * + * {
+	margin-block-start: 0;
+}

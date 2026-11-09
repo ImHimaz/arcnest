@@ -1,0 +1,10 @@
+// Label: Small
+// core/button → Block Classes. 46px tall, e.g. in the header.
+@use "../../styles/abstracts" as *;
+
+.core-button--small .wp-block-button__link {
+	padding: 13px 22px;
+
+	@include text-style("button-small");
+	line-height: 1.25;
+}

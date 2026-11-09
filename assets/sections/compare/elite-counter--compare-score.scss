@@ -1,0 +1,11 @@
+// Label: Score
+// elite/counter → Block Classes, under "Comparison". The big score, counting
+// up as it scrolls in: orange on the page builder's card, lime on Arcnest's.
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .elite-counter--compare-score {
+	margin: 28px 0 8px;
+	color: #c2410c;
+
+	@include text-style("display-1");
+}

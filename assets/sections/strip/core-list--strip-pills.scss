@@ -1,0 +1,25 @@
+// Label: Pills
+// core/list → Block Classes, under "Strip". Each item a pill; Enter in the
+// editor adds one.
+@use "../../styles/abstracts" as *;
+
+.elite-section--strip .core-list--strip-pills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		margin: 0;
+		padding: 10px 18px;
+		border: 1px solid var(--wp--preset--color--line);
+		border-radius: $radius-pill;
+		background: var(--wp--preset--color--surface);
+		color: var(--wp--preset--color--primary);
+
+		@include text-style("small");
+		font-weight: 700;
+	}
+}

@@ -1,0 +1,72 @@
+@use "sass:list";
+@use "sass:map";
+@use "../abstracts" as *;
+
+// Devices from the smallest: each starts where the one before it ends
+// ($devices: mobile is below md, so tablet starts at md…).
+$-devices-up: (mobile, tablet, laptop, desktop);
+
+/// A text style's value on a device: its own, else the next larger
+/// device's (smaller devices inherit), else the property's default.
+@function -resolved($style, $prop, $device, $default) {
+
+	@for $i from list.index($-devices-up, $device) through list.length($-devices-up) {
+		$value: text-value($style, $prop, list.nth($-devices-up, $i));
+
+		@if $value {
+
+			@return $value;
+		}
+	}
+
+	@return $default;
+}
+
+// --text-<style>-<prop> variables, mobile first: the phone values, then
+// only what changes on each larger device.
+:root {
+
+	@each $slug, $style in $text-styles {
+
+		@each $prop, $default in $text-props {
+			--text-#{$slug}-#{$prop}: #{-resolved($style, $prop, mobile, $default)};
+		}
+	}
+}
+
+@for $i from 2 through list.length($-devices-up) {
+	$device: list.nth($-devices-up, $i);
+	$smaller: list.nth($-devices-up, $i - 1);
+
+	@include media-breakpoint-up(map.get($devices, $smaller)) {
+
+		:root {
+
+			@each $slug, $style in $text-styles {
+
+				@each $prop, $default in $text-props {
+					$value: -resolved($style, $prop, $device, $default);
+
+					@if $value != -resolved($style, $prop, $smaller, $default) {
+						--text-#{$slug}-#{$prop}: #{$value};
+					}
+				}
+			}
+		}
+	}
+}
+
+// Global defaults. Plain element selectors, so any class (modifiers) wins,
+// and a Text Style picked in the editor (inline) wins over everything.
+body {
+
+	@include text-style("body");
+}
+
+@for $level from 1 through 6 {
+
+	h#{$level} {
+
+		@include text-style("title-#{$level}");
+	}
+}

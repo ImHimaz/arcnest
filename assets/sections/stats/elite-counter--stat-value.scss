@@ -1,0 +1,16 @@
+// Label: Value
+// elite/counter → Block Classes, under "Stats". The big purple number.
+@use "../../styles/abstracts" as *;
+
+.elite-section--stats .elite-counter--stat-value {
+	margin: 0;
+	color: var(--wp--preset--color--primary);
+
+	@include text-style("display-2");
+}
+
+// The counter's tabular digits give this font's "1" a foot; the mockup uses
+// proportional ones (the counter fixes the number's width while counting).
+.elite-section--stats .elite-counter--stat-value .elite-counter__number {
+	font-variant-numeric: normal;
+}

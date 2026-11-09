@@ -1,0 +1,9 @@
+// Label: Card Title
+// elite/heading → Block Classes, under "Comparison".
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .elite-heading--compare-title {
+	margin: 0;
+
+	@include text-style("card-title");
+}

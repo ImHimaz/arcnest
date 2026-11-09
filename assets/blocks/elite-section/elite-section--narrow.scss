@@ -1,0 +1,8 @@
+// Label: Narrow
+// elite/section → Block Classes (multi-select). The section's content at a
+// reading width (long text, forms), centred; the background stays full
+// width. Smaller screens keep the grid's own container width.
+
+.elite-section--narrow .section-inner > .container {
+	max-width: 960px;
+}

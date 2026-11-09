@@ -1,0 +1,28 @@
+// Label: Badge
+// elite/paragraph → Block Classes, under "Hero". A pill above the heading;
+// its bold words ("New") are a lime tag.
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero .elite-paragraph--hero-badge {
+	display: inline-flex;
+	gap: 10px;
+	align-items: center;
+	margin: 0 0 28px;
+	padding: 8px 16px 8px 8px;
+	border: 1px solid rgb(255 255 255 / 0.14);
+	border-radius: $radius-pill;
+	background: rgb(255 255 255 / 0.08);
+	color: rgb(255 255 255 / 0.9);
+
+	@include text-style("small");
+	font-weight: 600;
+
+	strong {
+		padding: 2px 10px;
+		border-radius: $radius-pill;
+		background: var(--wp--preset--color--accent);
+		color: var(--wp--preset--color--primary-900);
+
+		@include text-style("badge");
+	}
+}

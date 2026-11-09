@@ -1,0 +1,92 @@
+// Label: Hero
+// elite/section → Block Classes. This class loads the folder on pages that
+// use it; the parts below are styled under it.
+// The home page's intro (pattern "Hero"), on the darkest purple with soft
+// glows and dots. It starts under the sticky header, whose blur and tint
+// then sit on the hero. CSS only: no view.js, so nothing delays the heading
+// (the page's largest paint).
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero {
+	// The header's height: the hero slides up under it.
+	--hero-header: 80px;
+	--elite-dot-color: var(--wp--preset--color--accent);
+	--section-margin-top: calc(-1 * var(--hero-header));
+
+	position: relative;
+	overflow: hidden;
+	background: var(--wp--preset--color--primary-900);
+	color: var(--wp--preset--color--base);
+
+	// Glows: purple from the bottom right, lime from the top right.
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		pointer-events: none;
+	}
+
+	&::before {
+		inset: auto -20% -40% 20%;
+		height: 120%;
+		background: radial-gradient(closest-side, rgb(146 46 186 / 0.75), rgb(79 15 105 / 0.35) 55%, transparent 75%);
+	}
+
+	&::after {
+		top: -180px;
+		right: -140px;
+		width: 520px;
+		height: 520px;
+		background: radial-gradient(closest-side, rgb(215 223 35 / 0.16), transparent 70%);
+	}
+
+	// The heading's lines of similar length (no lone "blink." on phones).
+	h1 {
+		text-wrap: balance;
+	}
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		position: relative;
+		z-index: 1;
+		padding-top: calc(var(--hero-header) + clamp(64px, 6.5vw, 120px));
+		padding-bottom: clamp(80px, 9vw, 140px);
+
+		// Dots: a faint large circle at the bottom right, and on phones two
+		// small ones by the menu button.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			background:
+				radial-gradient(circle closest-side, var(--wp--preset--color--accent) 96%, transparent) right var(--wp--style--root--padding-right) top 98px / 18px 18px no-repeat,
+				radial-gradient(circle closest-side, rgb(201 166 217 / 0.7) 96%, transparent) right calc(var(--wp--style--root--padding-right) + 32px) top 112px / 10px 10px no-repeat,
+				radial-gradient(circle closest-side, rgb(201 166 217 / 0.07) 99%, transparent) right -200px bottom -300px / 560px 560px no-repeat;
+			pointer-events: none;
+		}
+	}
+
+	h1 {
+		margin: 0;
+		color: var(--wp--preset--color--base);
+	}
+
+	// In the editor there's no sticky header to slide under.
+	.editor-styles-wrapper & {
+		--hero-header: 0px;
+	}
+
+	@include media-breakpoint-up(lg) {
+
+		// Laptop and up: the small dots between the text and the card, and a
+		// purple one at the bottom.
+		.section-inner::before {
+			background:
+				radial-gradient(circle closest-side, var(--wp--preset--color--accent) 96%, transparent) 54% 128px / 18px 18px no-repeat,
+				radial-gradient(circle closest-side, rgb(201 166 217 / 0.7) 96%, transparent) calc(54% + 40px) 164px / 10px 10px no-repeat,
+				radial-gradient(circle closest-side, rgb(146 46 186 / 0.45) 98%, transparent) 44% bottom 56px / 64px 64px no-repeat,
+				radial-gradient(circle closest-side, rgb(201 166 217 / 0.07) 99%, transparent) right -200px bottom -300px / 560px 560px no-repeat;
+		}
+	}
+}

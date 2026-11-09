@@ -1,0 +1,296 @@
+// The "header" template part (pattern header-default): a sticky dark bar
+// with a progressive blur (view.js), the logo, the menu and "Let's talk".
+// Mobile first: the menu opens from a button (WordPress's Navigation
+// overlay); from the laptop width (lg) the links and "Let's talk" show.
+@use "sass:list";
+@use "../../styles/abstracts" as *;
+
+$header-height: 80px;
+// How far the blur and tint reach below the bar.
+$header-tail: 40px;
+
+// The progressive blur (view.js adds the layers): blur, where each layer
+// stops being full strength, where it's gone. The strongest blur is only at
+// the top; weaker ones reach further down, so the blur fades out evenly.
+$header-blur-layers: (
+	(0.25px, 87.5%, 100%),
+	(0.5px, 75%, 92%),
+	(1px, 62.5%, 84%),
+	(2px, 50%, 76%),
+	(4px, 37.5%, 68%),
+	(6px, 25%, 60%),
+	(10px, 12.5%, 52%),
+	(15px, 0%, 44%),
+);
+
+// Section links (#services…) land below the sticky header.
+html {
+	scroll-padding-top: $header-height + 8px;
+}
+
+// The same everywhere, as on seemplicity.ai: blurred (view.js) and tinted
+// purple, solid at the top and fading out $header-tail below the bar.
+.site-header {
+	position: sticky;
+	top: 0;
+	z-index: z(header);
+
+	// Below the admin bar when signed in; it scrolls away on phones (fixed
+	// only from 601px, WordPress's own breakpoint).
+	@media screen and (min-width: 601px) {
+		top: var(--wp-admin--admin-bar--height, 0);
+	}
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		height: $header-height + $header-tail;
+		pointer-events: none;
+	}
+
+	// Without JS: one blur layer, masked to fade.
+	&::before {
+		backdrop-filter: blur(12px);
+		mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+	}
+
+	&.has-blur::before {
+		display: none;
+	}
+
+	// The tint, over the blur.
+	&::after {
+		z-index: 0;
+		background: linear-gradient(to bottom, var(--wp--preset--color--primary-900) 0%, rgb(38 6 47 / 0) 100%);
+	}
+}
+
+.site-header__blur {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: $header-height + $header-tail;
+	pointer-events: none;
+
+	i {
+		position: absolute;
+		inset: 0;
+	}
+
+	@each $layer in $header-blur-layers {
+		$i: list.index($header-blur-layers, $layer);
+
+		i:nth-child(#{$i}) {
+			backdrop-filter: blur(list.nth($layer, 1));
+			mask-image: linear-gradient(to bottom, #000 list.nth($layer, 2), transparent list.nth($layer, 3));
+		}
+	}
+}
+
+// The pattern's own groups carry the look, so it also shows when the
+// header is edited on its own in the Site Editor (no .site-header there).
+.site-header__bar {
+	position: relative;
+	z-index: 1;
+	color: var(--wp--preset--color--base);
+}
+
+// Visitors who ask for less transparency (a system setting): a solid bar.
+@media (prefers-reduced-transparency: reduce) {
+
+	.site-header::before,
+	.site-header::after,
+	.site-header__blur {
+		display: none;
+	}
+
+	.site-header__bar {
+		background: var(--wp--preset--color--primary-900);
+	}
+}
+
+.editor-styles-wrapper .site-header__bar {
+	background: var(--wp--preset--color--primary-900);
+}
+
+.site-header__inner {
+	gap: 24px;
+	min-height: $header-height;
+}
+
+.site-header__bar .site-logo {
+	flex-shrink: 0;
+	margin: 0;
+
+	img {
+		display: block;
+		height: auto;
+	}
+}
+
+// The menu (two classes: WordPress's navigation styles set link colours).
+.site-header__bar .site-header__nav {
+
+	@include text-style("body-small");
+	font-weight: 600;
+
+	.wp-block-navigation__container {
+		gap: 36px;
+	}
+
+	.wp-block-navigation-item__content {
+		color: rgb(255 255 255 / 0.8);
+		text-decoration: none;
+		transition: color $duration-fast $ease;
+
+		&:hover {
+			color: var(--wp--preset--color--accent);
+		}
+	}
+
+	// Menu and close buttons: a 28px icon in a 44px tap area (the padding),
+	// the icon where it would be without it (the negative margin).
+	.wp-block-navigation__responsive-container-open,
+	.wp-block-navigation__responsive-container-close {
+		box-sizing: content-box;
+		margin: -8px;
+		padding: 8px;
+		color: var(--wp--preset--color--base);
+
+		svg {
+			width: 28px;
+			height: 28px;
+		}
+	}
+
+	// Only in the open menu: the logo at its top, "Let's talk" under the
+	// links.
+	.site-header__menu-logo,
+	.site-header__menu-cta {
+		display: none;
+	}
+
+	// Open: on the header's purple (the block's overlay colours, set in the
+	// pattern) with a soft glow; the logo and close button where the bar
+	// has its logo and menu button, then the links large and "Let's talk".
+	.wp-block-navigation__responsive-container.is-menu-open {
+		padding: 0 var(--wp--style--root--padding-right) 40px var(--wp--style--root--padding-left);
+		background-image: radial-gradient(closest-side, rgb(146 46 186 / 0.5), transparent);
+		background-position: right -160px bottom -200px;
+		background-size: 520px 520px;
+		background-repeat: no-repeat;
+
+		// Its icon centred on the logo's row, at the right edge (the
+		// negative margin puts the tap area's padding outside).
+		.wp-block-navigation__responsive-container-close {
+			top: ($header-height - 44px) * 0.5 + 8px;
+			right: 0;
+		}
+
+		.wp-block-navigation__responsive-container-content {
+			align-items: stretch;
+			gap: 0;
+			padding-top: 0;
+		}
+
+		.site-header__menu-logo {
+			display: flex;
+			align-items: center;
+			min-height: $header-height;
+			margin: 0 0 24px;
+
+			img {
+				display: block;
+				height: auto;
+			}
+		}
+
+		.wp-block-navigation__container {
+			align-items: flex-start;
+			gap: 4px;
+		}
+
+		.wp-block-navigation-item__content {
+			padding: 10px 0;
+			color: var(--wp--preset--color--base);
+
+			@include text-style("menu-large");
+		}
+
+		.site-header__menu-cta {
+			display: flex;
+			margin-top: 40px;
+
+			.wp-block-button,
+			.wp-block-button__link {
+				width: 100%;
+			}
+
+			.wp-block-button__link {
+				box-sizing: border-box;
+				text-align: center;
+			}
+		}
+	}
+}
+
+// Phones and tablets: the menu button (WordPress shows it only below 600px).
+// "Let's talk" is in the open menu on phones, beside the menu button from
+// tablets.
+.site-header__bar .site-header__cta {
+	display: none;
+}
+
+// Tablets: "Let's talk", then the menu button, at the right.
+@include media-breakpoint-up(md) {
+
+	.site-header__bar .site-header__cta {
+		display: flex;
+		margin-left: auto;
+	}
+
+	// (The navigation's class is on its list too: only the bar's item.)
+	.site-header__inner > .site-header__nav {
+		order: 1;
+	}
+}
+
+.site-header__bar .site-header__nav {
+
+	.wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: flex;
+	}
+
+	.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+		display: none;
+	}
+}
+
+// Laptop and up: the links in the bar, and "Let's talk".
+@include media-breakpoint-up(lg) {
+
+	.site-header__bar .site-header__cta {
+		display: flex;
+		margin-left: 0;
+	}
+
+	.site-header__inner > .site-header__nav {
+		order: 0;
+	}
+
+	.site-header__bar .site-header__nav {
+
+		.wp-block-navigation__responsive-container-open:not(.always-shown) {
+			display: none;
+		}
+
+		.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+// Label: Founding Text
+// elite/paragraph → Block Classes, under "Contact".
+@use "../../styles/abstracts" as *;
+
+.elite-section--contact .elite-paragraph--contact-founding-text {
+	margin: 6px 0 0;
+	color: rgb(255 255 255 / 0.72);
+
+	@include text-style("card-text");
+}

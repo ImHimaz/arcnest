@@ -1,0 +1,20 @@
+// Theme colours: the single source for the editor colour palette (all
+// colour pickers, including Elite Blocks') and for SCSS.
+// Add or change a colour here, then run `npm run classes` (it also runs
+// before build/start). Keys are slugs: "primary" becomes
+// `--wp--preset--color--primary`, shown as "Primary" in the editor.
+$colors: (
+	"base": #fff,
+	"contrast": #16101c,
+	"text": #2b2233,
+	"muted": #625a6b,
+	"primary": #4f0f69,
+	"primary-800": #3e0b53,
+	"primary-900": #26062f,
+	"accent": #d7df23,
+	"accent-deep": #b9bf12,
+	"lilac": #f3eaf7,
+	"lilac-mid": #c9a6d9,
+	"surface": #faf8fc,
+	"line": #e7e0ec,
+);

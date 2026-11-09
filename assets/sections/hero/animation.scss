@@ -1,0 +1,61 @@
+// The hero's entrance (no editor option; loads with the section), as in the
+// prototype: on the right, the report card rises in, its ring draws, the
+// metrics follow one by one, and the lime stat pops in last. The text on the
+// left doesn't move: the heading is the page's largest paint, so it shows at
+// once. CSS only. Not in the editor, and not for visitors who ask for less
+// motion (they see everything in place).
+@use "../../styles/abstracts" as *;
+
+$hero-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+@keyframes hero-rise {
+
+	from {
+		opacity: 0;
+		transform: translateY(36px);
+	}
+}
+
+@keyframes hero-pop {
+
+	from {
+		opacity: 0;
+		transform: translateY(20px) scale(0.9) rotate(-4deg);
+	}
+}
+
+@keyframes hero-arc {
+
+	from {
+		--hero-arc: 0;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+
+	body:not(.editor-styles-wrapper) .elite-section--hero {
+
+		.elite-div--hero-report {
+			animation: hero-rise 1.1s 0.25s $hero-ease both;
+		}
+
+		.elite-paragraph--hero-score::before {
+			animation: hero-arc 1.6s 0.5s $hero-ease both;
+		}
+
+		.core-list--hero-metrics li {
+			animation: hero-rise 0.8s $hero-ease both;
+
+			@for $i from 1 through 3 {
+
+				&:nth-child(#{$i}) {
+					animation-delay: 0.6s + $i * 0.1s;
+				}
+			}
+		}
+
+		.elite-div--hero-stat {
+			animation: hero-pop 0.9s 1.1s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+		}
+	}
+}

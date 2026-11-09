@@ -1,0 +1,11 @@
+// Label: Card Title
+// Elite Heading → Block Classes (multi-select).
+// Example: a modifier using the type scale. Typography or colour set in
+// the editor (inline / has-* classes) still wins over this.
+@use "../../styles/abstracts" as *;
+
+.elite-heading--card-title {
+
+	@include text-style("title-5");
+	color: var(--wp--preset--color--primary);
+}

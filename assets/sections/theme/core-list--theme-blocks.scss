@@ -1,0 +1,68 @@
+// Label: Tiles
+// core/list → Block Classes, under "Theme". Block tiles, three across, each
+// with a little outlined icon (lime in the first column); they light up on
+// hover. Enter in the editor adds one.
+@use "../../styles/abstracts" as *;
+
+.elite-section--theme .core-list--theme-blocks {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		display: flex;
+		box-sizing: border-box;
+		flex-direction: column;
+		gap: 8px;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+		border: 1px solid rgb(255 255 255 / 0.08);
+		border-radius: $radius-lg;
+		background: rgb(255 255 255 / 0.05);
+
+		@include text-style("tag");
+		font-weight: 600;
+		text-align: center;
+		aspect-ratio: 1 / 0.82;
+		transition:
+			background-color 0.2s $ease,
+			border-color 0.2s $ease;
+
+		&::before {
+			content: "";
+			width: 22px;
+			height: 18px;
+			border: 2px solid var(--wp--preset--color--lilac-mid);
+			border-radius: 6px;
+		}
+
+		&:nth-child(3n + 1)::before {
+			border-color: var(--wp--preset--color--accent);
+		}
+
+		&:hover {
+			border-color: rgb(215 223 35 / 0.4);
+			background: rgb(215 223 35 / 0.1);
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		gap: 10px;
+
+		li {
+			gap: 10px;
+
+			@include text-style("caption");
+			font-weight: 600;
+
+			&::before {
+				width: 28px;
+				height: 22px;
+			}
+		}
+	}
+}

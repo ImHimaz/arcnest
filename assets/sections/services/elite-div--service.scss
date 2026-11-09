@@ -1,0 +1,58 @@
+// Label: Card
+// elite/div → Block Classes, under "Services". A service: its number, title
+// and text, then a link along the bottom. Lifts on hover; add "Featured" for
+// the highlighted one.
+@use "../../styles/abstracts" as *;
+
+.elite-section--services .elite-div--service {
+	--service-line: var(--wp--preset--color--line);
+
+	height: 100%;
+	overflow: hidden;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: $radius-xxl;
+	transition:
+		transform 0.25s $ease,
+		box-shadow 0.25s $ease,
+		border-color 0.25s $ease;
+
+	> .div-inner {
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		height: 100%;
+		padding: 32px;
+		background: var(--wp--preset--color--base);
+		color: var(--wp--preset--color--text);
+	}
+
+	h3 {
+		margin: 28px 0 0;
+	}
+
+	&:hover {
+		transform: translateY(-6px);
+		border-color: var(--wp--preset--color--lilac-mid);
+		box-shadow: 0 30px 60px -30px rgb(79 15 105 / 0.35);
+	}
+
+	&:hover .elite-button__icon--end svg {
+		transform: translateX(4px);
+	}
+
+	@include media-breakpoint-up(md) {
+
+		// 380px with its border, as designed.
+		> .div-inner {
+			min-height: 378px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+
+		&:hover {
+			transform: none;
+		}
+	}
+}

@@ -1,0 +1,30 @@
+// Label: Featured
+// elite/div → Block Classes, under "Services". With "Card": the highlighted
+// service, purple with white text and a lime number.
+@use "../../styles/abstracts" as *;
+
+// Two classes: it loads before Card's own file (alphabetical) and must win.
+.elite-section--services .elite-div--service.elite-div--service-featured {
+	--service-line: rgb(255 255 255 / 0.16);
+
+	border-color: var(--wp--preset--color--primary);
+
+	> .div-inner {
+		background: var(--wp--preset--color--primary);
+		color: rgb(255 255 255 / 0.8);
+	}
+
+	h3,
+	.elite-button__link {
+		color: var(--wp--preset--color--base);
+	}
+
+	.elite-paragraph--service-text {
+		color: rgb(255 255 255 / 0.72);
+	}
+
+	.elite-paragraph--service-num {
+		background: var(--wp--preset--color--accent);
+		color: var(--wp--preset--color--primary-900);
+	}
+}

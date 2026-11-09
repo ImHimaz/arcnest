@@ -1,0 +1,28 @@
+// Label: Trust
+// elite/paragraph → Block Classes, under "Hero". A quiet line under the
+// buttons (who builds the sites), after a small lime dot.
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero .elite-paragraph--hero-trust {
+	display: flex;
+	gap: 10px;
+	align-items: baseline;
+	margin: 20px 0 0;
+	color: rgb(255 255 255 / 0.6);
+
+	@include text-style("small");
+
+	&::before {
+		content: "";
+		flex: none;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--wp--preset--color--accent);
+		transform: translateY(-2px);
+	}
+
+	@include media-breakpoint-up(md) {
+		margin-top: 24px;
+	}
+}

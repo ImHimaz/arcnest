@@ -1,0 +1,12 @@
+// Label: Caption
+// elite/paragraph → Block Classes, under "Comparison". The line under the
+// score.
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .elite-paragraph--compare-sub {
+	margin: 0;
+
+	@include text-style("small");
+	font-weight: 600;
+	opacity: 0.75;
+}

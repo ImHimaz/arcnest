@@ -1,0 +1,11 @@
+// Label: Caption
+// elite/paragraph → Block Classes, under "Stats". What the number means.
+@use "../../styles/abstracts" as *;
+
+.elite-section--stats .elite-paragraph--stat-caption {
+	max-width: 220px;
+	margin: 12px 0 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("body-small");
+}

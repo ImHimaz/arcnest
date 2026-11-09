@@ -1,0 +1,21 @@
+// Label: Dark
+// elite/section → Block Classes. The brand's darkest purple with white text:
+// headings white, body text softer, the lime dot and eyebrow bright, links
+// in the text colour.
+@use "../../styles/abstracts" as *;
+
+.elite-section--dark {
+	--elite-dot-color: var(--wp--preset--color--accent);
+	--elite-eyebrow-color: var(--wp--preset--color--accent);
+
+	background-color: var(--wp--preset--color--primary-900);
+	color: rgb(255 255 255 / 0.75);
+
+	:where(h1, h2, h3, h4, h5, h6) {
+		color: var(--wp--preset--color--base);
+	}
+
+	a:where(:not(.wp-element-button, .elite-button__link)) {
+		color: inherit;
+	}
+}

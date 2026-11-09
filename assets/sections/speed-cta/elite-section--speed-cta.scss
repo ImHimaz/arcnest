@@ -1,0 +1,42 @@
+// Label: Speed CTA
+// elite/section → Block Classes. This class loads the folder on pages that
+// use it; the parts below are styled under it.
+// The speed test page's close (pattern "Speed test: call to action"): a
+// centred heading, a line and two buttons on the dark purple, with a glow.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-cta {
+	position: relative;
+	overflow: hidden;
+	background: var(--wp--preset--color--primary-900);
+	color: var(--wp--preset--color--base);
+	text-align: center;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: -40% 10% auto;
+		height: 120%;
+		background: radial-gradient(closest-side, rgb(146 46 186 / 0.55), transparent 75%);
+		pointer-events: none;
+	}
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		position: relative;
+		z-index: 1;
+		padding-top: clamp(72px, 9vw, 128px);
+		padding-bottom: clamp(72px, 9vw, 128px);
+	}
+
+	h2 {
+		margin: 0;
+		color: var(--wp--preset--color--base);
+	}
+
+	.elite-paragraph {
+		max-width: 600px;
+		margin: 20px auto 0;
+		color: rgb(255 255 255 / 0.75);
+	}
+}

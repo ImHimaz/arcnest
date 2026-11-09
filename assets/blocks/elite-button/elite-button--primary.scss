@@ -1,0 +1,12 @@
+// Label: Primary
+// elite/button → Block Classes. Lime, the main action.
+@use "../../styles/abstracts" as *;
+
+.elite-button--primary .elite-button__link {
+	background: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--primary-900);
+
+	&:hover {
+		box-shadow: 0 10px 30px -10px rgb(215 223 35 / 0.7);
+	}
+}

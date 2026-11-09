@@ -1,0 +1,17 @@
+// Label: Head
+// elite/div → Block Classes, under "Demo". The eyebrow and heading, and the
+// line beside them from tablets (below them on phones), at the content width.
+@use "../../styles/abstracts" as *;
+
+.elite-section--demo .elite-div--demo-head {
+	width: min(1280px, 100% - var(--wp--style--root--padding-left) - var(--wp--style--root--padding-right));
+	margin: 0 auto clamp(40px, 5vw, 64px);
+
+	> .div-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 40px;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+}

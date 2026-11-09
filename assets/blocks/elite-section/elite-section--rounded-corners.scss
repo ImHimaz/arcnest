@@ -1,0 +1,8 @@
+// Label: Rounded Corners
+// elite/section → Block Classes (multi-select).
+@use "../../styles/abstracts" as *;
+
+.elite-section--rounded-corners {
+	border-radius: $radius-xxl;
+	overflow: hidden;
+}

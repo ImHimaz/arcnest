@@ -1,0 +1,8 @@
+// Label: Button
+// elite/button → Block Classes, under "Process". Room above the button (use
+// with Primary).
+@use "../../styles/abstracts" as *;
+
+.elite-section--process .elite-button--process-cta {
+	margin-top: 36px;
+}

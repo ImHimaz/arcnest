@@ -1,0 +1,15 @@
+// Label: Outline
+// elite/button → Block Classes. Outlined in the text colour, for light
+// backgrounds (on dark ones, use Ghost).
+@use "../../styles/abstracts" as *;
+
+.elite-button--outline .elite-button__link {
+	border-color: currentcolor;
+	background: transparent;
+	color: var(--wp--preset--color--primary-900);
+
+	&:hover {
+		background: var(--wp--preset--color--primary-900);
+		color: var(--wp--preset--color--base);
+	}
+}

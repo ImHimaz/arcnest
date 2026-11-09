@@ -1,0 +1,23 @@
+// Label: Panel
+// elite/div → Block Classes, under "Theme". The dark "Arcnest blocks" panel,
+// like the editor's block inserter.
+@use "../../styles/abstracts" as *;
+
+.elite-section--theme .elite-div--theme-panel {
+	overflow: hidden;
+	border-radius: $radius-xxl;
+	box-shadow: 0 40px 80px -40px rgb(38 6 47 / 0.6);
+
+	> .div-inner {
+		padding: 18px;
+		background: var(--wp--preset--color--contrast);
+		color: rgb(255 255 255 / 0.8);
+	}
+
+	@include media-breakpoint-up(md) {
+
+		> .div-inner {
+			padding: 28px;
+		}
+	}
+}

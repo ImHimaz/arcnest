@@ -1,0 +1,19 @@
+// Label: Report Top
+// elite/div → Block Classes, under "Hero". The card's first line: the site
+// (with a green "live" dot) and a lime tag.
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero .elite-div--hero-report-top {
+	margin-bottom: 24px;
+
+	> .div-inner {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	p {
+		margin: 0;
+	}
+}

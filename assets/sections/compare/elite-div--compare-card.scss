@@ -1,0 +1,26 @@
+// Label: Card
+// elite/div → Block Classes, under "Comparison". A card: the page builder's
+// look (light); add "Good" for Arcnest's (purple).
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .elite-div--compare-card {
+	--compare-line: rgb(0 0 0 / 0.08);
+
+	height: 100%;
+	overflow: hidden;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: $radius-xxl;
+
+	> .div-inner {
+		height: 100%;
+		padding: 28px;
+		background: var(--wp--preset--color--surface);
+	}
+
+	@include media-breakpoint-up(md) {
+
+		> .div-inner {
+			padding: 40px;
+		}
+	}
+}

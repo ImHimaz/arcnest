@@ -1,0 +1,25 @@
+// Label: Cards
+// elite/row → Block Classes, under "Comparison". The two cards: stacked on
+// phones, side by side from tablets, equal heights; 16px apart on phones,
+// 20px on tablets, 24px from laptops (as the page's gutter).
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .elite-row--compare-cards {
+	--bs-gutter-y: 16px;
+
+	margin-top: calc(40px - var(--bs-gutter-y));
+
+	@include media-breakpoint-up(md) {
+		--bs-gutter-y: 20px;
+
+		margin-top: calc(64px - var(--bs-gutter-y));
+	}
+
+	@include media-breakpoint-up(lg) {
+		--bs-gutter-y: 24px;
+	}
+
+	> .elite-column > .column-inner {
+		height: 100%;
+	}
+}

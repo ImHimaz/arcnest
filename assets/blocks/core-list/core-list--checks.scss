@@ -1,0 +1,30 @@
+// Label: Checks
+// core/list → Block Classes. A checklist: each item after a lime tick in a
+// purple circle.
+@use "../../styles/abstracts" as *;
+
+.core-list--checks {
+	display: grid;
+	gap: 14px;
+	margin: 36px 0 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		display: flex;
+		gap: 14px;
+		align-items: center;
+		margin: 0;
+		color: var(--wp--preset--color--contrast);
+		font-weight: 600;
+
+		&::before {
+			content: "";
+			flex: none;
+			width: 26px;
+			height: 26px;
+			border-radius: 50%;
+			background: var(--wp--preset--color--primary) url(../../images/check-lime.svg) center / 14px no-repeat;
+		}
+	}
+}

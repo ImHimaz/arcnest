@@ -1,0 +1,36 @@
+// Label: Gauge
+// elite/div → Block Classes, under "Hero". The score in its ring, then its
+// label and title.
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero .elite-div--hero-gauge {
+
+	> .div-inner {
+		display: flex;
+		gap: 20px;
+		align-items: center;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	.elite-paragraph--hero-gauge-label {
+		color: rgb(255 255 255 / 0.6);
+	}
+
+	.elite-paragraph--hero-gauge-title {
+		margin-top: 4px;
+		color: var(--wp--preset--color--base);
+
+		@include text-style("title-4");
+		line-height: 1.25;
+	}
+
+	@include media-breakpoint-up(md) {
+
+		> .div-inner {
+			gap: 24px;
+		}
+	}
+}

@@ -1,0 +1,124 @@
+// The "footer" template part (pattern footer-default): logo and a line, three
+// link columns on a 12-column grid, the copyright line and a large wordmark
+// cut off at the bottom. Mobile first: two columns of links on phones, three
+// from tablets (md), beside the logo from laptops (lg).
+@use "../../styles/abstracts" as *;
+
+// On the pattern's own group, so it also shows when the footer is edited on
+// its own in the Site Editor.
+.site-footer__main {
+	overflow: hidden;
+	padding-top: clamp(72px, 8vw, 112px);
+	background: var(--wp--preset--color--primary-900);
+	color: rgb(255 255 255 / 0.7);
+
+	a {
+		color: inherit;
+		text-decoration: none;
+		transition: color $duration-fast $ease;
+
+		&:hover {
+			color: var(--wp--preset--color--accent);
+		}
+	}
+}
+
+.site-footer__grid {
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	gap: 24px;
+	padding-bottom: 64px;
+	border-bottom: 1px solid rgb(255 255 255 / 0.1);
+
+	> * {
+		margin: 0;
+	}
+}
+
+.site-footer__brand {
+	grid-column: 1 / -1;
+	margin-bottom: 16px;
+
+	.site-logo {
+		margin: 0;
+
+		img {
+			display: block;
+			// The header's logo is 144px wide (the pattern's size); here larger.
+			width: 166px !important;
+			height: auto;
+		}
+	}
+
+	p {
+		max-width: 320px;
+		margin: 20px 0 0;
+
+		@include text-style("body-small");
+	}
+}
+
+.site-footer__col {
+	grid-column: span 6;
+}
+
+.site-footer__title {
+	margin: 0 0 18px;
+	color: var(--wp--preset--color--base);
+
+	@include text-style("title-6");
+}
+
+.site-footer__links {
+	display: grid;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+
+	@include text-style("body-small");
+	list-style: none;
+}
+
+.site-footer__bottom {
+	gap: 20px;
+	padding-block: 28px;
+
+	@include text-style("small");
+
+	p {
+		margin: 0;
+	}
+}
+
+// The wordmark: the secondary logo (Settings → General), full width, cut
+// off at the bottom. Decoration: hidden from screen readers (inc/setup.php).
+.site-footer__main .site-footer__wordmark {
+	width: min(1280px, 100%);
+	margin: 24px auto -2.2%;
+	opacity: 0.95;
+
+	img {
+		display: block;
+		width: 100% !important;
+		height: auto;
+	}
+}
+
+@include media-breakpoint-up(md) {
+
+	.site-footer__col {
+		grid-column: span 4;
+	}
+}
+
+@include media-breakpoint-up(lg) {
+
+	.site-footer__brand {
+		grid-column: 1 / span 4;
+		margin-bottom: 0;
+	}
+
+	.site-footer__col {
+		grid-column: span 2;
+	}
+}

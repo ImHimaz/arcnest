@@ -1,0 +1,20 @@
+{
+	"extends": "@wordpress/stylelint-config/scss-stylistic",
+	"rules": {
+		"selector-class-pattern": null,
+		"property-disallowed-list": [
+			[ "font", "font-family", "font-size", "letter-spacing", "text-transform" ],
+			{
+				"message": "Use a text style: @include text-style(\"…\") (assets/styles/abstracts/_text-styles.scss). A part may set font-weight and line-height."
+			}
+		]
+	},
+	"overrides": [
+		{
+			"files": [ "assets/styles/**/*.scss" ],
+			"rules": {
+				"property-disallowed-list": null
+			}
+		}
+	]
+}

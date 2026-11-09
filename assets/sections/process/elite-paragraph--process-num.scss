@@ -1,0 +1,12 @@
+// Label: Number
+// elite/paragraph → Block Classes, under "Process". The step's number, lime.
+@use "../../styles/abstracts" as *;
+
+.elite-section--process .elite-paragraph--process-num {
+	margin: 0;
+	padding-top: 6px;
+	color: var(--wp--preset--color--accent);
+
+	@include text-style("body-small");
+	font-weight: 800;
+}

@@ -1,0 +1,66 @@
+// Label: Theme
+// elite/section → Block Classes. This class loads the folder (styles and
+// view.js) on pages that use it; the parts below are styled under it.
+// "Our foundation" (pattern "Our theme"): the heading, a line and a
+// checklist beside a dark panel of block tiles. As it scrolls in (view.js),
+// the checks rise one by one, the panel scales up and its tiles follow.
+@use "../../styles/abstracts" as *;
+
+.elite-section--theme {
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		padding-top: clamp(72px, 10vw, 144px);
+		padding-bottom: clamp(72px, 10vw, 144px);
+	}
+
+	h2 {
+		margin: 0;
+	}
+}
+
+// The entrance: only once view.js has marked a section below the fold, so
+// without JS, in the editor, with reduced motion or already on screen at
+// load, everything is simply shown.
+@media screen and (prefers-reduced-motion: no-preference) {
+
+	.elite-section--theme.is-reveal {
+
+		.core-list--checks li,
+		.elite-div--theme-panel,
+		.core-list--theme-blocks li {
+			opacity: 0;
+		}
+
+		.core-list--checks li {
+			transform: translateY(32px);
+		}
+
+		.elite-div--theme-panel,
+		.core-list--theme-blocks li {
+			transform: scale(0.94);
+		}
+
+	}
+
+	.elite-section--theme.is-reveal.is-visible {
+
+		.core-list--checks li,
+		.elite-div--theme-panel,
+		.core-list--theme-blocks li {
+			transition:
+				opacity 0.75s cubic-bezier(0.2, 0.7, 0.2, 1),
+				transform 0.75s cubic-bezier(0.2, 0.7, 0.2, 1),
+				background-color 0.2s $ease,
+				border-color 0.2s $ease;
+			transition-delay: calc(var(--i, 0) * 70ms);
+			opacity: 1;
+			transform: none;
+		}
+
+		// The tiles after the panel.
+		.core-list--theme-blocks li {
+			transition-delay: calc(0.2s + var(--i, 0) * 70ms), calc(0.2s + var(--i, 0) * 70ms), 0s, 0s;
+		}
+	}
+}

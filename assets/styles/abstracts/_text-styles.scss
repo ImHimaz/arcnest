@@ -1,0 +1,250 @@
+// Theme type scale: the single source for every text look on the site:
+// h1–h6/body, the `--text-*` variables, the editor's "Text Style" dropdown
+// (Heading/Paragraph) and, through `@include text-style("…")`, every part
+// in assets/ (Stylelint rejects font sizes, families, letter spacing and
+// text case written anywhere else; a part may still set its weight and
+// line height).
+// Run `npm run classes` after changing the keys (also runs before build/start).
+// Each style sets any of: font-family, font-size, font-weight, line-height,
+// letter-spacing, text-transform. A value can be fluid (clamp(), as the
+// titles and lead: they scale smoothly with the screen) or differ per device:
+// (desktop: …, laptop: …, tablet: …, mobile: …); smaller devices inherit.
+// The CSS is written mobile first (base/_typography.scss): the phone values,
+// then what changes from tablet, laptop and desktop up.
+// Fonts: titles and display numbers use the Heading family, the rest the
+// Body family (both theme.json presets: change a family there and every
+// style using it follows).
+// `editor: false`: a component's own look (buttons, menus…), kept here with
+// the rest but left out of the editor's dropdown and font sizes.
+// Keys are slugs: "title-1" shows as "Title 1".
+$-heading: var(--wp--preset--font-family--heading);
+
+$text-styles: (
+	"title-1": (
+		font-family: $-heading,
+		// 6.3vw: the hero's "WordPress that" (about 7em) stays on one line
+		// in its laptop column, so the heading is 3 lines, not 4.
+		font-size: clamp(44px, 6.3vw, 94px),
+		// 600: at this size 700 shouts; the heading font is variable, so
+		// any weight is the same file.
+		font-weight: 600,
+		line-height: 0.98,
+		letter-spacing: -0.035em,
+	),
+	"title-2": (
+		font-family: $-heading,
+		font-size: clamp(34px, 4.6vw, 64px),
+		font-weight: 700,
+		line-height: 1.05,
+		letter-spacing: -0.035em,
+	),
+	"title-3": (
+		font-family: $-heading,
+		font-size: clamp(22px, 2vw, 28px),
+		font-weight: 700,
+		line-height: 1.2,
+		letter-spacing: -0.025em,
+	),
+	"title-4": (
+		font-family: $-heading,
+		font-size: (desktop: 22px, mobile: 20px),
+		font-weight: 700,
+		line-height: 1.3,
+		letter-spacing: -0.02em,
+	),
+	"title-5": (
+		font-family: $-heading,
+		font-size: 18px,
+		font-weight: 700,
+		line-height: 1.4,
+	),
+	"title-6": (
+		font-family: $-heading,
+		font-size: 14px,
+		font-weight: 700,
+		line-height: 1.4,
+	),
+	// Big numbers: scores and stats.
+	"display-1": (
+		font-family: $-heading,
+		font-size: clamp(72px, 9vw, 120px),
+		font-weight: 800,
+		line-height: 1,
+		letter-spacing: -0.06em,
+	),
+	"display-2": (
+		font-family: $-heading,
+		font-size: clamp(48px, 5.6vw, 80px),
+		font-weight: 800,
+		line-height: 1,
+		letter-spacing: -0.05em,
+	),
+	"display-3": (
+		font-family: $-heading,
+		font-size: (desktop: 46px, mobile: 36px),
+		font-weight: 800,
+		line-height: 1,
+		letter-spacing: -0.04em,
+	),
+	"lead": (
+		font-size: clamp(18px, 1.5vw, 21px),
+		line-height: 1.6,
+	),
+	"body": (
+		// The theme's body font (theme.json); the styles without a family
+		// inherit it.
+		font-family: var(--wp--preset--font-family--body),
+		font-size: (desktop: 17px, mobile: 16px),
+		line-height: 1.65,
+	),
+	"body-small": (
+		font-size: 15px,
+		line-height: 1.65,
+	),
+	"small": (
+		font-size: 14px,
+		line-height: 1.65,
+	),
+	"caption": (
+		font-size: 13px,
+		line-height: 1.65,
+	),
+	"tag": (
+		font-size: 12px,
+		font-weight: 700,
+		line-height: 1.65,
+	),
+	"eyebrow": (
+		font-size: 13px,
+		font-weight: 700,
+		line-height: 1.65,
+		letter-spacing: 0.12em,
+		text-transform: uppercase,
+	),
+
+	// Components' own looks (not in the editor).
+	"button": (
+		font-size: (desktop: 16px, mobile: 15px),
+		font-weight: 700,
+		line-height: 1.2,
+		letter-spacing: -0.01em,
+		editor: false,
+	),
+	"button-small": (
+		font-size: (desktop: 15px, mobile: 14px),
+		font-weight: 700,
+		line-height: 1.2,
+		letter-spacing: -0.01em,
+		editor: false,
+	),
+	// The full-screen menu's links (header, phones and tablets).
+	"menu-large": (
+		font-size: 24px,
+		font-weight: 700,
+		letter-spacing: -0.02em,
+		editor: false,
+	),
+	// A small uppercase label inside a pill (the hero badge's "New").
+	"badge": (
+		font-size: 12px,
+		font-weight: 800,
+		letter-spacing: 0.02em,
+		text-transform: uppercase,
+		editor: false,
+	),
+	// A pill's label, spaced out (the Contact section's "Now open").
+	"flag": (
+		font-size: 12px,
+		font-weight: 800,
+		letter-spacing: 0.08em,
+		text-transform: uppercase,
+		editor: false,
+	),
+	// Form fields' typed text: 16px on every screen (phones zoom into
+	// smaller fields).
+	"input": (
+		font-size: 16px,
+		font-weight: 400,
+		line-height: 1.5,
+		editor: false,
+	),
+	// Accordion questions (FAQ).
+	"question": (
+		font-family: $-heading,
+		font-size: clamp(18px, 1.5vw, 21px),
+		font-weight: 700,
+		line-height: 1.65,
+		letter-spacing: -0.015em,
+		editor: false,
+	),
+	// Card titles beside a tag (Comparison).
+	"card-title": (
+		font-family: $-heading,
+		font-size: 20px,
+		font-weight: 700,
+		line-height: 1.05,
+		letter-spacing: -0.02em,
+		editor: false,
+	),
+	// Numbered step titles (Process).
+	"step-title": (
+		font-family: $-heading,
+		font-size: clamp(24px, 2.4vw, 32px),
+		font-weight: 700,
+		line-height: 1.05,
+		letter-spacing: -0.03em,
+		editor: false,
+	),
+	// The hero's floating stat number. Near "display-3" (44px, not 46px).
+	"stat-number": (
+		font-family: $-heading,
+		font-size: (desktop: 44px, mobile: 36px),
+		font-weight: 800,
+		line-height: 1,
+		letter-spacing: -0.04em,
+		editor: false,
+	),
+	// The 404 page's big "404". Larger than "display-1", and tighter.
+	"error-code": (
+		font-family: $-heading,
+		font-size: clamp(120px, 24vw, 240px),
+		font-weight: 800,
+		line-height: 0.9,
+		letter-spacing: -0.06em,
+		editor: false,
+	),
+	// Service card text (Services). Near "body-small" (15.5px, not 15px).
+	"card-text": (
+		font-size: 15.5px,
+		line-height: 1.65,
+		editor: false,
+	),
+	// Process step text: 16px on every screen. Near "body" (17px from
+	// tablets).
+	"step-text": (
+		font-size: 16px,
+		line-height: 1.65,
+		editor: false,
+	),
+	// How long a step takes (Process). Near "eyebrow" (letter spacing
+	// 0.1em, not 0.12em).
+	"step-meta": (
+		font-size: 13px,
+		font-weight: 700,
+		line-height: 1.65,
+		letter-spacing: 0.1em,
+		text-transform: uppercase,
+		editor: false,
+	),
+);
+
+// Properties every text style defines (unset ones fall back to these), so a
+// Text Style picked in the editor always sets the same declarations.
+$text-props: (
+	font-family: inherit,
+	font-size: inherit,
+	font-weight: inherit,
+	line-height: inherit,
+	letter-spacing: normal,
+	text-transform: none,
+);

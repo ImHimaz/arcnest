@@ -1,0 +1,34 @@
+// Label: Actions
+// elite/div → Block Classes, under "Not found". The buttons: full width and
+// stacked on phones, then centred side by side.
+@use "../../styles/abstracts" as *;
+
+.elite-section--not-found .elite-div--not-found-actions {
+	margin-top: 40px;
+
+	> .div-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.elite-button,
+	.elite-button__link {
+		box-sizing: border-box;
+		width: 100%;
+		justify-content: center;
+	}
+
+	@include media-breakpoint-up(sm) {
+
+		> .div-inner {
+			flex-flow: row wrap;
+			justify-content: center;
+		}
+
+		.elite-button,
+		.elite-button__link {
+			width: auto;
+		}
+	}
+}

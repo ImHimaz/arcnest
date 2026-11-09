@@ -1,0 +1,28 @@
+// Label: Good
+// elite/div → Block Classes, under "Comparison". With "Card": Arcnest's card,
+// purple with white text, a lime score and tag.
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .elite-div--compare-good {
+	--compare-line: rgb(255 255 255 / 0.14);
+
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--base);
+
+	> .div-inner {
+		background: var(--wp--preset--color--primary);
+	}
+
+	.elite-heading--compare-title {
+		color: var(--wp--preset--color--base);
+	}
+
+	.elite-paragraph--compare-tag {
+		background: var(--wp--preset--color--accent);
+		color: var(--wp--preset--color--primary-900);
+	}
+
+	.elite-counter--compare-score {
+		color: var(--wp--preset--color--accent);
+	}
+}

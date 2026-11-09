@@ -1,0 +1,9 @@
+// Label: Lead
+// elite/paragraph → Block Classes, under "Hero". The line under the heading.
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero .elite-paragraph--hero-lead {
+	max-width: 560px;
+	margin: 28px 0 0;
+	color: rgb(255 255 255 / 0.75);
+}

@@ -1,0 +1,11 @@
+// Label: Note
+// elite/paragraph → Block Classes, under "Contact". The small line under the
+// form ("No obligation…").
+@use "../../styles/abstracts" as *;
+
+.elite-section--contact .elite-paragraph--contact-note {
+	margin: 18px 0 0;
+	color: rgb(255 255 255 / 0.6);
+
+	@include text-style("small");
+}

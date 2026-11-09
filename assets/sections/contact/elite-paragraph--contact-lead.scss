@@ -1,0 +1,10 @@
+// Label: Lead
+// elite/paragraph → Block Classes, under "Contact". The line under the
+// heading (Text Style: Lead).
+@use "../../styles/abstracts" as *;
+
+.elite-section--contact .elite-paragraph--contact-lead {
+	max-width: 600px;
+	margin: 24px auto 0;
+	color: rgb(255 255 255 / 0.75);
+}

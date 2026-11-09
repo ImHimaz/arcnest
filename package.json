@@ -1,0 +1,62 @@
+{
+	"name": "arcnest",
+	"version": "0.1.0",
+	"private": true,
+	"description": "Arcnest: the arcnest.dev site theme, built on WP Elite.",
+	"license": "GPL-2.0-or-later",
+	"engines": {
+		"node": ">=22",
+		"npm": ">=10"
+	},
+	"scripts": {
+		"classes": "node scripts/classes.mjs",
+		"add": "node scripts/classes.mjs add",
+		"prebuild": "npm run classes",
+		"build": "wp-scripts build",
+		"prestart": "npm run classes",
+		"start": "wp-scripts start",
+		"release": "npm run build && wp-scripts plugin-zip",
+		"env:start": "npm run env:start:dev && npm run env:start:test",
+		"env:start:dev": "wp-env start",
+		"env:start:test": "wp-env start --config=.wp-env.test.json",
+		"env:stop": "wp-env stop && wp-env stop --config=.wp-env.test.json",
+		"env:clean": "wp-env clean all && wp-env clean all --config=.wp-env.test.json",
+		"lint": "npm run lint:js && npm run lint:style",
+		"lint:js": "wp-scripts lint-js scripts assets",
+		"lint:style": "wp-scripts lint-style \"assets/**/*.scss\"",
+		"format": "wp-scripts format scripts assets",
+		"test:unit": "wp-scripts test-unit-js",
+		"test:php": "wp-env run cli wp eval-file wp-content/themes/arcnest/tests/php/run.php",
+		"prepare": "husky || true"
+	},
+	"files": [
+		"assets/fonts",
+		"assets/icons",
+		"assets/images",
+		"assets/json",
+		"build",
+		"inc",
+		"parts",
+		"patterns",
+		"templates",
+		"functions.php",
+		"style.css",
+		"theme.json",
+		"screenshot.png"
+	],
+	"lint-staged": {
+		"*.{ts,tsx,js}": "wp-scripts lint-js",
+		"*.scss": "wp-scripts lint-style",
+		"*.php": "composer run phpcs --"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^11.17.0",
+		"@wordpress/scripts": "^36.1.0",
+		"happy-dom": "^21.0.1",
+		"husky": "^9.1.7",
+		"lint-staged": "^17.6.0",
+		"sass": "^1.105.1",
+		"vite": "^8.3.3",
+		"vitest": "^5.0.3"
+	}
+}

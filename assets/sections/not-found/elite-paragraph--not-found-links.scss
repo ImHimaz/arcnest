@@ -1,0 +1,29 @@
+// Label: Links
+// elite/paragraph → Block Classes, under "Not found". "Or jump to" and a
+// few links into the home page, in a row that wraps.
+@use "../../styles/abstracts" as *;
+
+.elite-section--not-found .elite-paragraph--not-found-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 20px;
+	justify-content: center;
+	margin: 48px 0 0;
+	color: rgb(255 255 255 / 0.55);
+
+	@include text-style("small");
+
+	a {
+		color: var(--wp--preset--color--base);
+		font-weight: 600;
+		text-decoration: underline;
+		text-decoration-color: rgb(215 223 35 / 0.5);
+		text-underline-offset: 4px;
+		transition: text-decoration-color 0.2s ease;
+
+		&:hover,
+		&:focus-visible {
+			text-decoration-color: var(--wp--preset--color--accent);
+		}
+	}
+}

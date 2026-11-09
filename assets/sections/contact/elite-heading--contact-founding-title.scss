@@ -1,0 +1,10 @@
+// Label: Founding Title
+// elite/heading → Block Classes, under "Contact".
+@use "../../styles/abstracts" as *;
+
+.elite-section--contact .elite-heading--contact-founding-title {
+	margin: 0;
+	color: var(--wp--preset--color--base);
+
+	@include text-style("card-title");
+}

@@ -1,0 +1,24 @@
+// Label: Grid
+// elite/row → Block Classes, under "Services". The cards: one per row on
+// phones, two on tablets, four from laptops, equal heights; 16px apart on
+// phones, 20px on tablets, 24px from laptops (as the page's gutter).
+@use "../../styles/abstracts" as *;
+
+.elite-section--services .elite-row--services-grid {
+	--bs-gutter-x: 16px;
+	--bs-gutter-y: 16px;
+
+	> .elite-column > .column-inner {
+		height: 100%;
+	}
+
+	@include media-breakpoint-up(md) {
+		--bs-gutter-x: 20px;
+		--bs-gutter-y: 20px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		--bs-gutter-x: 24px;
+		--bs-gutter-y: 24px;
+	}
+}

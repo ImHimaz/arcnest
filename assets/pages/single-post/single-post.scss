@@ -1,0 +1,75 @@
+// Blog posts (body class "single-post"): reading rhythm for the post's
+// content, and the tags and previous/next links under it (templates/
+// single.html). Sample page type: other post types get their own folder
+// (pages/single-case-study…).
+// Classes for blocks in it:
+// npm run add -- pages/single-post <block> <part>
+@use "../../styles/abstracts" as *;
+
+body.single-post {
+
+	.wp-block-post-content {
+
+		// More room above a heading than below it: it belongs to what follows.
+		> :where(h2, h3, h4) {
+			margin-top: 2.5em;
+		}
+
+		> :where(h2, h3, h4) + * {
+			margin-top: 0.75em;
+		}
+
+		:where(img) {
+			border-radius: $radius-md;
+		}
+
+		:where(figcaption) {
+
+			@include text-style("small");
+			line-height: 1.5;
+			color: var(--wp--preset--color--muted);
+			text-align: center;
+		}
+
+		:where(blockquote) {
+			margin-inline: 0;
+			padding-left: 1.5rem;
+			border-left: 4px solid var(--wp--preset--color--primary);
+
+			@include text-style("lead");
+		}
+	}
+
+	// Tags as pills.
+	.wp-block-post-terms {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+
+		a {
+			padding: 0.25rem 0.75rem;
+			border-radius: $radius-pill;
+			background-color: var(--wp--preset--color--surface);
+			color: var(--wp--preset--color--contrast);
+			text-decoration: none;
+
+			@include text-style("small");
+			line-height: 1.5;
+
+			&:hover {
+				background-color: var(--wp--preset--color--primary);
+				color: var(--wp--preset--color--base);
+			}
+		}
+
+		// The separators WordPress prints between terms.
+		.wp-block-post-terms__separator {
+			display: none;
+		}
+	}
+
+	.wp-block-post-navigation-link a {
+		font-weight: 600;
+		text-decoration: none;
+	}
+}

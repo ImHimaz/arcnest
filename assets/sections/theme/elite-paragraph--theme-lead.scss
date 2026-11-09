@@ -1,0 +1,8 @@
+// Label: Lead
+// elite/paragraph → Block Classes, under "Theme".
+@use "../../styles/abstracts" as *;
+
+.elite-section--theme .elite-paragraph--theme-lead {
+	margin: 24px 0 0;
+	color: var(--wp--preset--color--muted);
+}

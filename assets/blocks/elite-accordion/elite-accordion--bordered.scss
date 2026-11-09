@@ -1,0 +1,19 @@
+// Label: Bordered
+// elite/accordion → Block Classes (multi-select). One rounded box around
+// the items, with lines between them.
+@use "../../styles/abstracts" as *;
+
+.elite-accordion--bordered .elite-accordion__items {
+	overflow: hidden;
+	border: 1px solid $border-color;
+	border-radius: $radius-lg;
+}
+
+.elite-accordion--bordered .elite-accordion__item {
+	padding-inline: 20px;
+	border-bottom-color: $border-color;
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}

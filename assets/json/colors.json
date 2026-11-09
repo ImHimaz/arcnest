@@ -1,0 +1,67 @@
+[
+	{
+		"slug": "base",
+		"name": "Base",
+		"color": "#fff"
+	},
+	{
+		"slug": "contrast",
+		"name": "Contrast",
+		"color": "#16101c"
+	},
+	{
+		"slug": "text",
+		"name": "Text",
+		"color": "#2b2233"
+	},
+	{
+		"slug": "muted",
+		"name": "Muted",
+		"color": "#625a6b"
+	},
+	{
+		"slug": "primary",
+		"name": "Primary",
+		"color": "#4f0f69"
+	},
+	{
+		"slug": "primary-800",
+		"name": "Primary 800",
+		"color": "#3e0b53"
+	},
+	{
+		"slug": "primary-900",
+		"name": "Primary 900",
+		"color": "#26062f"
+	},
+	{
+		"slug": "accent",
+		"name": "Accent",
+		"color": "#d7df23"
+	},
+	{
+		"slug": "accent-deep",
+		"name": "Accent Deep",
+		"color": "#b9bf12"
+	},
+	{
+		"slug": "lilac",
+		"name": "Lilac",
+		"color": "#f3eaf7"
+	},
+	{
+		"slug": "lilac-mid",
+		"name": "Lilac Mid",
+		"color": "#c9a6d9"
+	},
+	{
+		"slug": "surface",
+		"name": "Surface",
+		"color": "#faf8fc"
+	},
+	{
+		"slug": "line",
+		"name": "Line",
+		"color": "#e7e0ec"
+	}
+]

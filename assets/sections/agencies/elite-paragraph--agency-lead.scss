@@ -1,0 +1,8 @@
+// Label: Lead
+// elite/paragraph → Block Classes, under "Agencies".
+@use "../../styles/abstracts" as *;
+
+.elite-section--agencies .elite-paragraph--agency-lead {
+	margin: 20px 0 0;
+	color: rgb(38 6 47 / 0.78);
+}

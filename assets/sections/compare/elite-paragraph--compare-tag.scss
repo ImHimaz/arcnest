@@ -1,0 +1,16 @@
+// Label: Tag
+// elite/paragraph → Block Classes, under "Comparison". A small pill beside
+// the card's title (lime on Arcnest's card).
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .elite-paragraph--compare-tag {
+	flex: none;
+	margin: 0;
+	padding: 4px 10px;
+	border-radius: $radius-pill;
+	background: #fbe3d6;
+	color: #9a3412;
+
+	@include text-style("tag");
+	line-height: 1.15;
+}

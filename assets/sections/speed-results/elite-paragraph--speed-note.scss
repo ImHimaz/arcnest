@@ -1,0 +1,11 @@
+// Label: Speed Note
+// elite/paragraph → Block Classes, under "Speed results". The small line
+// under the table (where the figures come from).
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-results .elite-paragraph--speed-note {
+	margin: 20px 0 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("small");
+}

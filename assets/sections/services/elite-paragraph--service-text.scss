@@ -1,0 +1,10 @@
+// Label: Text
+// elite/paragraph → Block Classes, under "Services".
+@use "../../styles/abstracts" as *;
+
+.elite-section--services .elite-paragraph--service-text {
+	margin: 14px 0 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("card-text");
+}

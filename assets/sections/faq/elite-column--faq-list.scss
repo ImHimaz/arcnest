@@ -1,0 +1,17 @@
+// Label: List
+// elite/column → Block Classes, under "FAQ". The questions' column: under
+// the heading on phones and tablets, beside it from laptops.
+@use "../../styles/abstracts" as *;
+
+.elite-section--faq .elite-column--faq-list {
+	// 32px plus the page's gutter (16px on phones, 20px on tablets).
+	margin-top: 48px;
+
+	@include media-breakpoint-up(md) {
+		margin-top: 52px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		margin-top: 0;
+	}
+}

@@ -1,0 +1,17 @@
+// Label: Steps
+// elite/column → Block Classes, under "Process". The steps: under the
+// heading on phones and tablets, beside it from laptops.
+@use "../../styles/abstracts" as *;
+
+.elite-section--process .elite-column--process-steps {
+	// 48px plus the page's gutter (16px on phones, 20px on tablets).
+	margin-top: 64px;
+
+	@include media-breakpoint-up(md) {
+		margin-top: 68px;
+	}
+
+	@include media-breakpoint-up(lg) {
+		margin-top: 0;
+	}
+}

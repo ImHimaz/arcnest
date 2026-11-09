@@ -1,0 +1,43 @@
+// Label: Metrics
+// core/list → Block Classes, under "Hero". One row per metric: its name,
+// then the bold value with a green "pass" dot.
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero .core-list--hero-metrics {
+	display: grid;
+	gap: 10px;
+	margin: 24px 0 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+		justify-content: space-between;
+		margin: 0;
+		padding: 12px 16px;
+		border-radius: $radius-lg;
+		background: rgb(255 255 255 / 0.05);
+		color: rgb(255 255 255 / 0.8);
+
+		@include text-style("small");
+	}
+
+	strong {
+		display: inline-flex;
+		gap: 8px;
+		align-items: center;
+		color: var(--wp--preset--color--base);
+		font-weight: 700;
+		white-space: nowrap;
+
+		&::after {
+			content: "";
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #3ddc84;
+		}
+	}
+}

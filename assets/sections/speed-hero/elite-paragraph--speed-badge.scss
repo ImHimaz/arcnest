@@ -1,0 +1,25 @@
+// Label: Speed Badge
+// elite/paragraph → Block Classes, under "Speed hero". A pill over the
+// heading; its bold word in a lime chip.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-hero .elite-paragraph--speed-badge {
+	display: inline-flex;
+	gap: 8px;
+	align-items: center;
+	margin: 0 0 24px;
+	padding: 6px 14px 6px 6px;
+	border: 1px solid rgb(255 255 255 / 0.18);
+	border-radius: $radius-pill;
+	background: rgb(255 255 255 / 0.06);
+	color: rgb(255 255 255 / 0.85);
+
+	@include text-style("badge");
+
+	strong {
+		padding: 3px 10px;
+		border-radius: $radius-pill;
+		background: var(--wp--preset--color--accent);
+		color: var(--wp--preset--color--primary-900);
+	}
+}

@@ -1,0 +1,112 @@
+// Label: Questions
+// elite/accordion → Block Classes, under "FAQ". Lines above and between the
+// questions; bold questions with a round lilac button that turns purple and
+// lime when open. Its icon follows the accordion's Indicator: Plus (drawn
+// here, it turns into a minus) or Chevron (it turns over).
+@use "../../styles/abstracts" as *;
+
+.elite-section--faq .elite-accordion--faq-list {
+
+	.elite-accordion__item {
+		border-bottom: 1px solid var(--wp--preset--color--line);
+
+		&:first-child {
+			border-top: 1px solid var(--wp--preset--color--line);
+		}
+	}
+
+	.elite-accordion__button {
+		gap: 24px;
+		justify-content: space-between;
+		padding: 26px 0;
+		color: var(--wp--preset--color--contrast);
+		line-height: 1.65;
+	}
+
+	.elite-accordion__title {
+
+		@include text-style("question");
+	}
+
+	// The round button; its icon in currentColor. The block turns it over
+	// when open (the chevron), so transform keeps its transition.
+	.elite-accordion__indicator {
+		position: relative;
+		box-sizing: border-box;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		border-radius: 50%;
+		background: var(--wp--preset--color--lilac);
+		color: var(--wp--preset--color--primary);
+		transition: background-color 0.2s ease, color 0.2s ease, transform 0.3s ease;
+
+		svg {
+			width: 18px;
+			height: 18px;
+		}
+	}
+
+	.elite-accordion__item.is-open .elite-accordion__indicator {
+		background: var(--wp--preset--color--primary);
+		color: var(--wp--preset--color--accent);
+	}
+
+	// Plus: drawn with two bars (the vertical one turns flat when open), in
+	// place of the block's plus and minus icons; it doesn't turn.
+	&.has-indicator-plus {
+
+		.elite-accordion__indicator {
+
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 14px;
+				height: 2px;
+				border-radius: 2px;
+				background: currentcolor;
+				transform: translate(-50%, -50%);
+			}
+
+			&::after {
+				transform: translate(-50%, -50%) rotate(90deg);
+				transition: transform 0.3s ease;
+			}
+
+			> * {
+				display: none;
+			}
+		}
+
+		.elite-accordion__item.is-open .elite-accordion__indicator {
+			transform: none;
+
+			&::after {
+				transform: translate(-50%, -50%);
+			}
+		}
+	}
+
+	// The answer: full width on phones, clear of the plus from tablets.
+	.elite-accordion__body-inner {
+		padding: 0 0 28px;
+		color: var(--wp--preset--color--muted);
+
+		@include media-breakpoint-up(md) {
+			padding-right: 60px;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.elite-section--faq .elite-accordion--faq-list .elite-accordion__indicator,
+	.elite-section--faq .elite-accordion--faq-list .elite-accordion__indicator::after {
+		transition: none;
+	}
+}

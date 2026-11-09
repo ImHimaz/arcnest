@@ -1,0 +1,10 @@
+// Label: Circle
+// elite/icon → Block Classes (multi-select). The icon at half size on a
+// round tinted background.
+
+.elite-icon--circle {
+	--e-icon-scale: 50%;
+	border-radius: 50%;
+	background-color: var(--wp--preset--color--surface);
+	color: var(--wp--preset--color--primary);
+}

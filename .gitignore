@@ -1,0 +1,12 @@
+node_modules/
+vendor/
+build/
+artifacts/
+test-results/
+.wp-env.override.json
+*.zip
+.DS_Store
+*.log
+
+# Paid plugins: each developer copies them in (see README).
+/third-party/

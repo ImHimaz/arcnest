@@ -1,0 +1,9 @@
+// Label: Dot
+// Span format → "Dot": the brand's full stop after a heading ("blink."),
+// lime. Deeper lime on light backgrounds; sections on dark set
+// --elite-dot-color to the bright one.
+@use "../../styles/abstracts" as *;
+
+.elite-span--dot {
+	color: var(--elite-dot-color, var(--wp--preset--color--accent-deep));
+}

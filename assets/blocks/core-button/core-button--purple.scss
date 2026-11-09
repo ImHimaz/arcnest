@@ -1,0 +1,14 @@
+// Label: Purple
+// core/button → Block Classes. For light backgrounds.
+@use "../../styles/abstracts" as *;
+
+.core-button--purple .wp-block-button__link {
+	background: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--base);
+
+	&:hover {
+		background: var(--wp--preset--color--primary-800);
+		color: var(--wp--preset--color--base);
+		box-shadow: none;
+	}
+}

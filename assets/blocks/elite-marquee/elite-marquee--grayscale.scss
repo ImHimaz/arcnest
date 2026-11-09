@@ -1,0 +1,17 @@
+// Label: Grayscale logos
+// elite/marquee → Block Classes (multi-select). Logos (images, icons) are
+// grey and muted; each turns to colour on hover and keyboard focus.
+@use "../../styles/abstracts" as *;
+
+.elite-marquee--grayscale .elite-marquee__group > :is(.elite-image, .elite-icon) {
+	opacity: 0.7;
+	filter: grayscale(1);
+	transition:
+		filter $duration-fast $ease,
+		opacity $duration-fast $ease;
+
+	&:is(:hover, :focus-within) {
+		opacity: 1;
+		filter: none;
+	}
+}

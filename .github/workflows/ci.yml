@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  # Run by deploy.yml before it ships the theme.
+  workflow_call:
+
+jobs:
+  js:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test:unit
+      - run: npm run build
+
+  php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer
+      - run: composer install --no-progress
+      - run: composer run phpcs
+      - run: composer run phpstan
+
+  # The dev site runs Elite Blocks from ../elite-blocks (see .wp-env.json), so
+  # both repos are checked out side by side.
+  wordpress:
+    runs-on: ubuntu-latest
+    needs: [js]
+    defaults:
+      run:
+        working-directory: arcnest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: arcnest
+      - uses: actions/checkout@v4
+        with:
+          # Set the PLUGIN_REPOSITORY variable if the plugin lives elsewhere, and
+          # a SIBLING_REPO_TOKEN secret (read access) if it's private.
+          repository: ${{ vars.PLUGIN_REPOSITORY || format('{0}/elite-blocks', github.repository_owner) }}
+          token: ${{ secrets.SIBLING_REPO_TOKEN || github.token }}
+          path: elite-blocks
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: arcnest/.nvmrc
+          cache: npm
+          cache-dependency-path: |
+            arcnest/package-lock.json
+            elite-blocks/package-lock.json
+      - name: Build the plugin
+        working-directory: elite-blocks
+        run: npm ci && npm run build
+      - run: npm ci
+      - run: npm run build
+      - run: npm run env:start:dev
+      - run: npm run test:php

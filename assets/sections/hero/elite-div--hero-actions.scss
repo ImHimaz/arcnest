@@ -1,0 +1,21 @@
+// Label: Actions
+// elite/div → Block Classes, under "Hero". The buttons, side by side, wrapping.
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero .elite-div--hero-actions {
+	margin-top: 32px;
+
+	> .div-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+	}
+
+	@include media-breakpoint-up(md) {
+		margin-top: 40px;
+
+		> .div-inner {
+			gap: 14px;
+		}
+	}
+}

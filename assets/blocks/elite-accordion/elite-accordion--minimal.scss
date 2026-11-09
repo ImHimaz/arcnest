@@ -1,0 +1,11 @@
+// Label: Minimal
+// elite/accordion → Block Classes (multi-select). No lines; titles in the
+// brand colour.
+
+.elite-accordion--minimal .elite-accordion__item {
+	border-bottom: 0;
+}
+
+.elite-accordion--minimal .elite-accordion__button {
+	color: var(--wp--preset--color--primary);
+}

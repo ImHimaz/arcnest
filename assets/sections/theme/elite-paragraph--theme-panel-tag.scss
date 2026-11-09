@@ -1,0 +1,13 @@
+// Label: Panel Tag
+// elite/paragraph → Block Classes, under "Theme". A lime pill.
+@use "../../styles/abstracts" as *;
+
+.elite-section--theme .elite-paragraph--theme-panel-tag {
+	padding: 4px 10px;
+	border-radius: $radius-pill;
+	background: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--primary-900);
+
+	@include text-style("tag");
+	white-space: nowrap;
+}

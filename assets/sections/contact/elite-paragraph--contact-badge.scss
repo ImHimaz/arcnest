@@ -1,0 +1,15 @@
+// Label: Badge
+// elite/paragraph → Block Classes, under "Contact". The founding box's lime
+// "Now open" pill.
+@use "../../styles/abstracts" as *;
+
+.elite-section--contact .elite-paragraph--contact-badge {
+	flex: none;
+	margin: 2px 0 0;
+	padding: 6px 12px;
+	border-radius: $radius-pill;
+	background: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--primary-900);
+
+	@include text-style("flag");
+}

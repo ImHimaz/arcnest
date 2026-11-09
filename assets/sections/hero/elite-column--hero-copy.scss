@@ -1,0 +1,14 @@
+// Label: Copy
+// elite/column → Block Classes, under "Hero". The text column: room before
+// the card from the laptop width.
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero .elite-column--hero-copy {
+
+	@include media-breakpoint-up(lg) {
+
+		> .column-inner {
+			padding-right: clamp(24px, 5vw, 72px);
+		}
+	}
+}

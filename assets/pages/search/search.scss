@@ -1,0 +1,32 @@
+// Search results (body class "search"): the search box and the result
+// cards (templates/search.html).
+// Classes for blocks in it:
+// npm run add -- pages/search <block> <part>
+@use "../../styles/abstracts" as *;
+
+body.search {
+
+	main .wp-block-search {
+		max-width: 640px;
+		margin-bottom: 3rem;
+	}
+
+	.wp-block-post-template > li {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.wp-block-post-title a {
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+			color: var(--wp--preset--color--primary);
+		}
+	}
+
+	.wp-block-post-featured-image img {
+		border-radius: $radius-md;
+	}
+}

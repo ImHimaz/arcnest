@@ -1,0 +1,75 @@
+// Label: Media
+// elite/div → Block Classes, under "Demo". The video, full width at 16:9
+// (at most 92% of the screen's height): set it as the Div's background
+// video (WebM, MP4 fallback, poster; autoplay, muted, loop). Elite Blocks
+// loads it only near the screen, pauses it off screen and adds the pause
+// button. As it scrolls in, view.js grows it from an inset rounded card to
+// the full width (--p, 0 → 1), the video zooming out a little with it.
+// Without a video yet, a placeholder shows.
+@use "../../styles/abstracts" as *;
+
+.elite-section--demo .elite-div--demo-media {
+	--p: 1;
+
+	position: relative;
+	overflow: hidden;
+
+	> .div-inner {
+		position: relative;
+		width: 100%;
+		max-height: 92vh;
+		overflow: hidden;
+		background: var(--wp--preset--color--primary-900);
+		aspect-ratio: 16 / 9;
+	}
+
+	.div-bg {
+		transform: scale(calc(1.12 - var(--p) * 0.12));
+	}
+
+	&.is-growing {
+		clip-path: inset(calc((1 - var(--p)) * 8%) calc((1 - var(--p)) * 6%) round calc((1 - var(--p)) * 40px));
+	}
+
+	// No video set yet.
+	> .div-inner:not(.has-div-bg)::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background:
+			radial-gradient(circle closest-side, var(--wp--preset--color--accent) 96%, transparent) center / 72px 72px no-repeat,
+			radial-gradient(60% 80% at 70% 100%, rgb(146 46 186 / 0.55), transparent 70%),
+			radial-gradient(40% 50% at 15% 10%, rgb(215 223 35 / 0.12), transparent 70%);
+	}
+
+	// The pause button: white, bottom right at the page's side padding.
+	.elite-bg-toggle {
+		right: var(--wp--style--root--padding-right);
+		bottom: clamp(16px, 3vw, 32px);
+		width: 44px;
+		height: 44px;
+		padding: 13px;
+		background: rgb(255 255 255 / 0.92);
+		box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.5);
+		color: var(--wp--preset--color--primary);
+		transition:
+			transform $duration-fast $ease,
+			background-color $duration-fast $ease,
+			color $duration-fast $ease;
+
+		&:hover {
+			transform: scale(1.06);
+			background: var(--wp--preset--color--accent);
+			color: var(--wp--preset--color--primary-900);
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+
+		.elite-bg-toggle {
+			width: 52px;
+			height: 52px;
+			padding: 16px;
+		}
+	}
+}

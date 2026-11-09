@@ -1,0 +1,25 @@
+// Label: Actions
+// elite/div → Block Classes, under "Call to Action".
+// Loads with sections/cta. The buttons' row: full-width buttons on phones,
+// easier to tap; their own width from tablets.
+@use "../../styles/abstracts" as *;
+
+.elite-section--cta .elite-div--cta-actions {
+
+	.elite-button,
+	.elite-button__link {
+		width: 100%;
+	}
+
+	.elite-button__link {
+		justify-content: center;
+	}
+
+	@include media-breakpoint-up(md) {
+
+		.elite-button,
+		.elite-button__link {
+			width: auto;
+		}
+	}
+}

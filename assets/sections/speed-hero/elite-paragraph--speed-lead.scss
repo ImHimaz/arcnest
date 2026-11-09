@@ -1,0 +1,10 @@
+// Label: Speed Lead
+// elite/paragraph → Block Classes, under "Speed hero". The line under the
+// heading.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-hero .elite-paragraph--speed-lead {
+	max-width: 660px;
+	margin: 24px auto 0;
+	color: rgb(255 255 255 / 0.75);
+}

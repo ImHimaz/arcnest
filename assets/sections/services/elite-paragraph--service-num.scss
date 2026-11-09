@@ -1,0 +1,18 @@
+// Label: Number
+// elite/paragraph → Block Classes, under "Services". The service's number in
+// a small rounded square.
+@use "../../styles/abstracts" as *;
+
+.elite-section--services .elite-paragraph--service-num {
+	display: grid;
+	place-items: center;
+	width: 40px;
+	height: 40px;
+	margin: 0;
+	border-radius: $radius-lg;
+	background: var(--wp--preset--color--lilac);
+	color: var(--wp--preset--color--primary);
+
+	@include text-style("caption");
+	font-weight: 800;
+}

@@ -1,0 +1,27 @@
+// Label: Numbers
+// core/list → Block Classes, under "Comparison". One row per number: its
+// name, then the bold value, between thin lines.
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .core-list--compare-metrics {
+	margin: 32px 0 0;
+	padding: 0;
+	border-top: 1px solid var(--compare-line);
+	list-style: none;
+
+	li {
+		display: flex;
+		gap: 12px;
+		justify-content: space-between;
+		margin: 0;
+		padding: 14px 0;
+		border-bottom: 1px solid var(--compare-line);
+
+		@include text-style("body-small");
+	}
+
+	strong {
+		font-weight: 800;
+		white-space: nowrap;
+	}
+}

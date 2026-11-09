@@ -1,0 +1,17 @@
+// Label: Strip
+// elite/section → Block Classes. This class loads the folder on pages that
+// use it; the parts below are styled under it.
+// A slim band (pattern "Tech strip"): a label, then the technologies as
+// pills, wrapping as needed; a line under it.
+@use "../../styles/abstracts" as *;
+
+.elite-section--strip {
+	border-bottom: 1px solid var(--wp--preset--color--line);
+	background: var(--wp--preset--color--base);
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+}

@@ -1,0 +1,18 @@
+// Label: Note
+// elite/paragraph → Block Classes, under "Comparison". The small print under
+// the cards, with a link.
+@use "../../styles/abstracts" as *;
+
+.elite-section--compare .elite-paragraph--compare-note {
+	margin: 20px 0 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("small");
+
+	a {
+		color: var(--wp--preset--color--primary);
+		font-weight: 700;
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+}

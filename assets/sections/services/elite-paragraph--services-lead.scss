@@ -1,0 +1,9 @@
+// Label: Lead
+// elite/paragraph → Block Classes, under "Services".
+@use "../../styles/abstracts" as *;
+
+.elite-section--services .elite-paragraph--services-lead {
+	max-width: 440px;
+	margin: 0;
+	color: var(--wp--preset--color--muted);
+}

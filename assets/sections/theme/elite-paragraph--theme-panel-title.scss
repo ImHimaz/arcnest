@@ -1,0 +1,10 @@
+// Label: Panel Title
+// elite/paragraph → Block Classes, under "Theme".
+@use "../../styles/abstracts" as *;
+
+.elite-section--theme .elite-paragraph--theme-panel-title {
+	color: var(--wp--preset--color--base);
+
+	@include text-style("body-small");
+	font-weight: 700;
+}

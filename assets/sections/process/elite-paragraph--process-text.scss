@@ -1,0 +1,9 @@
+// Label: Step Text
+// elite/paragraph → Block Classes, under "Process".
+@use "../../styles/abstracts" as *;
+
+.elite-section--process .elite-paragraph--process-text {
+	margin: 10px 0 0;
+
+	@include text-style("step-text");
+}

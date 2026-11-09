@@ -1,0 +1,24 @@
+// Label: Callout
+// elite/div → Block Classes, under "Single Post".
+// Loads with pages/single-post. A highlighted box in a post's content (a key
+// takeaway, a note). Styled by its class only, so the editor shows it too.
+@use "../../styles/abstracts" as *;
+
+.elite-div--post-callout {
+	margin-block: 2rem;
+	border-left: 4px solid var(--wp--preset--color--primary);
+	border-radius: 0 $radius-md $radius-md 0;
+	background-color: var(--wp--preset--color--surface);
+
+	.div-inner {
+		padding: 1.25rem;
+
+		@include media-breakpoint-up(md) {
+			padding: 1.5rem 1.75rem;
+		}
+
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+}

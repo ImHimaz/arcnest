@@ -1,0 +1,43 @@
+// Label: Score
+// elite/paragraph → Block Classes, under "Hero". The score inside a lime
+// ring. The ring's fill is --hero-score (0–100, default 98): set it with
+// the score, e.g. in the block's Additional CSS. It draws itself in on
+// load, unless the visitor asks for less motion.
+@use "../../styles/abstracts" as *;
+
+// The ring's fill, 0–100: a registered number, so it can animate (a
+// percentage's 0% is minified to 0, which isn't one, and the rule is
+// dropped). Set on the ring itself, as it doesn't inherit.
+@property --hero-arc {
+	syntax: "<number>";
+	inherits: false;
+	initial-value: 0;
+}
+
+.elite-section--hero .elite-paragraph--hero-score {
+	display: grid;
+	position: relative;
+	flex: none;
+	place-items: center;
+	width: 112px;
+	aspect-ratio: 1;
+	color: var(--wp--preset--color--base);
+
+	@include text-style("display-3");
+
+	// The ring: a conic fill, cut to a 10px band.
+	&::before {
+		--hero-arc: var(--hero-score, 98);
+
+		content: "";
+		position: absolute;
+		inset: 0;
+		border-radius: 50%;
+		background: conic-gradient(var(--wp--preset--color--accent) calc(var(--hero-arc) * 1%), rgb(255 255 255 / 0.12) 0);
+		mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px));
+	}
+
+	@include media-breakpoint-up(md) {
+		width: 148px;
+	}
+}

@@ -1,0 +1,25 @@
+// Label: Speed Facts
+// core/list → Block Classes, under "Speed hero". How the test was run, as
+// pills in a centred, wrapping row.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-hero .core-list--speed-facts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: center;
+	margin: 32px auto 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		margin: 0;
+		padding: 8px 14px;
+		border: 1px solid rgb(255 255 255 / 0.15);
+		border-radius: $radius-pill;
+		background: rgb(255 255 255 / 0.06);
+		color: rgb(255 255 255 / 0.85);
+
+		@include text-style("caption");
+	}
+}

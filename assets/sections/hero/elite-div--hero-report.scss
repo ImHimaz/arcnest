@@ -1,0 +1,22 @@
+// Label: Report
+// elite/div → Block Classes, under "Hero". The speed report card: glass on
+// the purple, with its top line, the score and the metrics inside.
+@use "../../styles/abstracts" as *;
+
+.elite-section--hero .elite-div--hero-report {
+	border: 1px solid rgb(255 255 255 / 0.14);
+	border-radius: $radius-xxl;
+	background: rgb(255 255 255 / 0.06);
+	backdrop-filter: blur(10px);
+
+	> .div-inner {
+		padding: 20px;
+	}
+
+	@include media-breakpoint-up(md) {
+
+		> .div-inner {
+			padding: 28px;
+		}
+	}
+}

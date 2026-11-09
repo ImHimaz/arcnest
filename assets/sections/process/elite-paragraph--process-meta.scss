@@ -1,0 +1,11 @@
+// Label: Duration
+// elite/paragraph → Block Classes, under "Process". How long the step takes,
+// in small capitals.
+@use "../../styles/abstracts" as *;
+
+.elite-section--process .elite-paragraph--process-meta {
+	margin: 14px 0 0;
+	color: rgb(255 255 255 / 0.5);
+
+	@include text-style("step-meta");
+}

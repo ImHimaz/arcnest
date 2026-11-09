@@ -1,0 +1,233 @@
+// Every SCSS function and mixin of the theme, in one place (no CSS output).
+// The values they use live in the data files beside this one: breakpoints,
+// text styles, variables. Through the abstracts:
+// `@use "../../styles/abstracts" as *;`
+@use "sass:list";
+@use "sass:map";
+@use "sass:meta";
+@use "breakpoints" as *;
+@use "text-styles" as *;
+@use "variables" as *;
+
+// -----------------------------------------------------------------------
+// Breakpoints: Bootstrap 5's mixins (same names, same results), on
+// $grid-breakpoints: xs 0, sm 576, md 768, lg 992, xl 1200, xxl 1400.
+// Elite Blocks' devices are below a breakpoint: laptop = down(xl),
+// tablet = down(lg), mobile = down(md) ($devices).
+// -----------------------------------------------------------------------
+
+/// Stop on a name that isn't in $grid-breakpoints.
+@function -check-breakpoint($name) {
+
+	@if not map.has-key($grid-breakpoints, $name) {
+
+		@error "Unknown breakpoint `#{$name}`. Use one of: #{map.keys($grid-breakpoints)}.";
+	}
+
+	@return $name;
+}
+
+/// The breakpoint after `$name` (`md` → `lg`), null after the last.
+@function breakpoint-next($name) {
+	$names: map.keys($grid-breakpoints);
+	$n: list.index($names, -check-breakpoint($name));
+
+	@if $n < list.length($names) {
+
+		@return list.nth($names, $n + 1);
+	}
+
+	@return null;
+}
+
+/// Where `$name` starts (`md` → 768px), null for xs (no lower limit).
+@function breakpoint-min($name) {
+	$min: map.get($grid-breakpoints, -check-breakpoint($name));
+
+	@if $min == 0 {
+
+		@return null;
+	}
+
+	@return $min;
+}
+
+/// Just below where `$name` starts (`md` → 767.98px), null for xs. As in
+/// Bootstrap 5: `.02px` less, for browsers that round fractional widths.
+@function breakpoint-max($name) {
+	$max: map.get($grid-breakpoints, -check-breakpoint($name));
+
+	@if $max == 0 {
+
+		@return null;
+	}
+
+	@return $max - 0.02px;
+}
+
+/// From `$name` up: `@include media-breakpoint-up(md) { … }` (768px+).
+@mixin media-breakpoint-up($name) {
+	$min: breakpoint-min($name);
+
+	@if $min {
+
+		@media (min-width: $min) {
+
+			@content;
+		}
+	} @else {
+
+		@content;
+	}
+}
+
+/// Below `$name`: `@include media-breakpoint-down(md) { … }` (under 768px).
+@mixin media-breakpoint-down($name) {
+	$max: breakpoint-max($name);
+
+	@if $max {
+
+		@media (max-width: $max) {
+
+			@content;
+		}
+	} @else {
+
+		@content;
+	}
+}
+
+/// From `$lower` up to below `$upper`: `media-breakpoint-between(md, xl)`
+/// (768px to 1199.98px).
+@mixin media-breakpoint-between($lower, $upper) {
+	$min: breakpoint-min($lower);
+	$max: breakpoint-max($upper);
+
+	@if $min and $max {
+
+		@media (min-width: $min) and (max-width: $max) {
+
+			@content;
+		}
+	} @else if $min {
+
+		@include media-breakpoint-up($lower) {
+
+			@content;
+		}
+	} @else if $max {
+
+		@include media-breakpoint-down($upper) {
+
+			@content;
+		}
+	} @else {
+
+		@content;
+	}
+}
+
+/// Only `$name`'s own range: `media-breakpoint-only(md)` (768px to 991.98px).
+@mixin media-breakpoint-only($name) {
+	$next: breakpoint-next($name);
+
+	@if $next {
+
+		@include media-breakpoint-between($name, $next) {
+
+			@content;
+		}
+	} @else {
+
+		@include media-breakpoint-up($name) {
+
+			@content;
+		}
+	}
+}
+
+// -----------------------------------------------------------------------
+// Type scale ($text-styles).
+// -----------------------------------------------------------------------
+
+/// Value of `$prop` in a text style for `$device` (null if not set for it).
+@function text-value($style, $prop, $device) {
+	$value: map.get($style, $prop);
+
+	@if meta.type-of($value) == "map" {
+
+		@return map.get($value, $device);
+	}
+
+	@if $device == desktop {
+
+		@return $value;
+	}
+
+	@return null;
+}
+
+/// Use a theme text style: `@include text-style("title-2");` (its values
+/// per device come from the `--text-*` variables, base/_typography.scss).
+@mixin text-style($slug) {
+
+	@each $prop, $default in $text-props {
+		#{$prop}: var(--text-#{$slug}-#{$prop});
+	}
+}
+
+// -----------------------------------------------------------------------
+// Buttons, as b3rg's `common-button`: in an elite-button modifier.
+// -----------------------------------------------------------------------
+
+/// A filled or outlined button. Colours are CSS values (e.g. theme presets).
+/// States (hover, keyboard focus) are written once here.
+@mixin button-look(
+	$background,
+	$color,
+	$border-color: $background,
+	$hover-background: $color,
+	$hover-color: $background,
+	$hover-border-color: $hover-background,
+) {
+
+	.elite-button__link {
+		padding: 0.875em 1.75em;
+		border: 1px solid $border-color;
+		border-radius: $radius-md;
+		background-color: $background;
+		color: $color;
+		font-weight: 600;
+		line-height: 1.2;
+		transition:
+			background-color $duration-fast $ease,
+			border-color $duration-fast $ease,
+			color $duration-fast $ease;
+
+		&:hover {
+			border-color: $hover-border-color;
+			background-color: $hover-background;
+			color: $hover-color;
+		}
+
+		&:focus-visible {
+			outline: 2px solid $border-color;
+			outline-offset: 2px;
+		}
+	}
+}
+
+// -----------------------------------------------------------------------
+// Layers ($z-layers).
+// -----------------------------------------------------------------------
+
+/// The z-index of a layer: `z-index: z(header);`.
+@function z($layer) {
+
+	@if not map.has-key($z-layers, $layer) {
+
+		@error "Unknown layer `#{$layer}`. Use one of: #{map.keys($z-layers)}.";
+	}
+
+	@return map.get($z-layers, $layer);
+}

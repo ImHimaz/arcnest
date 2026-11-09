@@ -1,0 +1,14 @@
+// Label: Head
+// elite/column → Block Classes, under "Process". The heading, line and
+// button: kept in view (sticky, below the header) from laptops while the
+// steps scroll past.
+@use "../../styles/abstracts" as *;
+
+.elite-section--process .elite-column--process-head {
+
+	@include media-breakpoint-up(lg) {
+		position: sticky;
+		top: calc(var(--wp-admin--admin-bar--height, 0px) + 120px);
+		align-self: flex-start;
+	}
+}

@@ -1,0 +1,11 @@
+// Label: Label
+// elite/paragraph → Block Classes, under "Strip".
+@use "../../styles/abstracts" as *;
+
+.elite-section--strip .elite-paragraph--strip-label {
+	margin: 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("small");
+	font-weight: 600;
+}

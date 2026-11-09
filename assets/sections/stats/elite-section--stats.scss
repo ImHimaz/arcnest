@@ -1,0 +1,38 @@
+// Label: Stats
+// elite/section → Block Classes. This class loads the folder (styles and
+// view.js) on pages that use it; the parts below are styled under it.
+// Four big numbers with a line each (pattern "Stats"), a line under the
+// band. They rise in one by one as they scroll into view (view.js), the
+// larger numbers counting up (Elite Counter).
+@use "../../styles/abstracts" as *;
+
+.elite-section--stats {
+	border-bottom: 1px solid var(--wp--preset--color--line);
+	background: var(--wp--preset--color--base);
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		padding-top: clamp(64px, 7vw, 104px);
+		padding-bottom: clamp(64px, 7vw, 104px);
+	}
+}
+
+// The entrance: only once view.js has marked a band below the fold, so
+// without JS, in the editor, with reduced motion or already on screen at
+// load, the stats are simply shown.
+@media screen and (prefers-reduced-motion: no-preference) {
+
+	.elite-section--stats.is-reveal .elite-row--stats-grid > .elite-column {
+		opacity: 0;
+		transform: translateY(32px);
+	}
+
+	.elite-section--stats.is-reveal.is-visible .elite-row--stats-grid > .elite-column {
+		transition:
+			opacity 0.75s cubic-bezier(0.2, 0.7, 0.2, 1),
+			transform 0.75s cubic-bezier(0.2, 0.7, 0.2, 1);
+		transition-delay: calc(var(--i, 0) * 70ms);
+		opacity: 1;
+		transform: none;
+	}
+}

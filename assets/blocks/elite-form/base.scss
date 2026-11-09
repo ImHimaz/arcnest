@@ -1,0 +1,215 @@
+// Every Elite Form's fields (loads with the block; no editor option), for
+// Contact Form 7 forms written in the theme's markup (Contact Form 7's own
+// CSS is off: inc/integrations/contact-form-7.php). Each field is a
+// `div.form-field` (`form-field--full`: both columns) holding its label
+// (`span.form-field__optional` for "(optional)") and the CF7 tag; the
+// submit is `button.form-submit` (see contact_template() there).
+// Two columns from tablets, one on phones.
+// Under each field, room for its error (no jump when one shows). A
+// section's look (e.g. sections/contact) sets the colours.
+@use "../../styles/abstracts" as *;
+
+.elite-form {
+	--form-field-bg: var(--wp--preset--color--base);
+	--form-field-border: #{$border-color};
+	--form-field-color: var(--wp--preset--color--contrast);
+	--form-field-placeholder: var(--wp--preset--color--muted);
+	--form-field-focus: var(--wp--preset--color--primary);
+	--form-label-color: var(--wp--preset--color--text);
+	--form-error-color: #b42318;
+}
+
+.elite-form .wpcf7-form {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 4px 12px;
+
+	@include media-breakpoint-up(md) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+// What Contact Form 7's CSS would hide: the hidden inputs, and the status
+// line kept for screen readers.
+.elite-form .hidden-fields-container {
+	display: none;
+}
+
+.elite-form .screen-reader-response {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	border: 0;
+	white-space: nowrap;
+}
+
+.elite-form .form-field--full,
+.elite-form .wpcf7-response-output {
+	grid-column: 1 / -1;
+}
+
+.elite-form .form-field label {
+	display: block;
+	margin: 0 0 6px 4px;
+	color: var(--form-label-color);
+
+	@include text-style("caption");
+	font-weight: 600;
+	line-height: 1.6;
+}
+
+.elite-form .form-field__optional {
+	font-weight: 400;
+	opacity: 0.7;
+}
+
+// The field and, under it, the room its error shows in.
+.elite-form .wpcf7-form-control-wrap {
+	display: block;
+	position: relative;
+	padding-bottom: 26px;
+}
+
+.elite-form .wpcf7-form-control:where(input, textarea, select) {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0 18px;
+	border: 1px solid var(--form-field-border);
+	border-radius: 14px;
+	outline: 0;
+	background: var(--form-field-bg);
+	color: var(--form-field-color);
+
+	@include text-style("input");
+	transition:
+		border-color $duration-fast $ease,
+		background-color $duration-fast $ease;
+
+	&::placeholder {
+		color: var(--form-field-placeholder);
+		opacity: 1;
+	}
+
+	// The border is the focus ring.
+	&:focus {
+		border-color: var(--form-field-focus);
+	}
+
+	&[aria-invalid="true"] {
+		border-color: var(--form-error-color);
+	}
+}
+
+.elite-form .wpcf7-form-control:where(input, select) {
+	height: 56px;
+}
+
+.elite-form textarea.wpcf7-form-control {
+	min-height: 128px;
+	padding-block: 14px;
+	resize: vertical;
+}
+
+.elite-form .wpcf7-not-valid-tip {
+	position: absolute;
+	top: calc(100% - 20px);
+	left: 4px;
+	color: var(--form-error-color);
+
+	@include text-style("caption");
+	font-weight: 600;
+}
+
+// The form's own status line, for what isn't a field's (not sent, spam). A
+// sent form shows the Elite Form's message instead; field errors show under
+// their fields (screen readers hear the status from .screen-reader-response).
+.elite-form .wpcf7-response-output {
+	margin: 8px 0 0 4px;
+	color: var(--form-error-color);
+
+	@include text-style("caption");
+	font-weight: 600;
+
+	&:empty {
+		display: none;
+	}
+}
+
+.elite-form .wpcf7-form.invalid .wpcf7-response-output {
+	display: none;
+}
+
+// The submit button: as the lime Elite Button (Primary), arrow included.
+.elite-form .form-submit {
+	display: inline-flex;
+	grid-column: 1 / -1;
+	gap: 10px;
+	align-items: center;
+	justify-content: center;
+	justify-self: stretch;
+	box-sizing: border-box;
+	min-height: 56px;
+	margin-top: 8px;
+	padding: 0 28px;
+	border: 2px solid transparent;
+	border-radius: $radius-pill;
+	background: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--primary-900);
+	white-space: nowrap;
+	cursor: pointer;
+
+	@include text-style("button");
+	transition:
+		transform $duration-fast $ease,
+		box-shadow $duration-fast $ease;
+
+	&::after {
+		content: "";
+		width: 1em;
+		height: 1em;
+		background: currentcolor;
+		mask: url(../../icons/arrow-right.svg) center / contain no-repeat;
+		transition: transform $duration-fast $ease;
+	}
+
+	&:hover {
+		box-shadow: 0 10px 30px -10px rgb(215 223 35 / 0.7);
+		transform: translateY(-2px);
+
+		&::after {
+			transform: translateX(4px);
+		}
+	}
+
+	&:focus-visible {
+		outline: 3px solid var(--wp--preset--color--accent);
+		outline-offset: 3px;
+	}
+
+	@include media-breakpoint-up(md) {
+		justify-self: start;
+	}
+}
+
+.elite-form .wpcf7-form.submitting .form-submit {
+	opacity: 0.7;
+	cursor: progress;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.elite-form .form-submit,
+	.elite-form .form-submit::after,
+	.elite-form .wpcf7-form-control {
+		transition: none;
+	}
+
+	.elite-form .form-submit:hover,
+	.elite-form .form-submit:hover::after {
+		transform: none;
+	}
+}

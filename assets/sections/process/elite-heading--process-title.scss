@@ -1,0 +1,9 @@
+// Label: Step Title
+// elite/heading → Block Classes, under "Process".
+@use "../../styles/abstracts" as *;
+
+.elite-section--process .elite-heading--process-title {
+	margin: 0;
+
+	@include text-style("step-title");
+}

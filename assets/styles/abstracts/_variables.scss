@@ -1,0 +1,38 @@
+// Shared values that aren't editor tokens (no CSS output). Colours live in
+// _colors.scss, the type scale in _text-styles.scss, breakpoints in
+// _breakpoints.scss; spacing, shadows and fonts are theme.json presets
+// (`var(--wp--preset--shadow--lg)`…) so editors can pick them too.
+// Images: no path variables, point at the file: url("../../images/x.svg").
+// Functions and mixins using these: _functions.scss.
+
+// Corners.
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-xxl: 24px;
+$radius-pill: 999px;
+
+// Lines (borders, dividers): the text colour, faint, so they show on any
+// light background (the palette's surface grey is too close to white).
+$border-color: color-mix(in srgb, var(--wp--preset--color--contrast) 12%, transparent);
+
+// Motion: hover and state changes are fast, image zooms slower, entrances
+// slowest.
+$duration-fast: 0.2s;
+$duration-medium: 0.4s;
+$duration-slow: 0.6s;
+$ease: ease;
+
+// Layers: one z-index scale for the theme, so nothing fights over who's on
+// top: `z-index: z(header);`. Popups use the browser's <dialog>, which sits
+// above everything without one.
+$z-layers: (
+	base: 1,
+	dropdown: 100,
+	sticky: 200,
+	header: 300,
+	overlay: 400,
+	toast: 500,
+);
+

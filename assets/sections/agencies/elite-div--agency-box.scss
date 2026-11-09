@@ -1,0 +1,80 @@
+// Label: Box
+// elite/div → Block Classes, under "Agencies". The lime box, purple text,
+// with a faint large circle at the bottom right and two purple dots at the
+// top right (a single one on phones), clear of the cards.
+@use "../../styles/abstracts" as *;
+
+.elite-section--agencies .elite-div--agency-box {
+	--elite-dot-color: var(--wp--preset--color--primary);
+	--elite-eyebrow-color: var(--wp--preset--color--primary-900);
+
+	position: relative;
+	overflow: hidden;
+	border-radius: 32px;
+	background: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--primary-900);
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		border-radius: 50%;
+		pointer-events: none;
+	}
+
+	&::before {
+		right: -220px;
+		bottom: -360px;
+		width: 560px;
+		height: 560px;
+		background: rgb(79 15 105 / 0.08);
+	}
+
+	&::after {
+		top: 24px;
+		right: 24px;
+		width: 20px;
+		height: 20px;
+		background: var(--wp--preset--color--primary);
+	}
+
+	> .div-inner {
+		position: relative;
+		z-index: 1;
+		padding: clamp(40px, 6vw, 88px);
+	}
+
+	h2 {
+		margin: 0;
+		color: var(--wp--preset--color--primary-900);
+	}
+
+	@include media-breakpoint-up(md) {
+
+		&::after {
+			top: 44px;
+			right: 48px;
+			width: 28px;
+			height: 28px;
+			box-shadow: -46px 20px 0 -8px rgb(79 15 105 / 0.35);
+		}
+	}
+
+	// Small laptops: the cards reach the box's padding at the top right,
+	// so the dots sit in that corner, above them.
+	@include media-breakpoint-up(lg) {
+
+		&::after {
+			top: calc(clamp(40px, 6vw, 88px) / 2 - 18px);
+			right: calc(clamp(40px, 6vw, 88px) / 2 - 14px);
+		}
+	}
+
+	@include media-breakpoint-up(xl) {
+
+		&::after {
+			top: 44px;
+			right: 48px;
+		}
+	}
+}

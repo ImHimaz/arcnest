@@ -1,0 +1,23 @@
+// Label: Image zoom
+// elite/card → Block Classes (multi-select). The card's image zooms gently
+// on hover and keyboard focus; none for visitors who reduce motion.
+@use "../../styles/abstracts" as *;
+
+.elite-card--image-zoom .elite-image {
+	overflow: hidden;
+
+	img {
+		transition: transform $duration-medium $ease;
+	}
+}
+
+.elite-card--image-zoom:is(:hover, :focus-within) .elite-image img {
+	transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.elite-card--image-zoom:is(:hover, :focus-within) .elite-image img {
+		transform: none;
+	}
+}

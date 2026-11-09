@@ -1,0 +1,16 @@
+// Label: Small
+// elite/button → Block Classes. 44px tall on phones (the smallest easy tap)
+// and 46px from tablets, e.g. in a header or a card.
+@use "../../styles/abstracts" as *;
+
+.elite-button--small .elite-button__link {
+	min-height: 44px;
+	padding: 0 18px;
+
+	@include text-style("button-small");
+
+	@include media-breakpoint-up(md) {
+		min-height: 46px;
+		padding: 0 22px;
+	}
+}

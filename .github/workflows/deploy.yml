@@ -1,0 +1,66 @@
+name: Deploy
+
+# Ships the built theme (npm run release: no sources, scripts or tests) to a
+# server over SSH. main → staging; a v* tag → production; or run it by hand.
+# Each target is a GitHub environment holding the SSH_* and THEME_PATH secrets
+# (see README → Deployment).
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Where to deploy
+        type: choice
+        options: [staging, production]
+        default: staging
+
+jobs:
+  checks:
+    uses: ./.github/workflows/ci.yml
+    secrets: inherit
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [checks]
+    environment: ${{ inputs.environment || (startsWith(github.ref, 'refs/tags/') && 'production') || 'staging' }}
+    # One deploy per environment at a time; a newer one waits rather than racing.
+    concurrency:
+      group: deploy-${{ inputs.environment || (startsWith(github.ref, 'refs/tags/') && 'production') || 'staging' }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run release
+      - name: Unpack the package
+        run: unzip -q arcnest.zip -d package
+      - name: Set up SSH
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          if [ -n "$SSH_KNOWN_HOSTS" ]; then
+            printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          else
+            ssh-keyscan -p "$SSH_PORT" "$SSH_HOST" > ~/.ssh/known_hosts
+          fi
+      - name: Upload
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_PORT: ${{ secrets.SSH_PORT || '22' }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          THEME_PATH: ${{ secrets.THEME_PATH }}
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT" \
+            package/arcnest/ "$SSH_USER@$SSH_HOST:${THEME_PATH%/}/"

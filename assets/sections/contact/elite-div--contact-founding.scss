@@ -1,0 +1,32 @@
+// Label: Founding
+// elite/div → Block Classes, under "Contact". The founding clients box: a
+// dashed lime outline on dark, the badge beside the title and text (under
+// them on phones).
+@use "../../styles/abstracts" as *;
+
+.elite-section--contact .elite-div--contact-founding {
+	box-sizing: border-box;
+	max-width: 820px;
+	margin: 56px auto 0;
+	border: 1px dashed rgb(215 223 35 / 0.45);
+	border-radius: $radius-xxl;
+	background: rgb(38 6 47 / 0.35);
+	text-align: left;
+
+	> .div-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		align-items: flex-start;
+		padding: 20px;
+	}
+
+	@include media-breakpoint-up(md) {
+
+		> .div-inner {
+			flex-direction: row;
+			gap: 20px;
+			padding: 24px 28px;
+		}
+	}
+}

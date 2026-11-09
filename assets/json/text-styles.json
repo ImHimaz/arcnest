@@ -1,0 +1,66 @@
+[
+	{
+		"slug": "title-1",
+		"name": "Title 1"
+	},
+	{
+		"slug": "title-2",
+		"name": "Title 2"
+	},
+	{
+		"slug": "title-3",
+		"name": "Title 3"
+	},
+	{
+		"slug": "title-4",
+		"name": "Title 4"
+	},
+	{
+		"slug": "title-5",
+		"name": "Title 5"
+	},
+	{
+		"slug": "title-6",
+		"name": "Title 6"
+	},
+	{
+		"slug": "display-1",
+		"name": "Display 1"
+	},
+	{
+		"slug": "display-2",
+		"name": "Display 2"
+	},
+	{
+		"slug": "display-3",
+		"name": "Display 3"
+	},
+	{
+		"slug": "lead",
+		"name": "Lead"
+	},
+	{
+		"slug": "body",
+		"name": "Body"
+	},
+	{
+		"slug": "body-small",
+		"name": "Body Small"
+	},
+	{
+		"slug": "small",
+		"name": "Small"
+	},
+	{
+		"slug": "caption",
+		"name": "Caption"
+	},
+	{
+		"slug": "tag",
+		"name": "Tag"
+	},
+	{
+		"slug": "eyebrow",
+		"name": "Eyebrow"
+	}
+]

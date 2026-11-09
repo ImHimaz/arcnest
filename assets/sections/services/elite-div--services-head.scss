@@ -1,0 +1,20 @@
+// Label: Head
+// elite/div → Block Classes, under "Services". The eyebrow and heading, and
+// the line beside them when there's room (under them when not).
+@use "../../styles/abstracts" as *;
+
+.elite-section--services .elite-div--services-head {
+	margin-bottom: 40px;
+
+	> .div-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 40px;
+		align-items: flex-end;
+		justify-content: space-between;
+	}
+
+	@include media-breakpoint-up(md) {
+		margin-bottom: 64px;
+	}
+}

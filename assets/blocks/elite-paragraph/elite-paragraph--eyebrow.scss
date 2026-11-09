@@ -1,0 +1,22 @@
+// Label: Eyebrow
+// elite/paragraph → Block Classes. The small line above a section's heading
+// ("See it in action"), after a lime dot; use with the Eyebrow text style.
+// Sections on dark set --elite-eyebrow-color and --elite-dot-color.
+@use "../../styles/abstracts" as *;
+
+.elite-paragraph--eyebrow {
+	display: inline-flex;
+	gap: 10px;
+	align-items: center;
+	margin: 0 0 20px;
+	color: var(--elite-eyebrow-color, var(--wp--preset--color--primary));
+
+	&::before {
+		content: "";
+		flex: none;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--elite-dot-color, var(--wp--preset--color--accent-deep));
+	}
+}

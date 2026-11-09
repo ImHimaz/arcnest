@@ -1,0 +1,12 @@
+// Label: Inner
+// elite/div → Block Classes, under "Strip". The label and the pills, on one
+// line when they fit, the pills wrapping under the label when not.
+@use "../../styles/abstracts" as *;
+
+.elite-section--strip .elite-div--strip-inner > .div-inner {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 40px;
+	align-items: center;
+	justify-content: space-between;
+}

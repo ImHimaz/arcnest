@@ -1,0 +1,19 @@
+// Label: Hover lift
+// elite/marquee → Block Classes (multi-select). Each item lifts a little on
+// hover and keyboard focus; no movement for visitors who reduce motion.
+@use "../../styles/abstracts" as *;
+
+.elite-marquee--hover-lift .elite-marquee__group > * {
+	transition: transform $duration-fast $ease;
+
+	&:is(:hover, :focus-within) {
+		transform: translateY(-4px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.elite-marquee--hover-lift .elite-marquee__group > *:is(:hover, :focus-within) {
+		transform: none;
+	}
+}

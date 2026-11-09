@@ -1,0 +1,26 @@
+// Breakpoints (no CSS output; the mixins are in _functions.scss).
+// Also written to assets/json/breakpoints.json (`npm run classes`) for
+// theme scripts (`isDevice()` in assets/utils).
+
+// Bootstrap 5's, the same as the Elite Blocks grid (`col-md-6`…), so
+// `@include media-breakpoint-up(md)` means what it does in Bootstrap.
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1400px,
+);
+
+// Elite Blocks' devices (its per-device settings), each the width below a
+// grid breakpoint: laptop < xl (1200), tablet < lg (992), mobile < md
+// (768). Desktop is above them. Theme CSS is mobile first: phone styles
+// plain, then `@include media-breakpoint-up(md)` for tablet and larger,
+// `up(lg)` laptop and larger, `up(xl)` desktop. (Also used by the type
+// scale's per-device sizes, and by theme scripts through breakpoints.json.)
+$devices: (
+	laptop: xl,
+	tablet: lg,
+	mobile: md,
+);

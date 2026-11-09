@@ -1,0 +1,14 @@
+// Everything a stylesheet needs, no CSS output. In any file under assets/:
+// `@use "../../styles/abstracts" as *;` (every feature folder is two levels
+// down). Data in its own files, every function and mixin in _functions.scss:
+// - _colors.scss       $colors (the editor palette)
+// - _text-styles.scss  $text-styles (the type scale), $text-props
+// - _breakpoints.scss  $grid-breakpoints (Bootstrap 5), $devices
+// - _variables.scss    $radius-*, $duration-*, $ease, $z-layers
+// - _functions.scss    media-breakpoint-up|down|between|only(), text-style(),
+//                      button-look(), z()…
+@forward "colors";
+@forward "text-styles";
+@forward "breakpoints";
+@forward "variables";
+@forward "functions";

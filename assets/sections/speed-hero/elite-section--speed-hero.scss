@@ -1,0 +1,66 @@
+// Label: Speed hero
+// elite/section → Block Classes. This class loads the folder on pages that
+// use it; the parts below are styled under it.
+// The speed test page's intro (pattern "Speed test: intro"): the home hero's
+// look, centred: a badge, the heading, a line, the test's facts as pills and
+// two buttons. It starts under the sticky header, as the hero. CSS only.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-hero {
+	--speed-header: 80px;
+	--elite-dot-color: var(--wp--preset--color--accent);
+	--section-margin-top: calc(-1 * var(--speed-header));
+
+	position: relative;
+	overflow: hidden;
+	background: var(--wp--preset--color--primary-900);
+	color: var(--wp--preset--color--base);
+	text-align: center;
+
+	// Glows, as the hero: purple from below, lime from the top right.
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		pointer-events: none;
+	}
+
+	&::before {
+		inset: auto -10% -60% -10%;
+		height: 110%;
+		background: radial-gradient(closest-side, rgb(146 46 186 / 0.7), rgb(79 15 105 / 0.3) 55%, transparent 75%);
+	}
+
+	&::after {
+		top: -180px;
+		right: -140px;
+		width: 520px;
+		height: 520px;
+		background: radial-gradient(closest-side, rgb(215 223 35 / 0.16), transparent 70%);
+	}
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		position: relative;
+		z-index: 1;
+		padding-top: calc(var(--speed-header) + 64px);
+		padding-bottom: 80px;
+
+		@include media-breakpoint-up(lg) {
+			padding-top: calc(var(--speed-header) + 104px);
+			padding-bottom: 120px;
+		}
+	}
+
+	h1 {
+		max-width: 900px;
+		margin: 0 auto;
+		color: var(--wp--preset--color--base);
+		text-wrap: balance;
+	}
+
+	// In the editor there's no sticky header to slide under.
+	.editor-styles-wrapper & {
+		--speed-header: 0px;
+	}
+}

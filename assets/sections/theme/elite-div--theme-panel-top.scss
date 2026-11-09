@@ -1,0 +1,18 @@
+// Label: Panel Top
+// elite/div → Block Classes, under "Theme". The panel's title and tag.
+@use "../../styles/abstracts" as *;
+
+.elite-section--theme .elite-div--theme-panel-top {
+	margin-bottom: 20px;
+
+	> .div-inner {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	p {
+		margin: 0;
+	}
+}

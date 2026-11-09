@@ -1,0 +1,44 @@
+// Label: Call to Action
+// elite/section → Block Classes. This class loads the folder (styles and
+// view.js) on pages that use it; the parts below are styled under it.
+// Sample section with a script: a closing band whose content fades up as
+// it scrolls into view (pattern "Call to action").
+@use "../../styles/abstracts" as *;
+
+.elite-section--cta {
+	text-align: center;
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		padding-top: 56px;
+		padding-bottom: 56px;
+
+		@include media-breakpoint-up(md) {
+			padding-top: 80px;
+			padding-bottom: 80px;
+		}
+	}
+
+	a:where(:not(.wp-element-button, .elite-button__link)) {
+		color: inherit;
+	}
+}
+
+// The fade: only once view.js has marked a section below the fold, so
+// without JS, in the editor, with reduced motion or already on screen at
+// load, it's simply shown. Screens only: printed, it's always there.
+@media screen and (prefers-reduced-motion: no-preference) {
+
+	.elite-section--cta.is-reveal > * {
+		opacity: 0;
+		transform: translateY(24px);
+		transition:
+			opacity $duration-slow $ease,
+			transform $duration-slow $ease;
+	}
+
+	.elite-section--cta.is-reveal.is-visible > * {
+		opacity: 1;
+		transform: none;
+	}
+}
