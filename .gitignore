@@ -1,6 +1,7 @@
 node_modules/
-vendor/
-build/
+# Root only: assets/vendor/ holds plugin styles (source) and must be committed.
+/vendor/
+/build/
 artifacts/
 test-results/
 .wp-env.override.json
