@@ -68,7 +68,7 @@ P\plans(
 		array(
 			__( 'Priority', 'wp-elite' ),
 			__( 'For busy sites where downtime costs money.', 'wp-elite' ),
-			array( __( 'Everything in Growth', 'wp-elite' ), __( 'Weekly updates', 'wp-elite' ), __( 'More time for changes each month', 'wp-elite' ), __( 'Same-day response on working days', 'wp-elite' ), __( 'Quarterly review call', 'wp-elite' ) ),
+			array( __( 'Everything in Growth', 'wp-elite' ), __( 'Weekly updates', 'wp-elite' ), __( 'More time for changes each month', 'wp-elite' ), __( 'Same-day response on working days', 'wp-elite' ) ),
 		),
 	),
 	__( 'Already have a WordPress site we didn’t build? We’ll check it first, then take it on.', 'wp-elite' )
