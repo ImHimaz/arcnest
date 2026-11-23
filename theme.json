@@ -71,7 +71,7 @@
 							"fontFamily": "Plus Jakarta Sans",
 							"fontStyle": "normal",
 							"fontWeight": "200 800",
-							"fontDisplay": "swap",
+							"fontDisplay": "optional",
 							"src": [
 								"file:./assets/fonts/plus-jakarta-sans/PlusJakartaSans-Latin-VariableFont_wght.woff2"
 							]

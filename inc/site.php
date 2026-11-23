@@ -19,6 +19,21 @@ namespace WpElite\Site;
 add_filter( 'wp_elite_cached_styles', '__return_empty_array' );
 add_filter( 'wp_elite_styles_inline_size_limit', static fn (): int => 150 * KB_IN_BYTES );
 
+/**
+ * The body font, preloaded (inc/fonts.php), and theme.json's
+ * `font-display: optional`: the font starts loading with the page, so it is
+ * usually there for the first paint; when it isn't, the page keeps the
+ * size-matched fallback instead of swapping fonts in front of the visitor,
+ * and the next page has it from the cache. All CSS is inline here, so the
+ * preload competes only with the page and its first image.
+ *
+ * @return string[] Font family slugs.
+ */
+function preload_body_font(): array {
+	return array( 'body' );
+}
+add_filter( 'wp_elite_preload_fonts', __NAMESPACE__ . '\\preload_body_font' );
+
 // "Check your site": the PageSpeed route behind the home page's form.
 require_once __DIR__ . '/site-check.php';
 
