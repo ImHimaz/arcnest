@@ -31,7 +31,31 @@ function savedCheck() {
 }
 
 /**
- * Fill in one form.
+ * Set up one form: fill it in now and after each reset.
+ *
+ * @param {HTMLFormElement} form The Contact Form 7 form.
+ */
+function setUp( form ) {
+	prefill( form );
+
+	// Contact Form 7 can reset the form as it starts (6.2.5 does) and resets
+	// it after sending; fill it in again once a reset is done.
+	form.addEventListener( 'reset', () =>
+		window.setTimeout( () => prefill( form ) )
+	);
+
+	// Sent: the saved result has done its job.
+	form.closest( '.wpcf7' )?.addEventListener( 'wpcf7mailsent', () => {
+		try {
+			window.sessionStorage.removeItem( STORAGE_KEY );
+		} catch {
+			// Storage blocked: nothing was saved.
+		}
+	} );
+}
+
+/**
+ * Fill in the form's empty fields.
  *
  * @param {HTMLFormElement} form The Contact Form 7 form.
  */
@@ -65,19 +89,10 @@ function prefill( form ) {
 			message.value = check.message;
 		}
 	}
-
-	// Sent: the saved result has done its job.
-	form.closest( '.wpcf7' )?.addEventListener( 'wpcf7mailsent', () => {
-		try {
-			window.sessionStorage.removeItem( STORAGE_KEY );
-		} catch {
-			// Storage blocked: nothing was saved.
-		}
-	} );
 }
 
 onReady( () => {
 	document
 		.querySelectorAll( '.elite-section--contact-page .wpcf7-form' )
-		.forEach( prefill );
+		.forEach( setUp );
 } );
