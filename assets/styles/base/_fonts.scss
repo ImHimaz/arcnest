@@ -1,18 +1,33 @@
-// A fallback sized like the body font. When Plus Jakarta Sans isn't there for
-// the first paint (font-display: optional, see inc/site.php), the page is
-// drawn in this: Arial, or Helvetica on Apple devices (the same metrics),
-// scaled to Plus Jakarta Sans's average width and line height, so it reads
-// the same size and the next page brings the font. It is the second name in
-// the Body family (theme.json).
-
-// Values: Plus Jakarta Sans at weight 400 against Arial, average width over
-// English letter frequencies (the method Next.js and Capsize use). A
-// different body font needs its own values.
+// A fallback sized like the body font. Until Plus Jakarta Sans arrives
+// (font-display: swap; preloaded, see inc/site.php), text is drawn in this:
+// Arial, or Helvetica on Apple devices (the same metrics), scaled to Plus
+// Jakarta Sans's average width and line height, so the swap moves nothing.
+// It is the second name in the Body family (theme.json).
+//
+// Two faces, as Arial has two: regular for weights up to 500, and Arial
+// Bold for 600 and up (without it, browsers fake bold from regular Arial,
+// narrower than Plus Jakarta Sans at 800, so headings rewrapped on the swap).
+// Widths: the site's own text measured in the browser, Plus Jakarta Sans
+// against Arial (400 vs regular: 1.042, the Next.js / Capsize method gives
+// 1.05; 800 vs bold: 1.016, tuned for the titles, where a swap shows most).
+// Line height: Plus Jakarta Sans's ascent 103.8% and descent 22.2% of the em,
+// divided by each face's size-adjust. A different body font needs its own.
 @font-face {
 	font-family: "Plus Jakarta Sans Fallback";
+	font-weight: 100 500;
 	src: local("Arial"), local("ArialMT"), local("Helvetica"), local("Helvetica Neue");
 	size-adjust: 105%;
 	ascent-override: 98.86%;
 	descent-override: 21.14%;
+	line-gap-override: 0%;
+}
+
+@font-face {
+	font-family: "Plus Jakarta Sans Fallback";
+	font-weight: 600 900;
+	src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Helvetica-Bold");
+	size-adjust: 101.6%;
+	ascent-override: 102.17%;
+	descent-override: 21.85%;
 	line-gap-override: 0%;
 }

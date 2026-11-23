@@ -20,12 +20,13 @@ add_filter( 'wp_elite_cached_styles', '__return_empty_array' );
 add_filter( 'wp_elite_styles_inline_size_limit', static fn (): int => 150 * KB_IN_BYTES );
 
 /**
- * The body font, preloaded (inc/fonts.php), and theme.json's
- * `font-display: optional`: the font starts loading with the page, so it is
- * usually there for the first paint; when it isn't, the page keeps the
- * size-matched fallback instead of swapping fonts in front of the visitor,
- * and the next page has it from the cache. All CSS is inline here, so the
- * preload competes only with the page and its first image.
+ * The body font, preloaded (inc/fonts.php): it starts loading with the page,
+ * so the swap from the size-matched fallback (assets/styles/base/_fonts.scss)
+ * comes a fraction of a second after the first paint, not after the whole
+ * page. All CSS is inline here, so the preload competes only with the page
+ * and its first image. (font-display: optional was tried: on a first visit
+ * far from the server the font missed its window and the whole page stayed
+ * in the fallback.)
  *
  * @return string[] Font family slugs.
  */
