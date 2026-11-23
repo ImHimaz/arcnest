@@ -1,80 +1,81 @@
-// Label: Box
-// elite/div → Block Classes, under "Agencies". The lime box, purple text,
-// with a faint large circle at the bottom right and two purple dots at the
-// top right (a single one on phones), clear of the cards.
+// Label: Agency Box
+// elite/div → Block Classes, under "For agencies". The purple box: the text
+// (Agency Text) and the points (a list), side by side from laptops.
 @use "../../styles/abstracts" as *;
 
-.elite-section--agencies .elite-div--agency-box {
-	--elite-dot-color: var(--wp--preset--color--primary);
-	--elite-eyebrow-color: var(--wp--preset--color--primary-900);
-
-	position: relative;
+.elite-div--agency-box {
 	overflow: hidden;
-	border-radius: 32px;
-	background: var(--wp--preset--color--accent);
-	color: var(--wp--preset--color--primary-900);
-
-	&::before,
-	&::after {
-		content: "";
-		position: absolute;
-		border-radius: 50%;
-		pointer-events: none;
-	}
-
-	&::before {
-		right: -220px;
-		bottom: -360px;
-		width: 560px;
-		height: 560px;
-		background: rgb(79 15 105 / 0.08);
-	}
-
-	&::after {
-		top: 24px;
-		right: 24px;
-		width: 20px;
-		height: 20px;
-		background: var(--wp--preset--color--primary);
-	}
+	border-radius: 24px;
+	background: var(--wp--preset--color--primary);
 
 	> .div-inner {
-		position: relative;
-		z-index: 1;
-		padding: clamp(40px, 6vw, 88px);
+		display: grid;
+
+		@include media-breakpoint-up(lg) {
+			grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+		}
+	}
+}
+
+.elite-div--agency-text {
+	padding: 32px 24px;
+
+	@include media-breakpoint-up(md) {
+		padding: 64px;
 	}
 
 	h2 {
-		margin: 0;
-		color: var(--wp--preset--color--primary-900);
+		margin: 0 0 18px;
+		color: var(--wp--preset--color--base);
 	}
+}
+
+.elite-paragraph--agency-lead {
+	margin: 0;
+	color: rgb(255 255 255 / 0.78);
+}
+
+.elite-div--agency-actions > .div-inner {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 32px;
+}
+
+// The points: on the darker panel, each in a soft box after a lime tick.
+.core-list--agency-points {
+	display: grid;
+	align-content: center;
+	gap: 12px;
+	margin: 0;
+	padding: 32px 24px;
+	background: var(--wp--preset--color--primary-800);
+	list-style: none;
 
 	@include media-breakpoint-up(md) {
+		padding: 48px;
+	}
 
-		&::after {
-			top: 44px;
-			right: 48px;
+	li {
+		display: flex;
+		gap: 14px;
+		align-items: center;
+		margin: 0;
+		padding: 18px 20px;
+		border-radius: 12px;
+		background: rgb(255 255 255 / 0.06);
+		color: var(--wp--preset--color--base);
+
+		@include text-style("body");
+		font-weight: 650;
+
+		&::before {
+			content: "";
+			flex: none;
 			width: 28px;
 			height: 28px;
-			box-shadow: -46px 20px 0 -8px rgb(79 15 105 / 0.35);
-		}
-	}
-
-	// Small laptops: the cards reach the box's padding at the top right,
-	// so the dots sit in that corner, above them.
-	@include media-breakpoint-up(lg) {
-
-		&::after {
-			top: calc(clamp(40px, 6vw, 88px) / 2 - 18px);
-			right: calc(clamp(40px, 6vw, 88px) / 2 - 14px);
-		}
-	}
-
-	@include media-breakpoint-up(xl) {
-
-		&::after {
-			top: 44px;
-			right: 48px;
+			border-radius: 8px;
+			background: var(--wp--preset--color--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f0f69' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E") center / 14px no-repeat;
 		}
 	}
 }

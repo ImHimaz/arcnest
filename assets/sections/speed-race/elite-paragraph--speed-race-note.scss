@@ -1,0 +1,11 @@
+// Label: Speed Race Note
+// elite/paragraph → Block Classes, under "Speed race". How the video was
+// recorded, small and quiet.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-race .elite-paragraph--speed-race-note {
+	margin: 16px 0 0;
+	color: rgb(255 255 255 / 0.6);
+
+	@include text-style("small");
+}

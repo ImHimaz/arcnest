@@ -1,0 +1,21 @@
+// Label: Speed Figure
+// elite/div → Block Classes, under "Speed server". A figure card: the big
+// number, then what it means (and a source link).
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-server .elite-div--speed-figure {
+	height: 100%;
+	padding: 28px;
+	border-radius: $radius-xxl;
+	background: var(--wp--preset--color--lilac);
+
+	.elite-paragraph {
+		margin: 12px 0 0;
+		color: var(--wp--preset--color--text);
+	}
+
+	a {
+		color: var(--wp--preset--color--primary);
+		font-weight: 700;
+	}
+}

@@ -1,0 +1,9 @@
+// Label: Speed Server Text
+// elite/paragraph → Block Classes, under "Speed server". The text beside the
+// chart.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-server .elite-paragraph--speed-server-text {
+	margin: 14px 0 0;
+	color: var(--wp--preset--color--text);
+}

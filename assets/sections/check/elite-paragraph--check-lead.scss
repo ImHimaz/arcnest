@@ -1,0 +1,9 @@
+// Label: Check Lead
+// elite/paragraph → Block Classes, under "Check your site". The line under
+// the heading.
+@use "../../styles/abstracts" as *;
+
+.elite-section--check .elite-paragraph--check-lead {
+	margin: 14px 0 0;
+	color: var(--wp--preset--color--primary-900);
+}

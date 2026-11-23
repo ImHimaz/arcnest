@@ -1,0 +1,20 @@
+// Label: What's included
+// elite/section → Block Classes. This class loads the folder.
+// A service page's "What's included", on the light surface: the heading row,
+// then nine items in one bordered grid (three across from laptops, two on
+// tablets), which rise in one by one (view.js).
+@use "../../styles/abstracts" as *;
+
+.elite-section--service-included {
+	background: var(--wp--preset--color--surface);
+
+	> .section-inner {
+		padding: 80px 0;
+
+		@include media-breakpoint-up(lg) {
+			padding: 112px 0;
+		}
+	}
+
+	@include reveal-items(".elite-div--service-item", 20px, 60ms);
+}

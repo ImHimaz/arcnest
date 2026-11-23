@@ -1,0 +1,8 @@
+// Label: Case Text
+// elite/paragraph → Block Classes, under "Case story". A part's text.
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-story .elite-paragraph--case-text {
+	margin: 12px 0 0;
+	color: var(--wp--preset--color--text);
+}

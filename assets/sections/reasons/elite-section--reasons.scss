@@ -1,0 +1,28 @@
+// Label: Why Arcnest
+// elite/section → Block Classes. This class loads the folder.
+// "A website that works as hard as your team" (pattern "Why Arcnest"): the
+// heading, four reasons in one bordered strip (they rise in one by one,
+// view.js), then the comparison table.
+@use "../../styles/abstracts" as *;
+
+.elite-section--reasons {
+
+	> .section-inner {
+		padding: 80px 0;
+
+		@include media-breakpoint-up(lg) {
+			padding: 112px 0;
+		}
+	}
+
+	.elite-heading--reasons-title {
+		max-width: 760px;
+		margin: 0 0 48px;
+
+		@include media-breakpoint-up(lg) {
+			margin-bottom: 56px;
+		}
+	}
+
+	@include reveal-items(".elite-div--reason");
+}

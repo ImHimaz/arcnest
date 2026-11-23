@@ -1,0 +1,108 @@
+// Label: Plan
+// elite/div → Block Classes, under "Plans". One plan: the name, who it's for,
+// a checklist and a button at the foot. Add Plan Featured for the purple one
+// (with its "Most chosen" flag paragraph).
+@use "../../styles/abstracts" as *;
+
+.elite-div--service-plan {
+	position: relative;
+	padding: 32px 28px;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 20px;
+	background: var(--wp--preset--color--base);
+
+	// Static, so the flag sits on the card's edge, not inside the padding.
+	> .div-inner {
+		position: static;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	h3 {
+		margin: 0;
+	}
+
+	.elite-paragraph--service-plan-for {
+		margin: 8px 0 24px;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("body-small");
+	}
+
+	.elite-button {
+		width: 100%;
+		margin-top: auto;
+		padding-top: 28px;
+	}
+
+	.elite-button__link {
+		justify-content: center;
+		width: 100%;
+	}
+}
+
+// The checklist: small lilac ticks.
+.core-list--service-checks {
+	display: grid;
+	flex: 1;
+	align-content: start;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	color: var(--wp--preset--color--contrast);
+	list-style: none;
+
+	@include text-style("body-small");
+	font-weight: 600;
+
+	li {
+		display: flex;
+		gap: 10px;
+		margin: 0;
+
+		&::before {
+			content: "";
+			flex: none;
+			width: 18px;
+			height: 18px;
+			margin-top: 3px;
+			border-radius: 50%;
+			background: var(--wp--preset--color--lilac) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f0f69' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E") center / 11px no-repeat;
+		}
+	}
+}
+
+// Featured: purple, lime flag on its top edge, lime ticks.
+.elite-div--service-plan.elite-div--service-plan-featured {
+	border-color: var(--wp--preset--color--primary);
+	background: var(--wp--preset--color--primary);
+
+	h3,
+	.core-list--service-checks {
+		color: var(--wp--preset--color--base);
+	}
+
+	.elite-paragraph--service-plan-for {
+		color: rgb(255 255 255 / 0.7);
+	}
+
+	.core-list--service-checks li::before {
+		background-color: rgb(255 255 255 / 0.15);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d7df23' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E");
+	}
+}
+
+.elite-paragraph--service-plan-flag {
+	position: absolute;
+	top: -13px;
+	left: 28px;
+	margin: 0;
+	padding: 4px 12px;
+	border-radius: $radius-pill;
+	background: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--contrast);
+
+	@include text-style("tag");
+	font-weight: 800;
+}

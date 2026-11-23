@@ -1,25 +1,16 @@
-// Label: Visual
-// elite/column → Block Classes, under "Hero". The report card and the lime
-// stat: under the text on phones and tablets, beside it from laptops, where
-// the stat overlaps the card's corner.
+// Label: Hero Visual
+// elite/column → Block Classes, under "Hero". The browser window with the
+// three cards over its corners (from tablets); on phones the cards stack
+// under it.
 @use "../../styles/abstracts" as *;
 
-.elite-section--hero .elite-column--hero-visual {
-	// 56px plus the page's gutter (16px on phones, 20px on tablets).
-	margin-top: 72px;
-
-	> .column-inner {
-		position: relative;
-		max-width: 520px;
-	}
+.elite-column--hero-visual > .column-inner {
+	position: relative;
+	display: grid;
+	gap: 12px;
 
 	@include media-breakpoint-up(md) {
-		margin-top: 76px;
-	}
-
-	@include media-breakpoint-up(lg) {
-		align-self: flex-start;
-		margin-top: 0;
-		margin-bottom: 72px;
+		display: block;
+		padding: 24px 0 40px 24px;
 	}
 }

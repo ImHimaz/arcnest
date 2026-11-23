@@ -1,0 +1,11 @@
+// Label: Case Note
+// elite/paragraph → Block Classes, under "Case results". How the numbers
+// were measured, under the table.
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-results .elite-paragraph--case-note {
+	margin: 16px 0 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("caption");
+}

@@ -1,0 +1,26 @@
+// Label: Founder
+// elite/section → Block Classes. This class loads the folder.
+// "Who you'll work with" (pattern "Founder"), on the light surface: the
+// photo with a lime block behind it, beside a quote, the name, three facts
+// and two buttons.
+@use "../../styles/abstracts" as *;
+
+.elite-section--team {
+	background: var(--wp--preset--color--surface);
+
+	> .section-inner {
+		padding: 80px 0;
+
+		@include media-breakpoint-up(lg) {
+			padding: 112px 0;
+		}
+	}
+}
+
+.elite-row--founder {
+	row-gap: 48px;
+
+	@include media-breakpoint-up(md) {
+		align-items: center;
+	}
+}

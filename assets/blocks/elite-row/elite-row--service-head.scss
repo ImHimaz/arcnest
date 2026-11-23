@@ -1,0 +1,19 @@
+// Label: Service Head
+// elite/row → Block Classes (multi-select). A section's heading row: the
+// eyebrow and heading on the left, a line on the right from laptops, their
+// bottoms aligned (the service pages' sections).
+@use "../../styles/abstracts" as *;
+
+.elite-row--service-head {
+	row-gap: 20px;
+	margin-bottom: 48px;
+
+	@include media-breakpoint-up(lg) {
+		align-items: flex-end;
+		margin-bottom: 56px;
+	}
+
+	h2 {
+		margin: 0;
+	}
+}

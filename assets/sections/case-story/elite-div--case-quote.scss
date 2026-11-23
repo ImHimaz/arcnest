@@ -1,0 +1,12 @@
+// Label: Case Quote
+// elite/div → Block Classes, under "Case story". The client's quote on
+// lilac, after a purple rule.
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-story .elite-div--case-quote {
+	margin-top: clamp(48px, 6vw, 72px);
+	padding: clamp(28px, 4vw, 48px);
+	border-left: 4px solid var(--wp--preset--color--primary);
+	border-radius: 0 $radius-xxl $radius-xxl 0;
+	background: var(--wp--preset--color--lilac);
+}

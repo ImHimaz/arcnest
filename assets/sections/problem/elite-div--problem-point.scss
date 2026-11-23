@@ -1,0 +1,54 @@
+// Label: Why it matters Point
+// elite/div → Block Classes, under "Why it matters". One point: an icon in a
+// lilac square, then a title, a line and an optional fact (Why it matters
+// Fact), with a rule under it.
+@use "../../styles/abstracts" as *;
+
+.elite-div--problem-point {
+	padding: 28px 0;
+	border-bottom: 1px solid var(--wp--preset--color--line);
+
+	&:first-child {
+		padding-top: 0;
+	}
+
+	> .div-inner {
+		display: grid;
+		grid-template-columns: 56px minmax(0, 1fr);
+		gap: 20px;
+		align-items: start;
+	}
+
+	.elite-icon {
+		display: grid;
+		place-items: center;
+		width: 56px;
+		height: 56px;
+		margin: 0;
+		border-radius: 12px;
+		background: var(--wp--preset--color--lilac);
+		color: var(--wp--preset--color--primary);
+
+		svg {
+			width: 26px;
+			height: 26px;
+		}
+	}
+
+	h3 {
+		margin: 0 0 8px;
+	}
+
+	.elite-paragraph {
+		margin: 0;
+		color: var(--wp--preset--color--muted);
+	}
+
+	.elite-paragraph--problem-fact {
+		margin-top: 10px;
+		color: var(--wp--preset--color--primary);
+
+		@include text-style("small");
+		font-weight: 700;
+	}
+}

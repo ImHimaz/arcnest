@@ -1,0 +1,24 @@
+// Label: Why Arcnest Grid
+// elite/div → Block Classes, under "Why Arcnest". The reasons in one bordered
+// strip with rules between: stacked on phones, two by two on tablets, four
+// across from laptops.
+@use "../../styles/abstracts" as *;
+
+.elite-div--reasons-grid {
+	overflow: hidden;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 18px;
+	background: var(--wp--preset--color--base);
+
+	> .div-inner {
+		display: grid;
+
+		@include media-breakpoint-up(md) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		@include media-breakpoint-up(lg) {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+	}
+}

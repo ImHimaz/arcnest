@@ -1,24 +1,20 @@
 // Label: Questions
-// elite/accordion → Block Classes, under "FAQ". Lines above and between the
-// questions; bold questions with a round lilac button that turns purple and
-// lime when open. Its icon follows the accordion's Indicator: Plus (drawn
-// here, it turns into a minus) or Chevron (it turns over).
+// elite/accordion → Block Classes, under "FAQ". Lines between the questions;
+// bold questions with a square lilac button that turns purple and lime when
+// open. Its icon follows the accordion's Indicator: Plus (drawn here, it
+// turns into a minus) or Chevron (it turns over).
 @use "../../styles/abstracts" as *;
 
 .elite-section--faq .elite-accordion--faq-list {
 
 	.elite-accordion__item {
 		border-bottom: 1px solid var(--wp--preset--color--line);
-
-		&:first-child {
-			border-top: 1px solid var(--wp--preset--color--line);
-		}
 	}
 
 	.elite-accordion__button {
 		gap: 24px;
 		justify-content: space-between;
-		padding: 26px 0;
+		padding: 24px 0;
 		color: var(--wp--preset--color--contrast);
 		line-height: 1.65;
 	}
@@ -28,17 +24,18 @@
 		@include text-style("question");
 	}
 
-	// The round button; its icon in currentColor. The block turns it over
+	// The square button; its icon in currentColor. The block turns it over
 	// when open (the chevron), so transform keeps its transition.
 	.elite-accordion__indicator {
 		position: relative;
 		box-sizing: border-box;
+		flex: none;
 		align-items: center;
 		justify-content: center;
-		width: 36px;
-		height: 36px;
+		width: 32px;
+		height: 32px;
 		padding: 0;
-		border-radius: 50%;
+		border-radius: 8px;
 		background: var(--wp--preset--color--lilac);
 		color: var(--wp--preset--color--primary);
 		transition: background-color 0.2s ease, color 0.2s ease, transform 0.3s ease;

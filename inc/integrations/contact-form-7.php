@@ -67,17 +67,28 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_script', 20 );
  * (assets/blocks/elite-form styles `.form-field`, `.form-submit`).
  */
 function contact_template(): string {
-	// Each field: its ID, label, Contact Form 7 tag and width.
-	$fields = array(
+	// Each field: its ID, label, Contact Form 7 tag and width. The service and
+	// call fields can be preselected from the link (sections/contact-page).
+	$services = array(
+		__( 'Design & build a new site', 'wp-elite' ),
+		__( 'Rebuild without a page builder', 'wp-elite' ),
+		__( 'A care plan', 'wp-elite' ),
+		__( 'White-label development (agencies)', 'wp-elite' ),
+		__( 'Not sure yet', 'wp-elite' ),
+	);
+	$fields   = array(
 		array( 'cf-name', __( 'Your name', 'wp-elite' ), '[text* your-name id:cf-name autocomplete:name placeholder "' . __( 'Jane Smith', 'wp-elite' ) . '"]', '' ),
 		array( 'cf-email', __( 'Email', 'wp-elite' ), '[email* your-email id:cf-email autocomplete:email placeholder "' . __( 'you@company.com', 'wp-elite' ) . '"]', '' ),
-		array( 'cf-website', __( 'Website', 'wp-elite' ) . ' <span class="form-field__optional">' . __( '(optional)', 'wp-elite' ) . '</span>', '[url your-website id:cf-website autocomplete:url placeholder "https://yourwebsite.com"]', ' form-field--full' ),
-		array( 'cf-message', __( 'About your project', 'wp-elite' ), '[textarea* your-message id:cf-message x4 placeholder "' . __( 'What do you need help with?', 'wp-elite' ) . '"]', ' form-field--full' ),
+		array( 'cf-website', __( 'Website', 'wp-elite' ) . ' <span class="form-field__optional">' . __( '(optional)', 'wp-elite' ) . '</span>', '[url your-website id:cf-website autocomplete:url placeholder "https://yourwebsite.com"]', '' ),
+		array( 'cf-service', __( 'What do you need?', 'wp-elite' ), '[select* your-service id:cf-service first_as_label "' . __( 'Choose one', 'wp-elite' ) . '" "' . implode( '" "', $services ) . '"]', '' ),
+		array( 'cf-message', __( 'About your project', 'wp-elite' ), '[textarea* your-message id:cf-message x4 placeholder "' . __( 'What do you need help with? Any deadline?', 'wp-elite' ) . '"]', ' form-field--full' ),
 	);
-	$html   = '';
+	$html     = '';
 	foreach ( $fields as list( $id, $label, $tag, $width ) ) {
 		$html .= sprintf( "<div class=\"form-field%s\">\n\t<label for=\"%s\">%s</label>\n\t%s\n</div>\n", $width, $id, $label, $tag );
 	}
+	// The checkbox labels itself.
+	$html .= "<div class=\"form-field form-field--full form-field--check\">\n\t[checkbox your-call use_label_element \"" . __( 'I’d like a 30-minute call first', 'wp-elite' ) . "\"]\n</div>\n";
 	return $html . '<button type="submit" class="form-submit">' . __( 'Send project details', 'wp-elite' ) . '</button>';
 }
 
@@ -86,7 +97,7 @@ function contact_template(): string {
  * date (fields, mail, messages): a Contact Form 7 form and the Elite Form
  * "Contact" (slug `contact`) that places it, with the thank-you message
  * after submit. Run it on each site (local, staging, production) after
- * activating both plugins; the Home page's Contact section uses the Elite
+ * activating both plugins; the Contact page uses the Elite
  * Form by its slug.
  */
 function cli_contact_form(): void {
@@ -125,6 +136,8 @@ function cli_contact_form(): void {
 					__( 'Name: [your-name]', 'wp-elite' ),
 					__( 'Email: [your-email]', 'wp-elite' ),
 					__( 'Website: [your-website]', 'wp-elite' ),
+					__( 'Looking for: [your-service]', 'wp-elite' ),
+					__( 'Call first: [your-call]', 'wp-elite' ),
 					'',
 					__( 'About the project:', 'wp-elite' ),
 					'[your-message]',

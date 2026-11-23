@@ -57,6 +57,18 @@
 		font-weight: 700;
 	}
 
+	// A group heading row: only its first cell has text (bold).
+	tbody tr:has(> td:nth-child(2):empty) td {
+		padding-top: 22px;
+		background: var(--wp--preset--color--surface);
+
+		strong {
+			color: var(--wp--preset--color--primary-900);
+
+			@include text-style("eyebrow");
+		}
+	}
+
 	@include media-breakpoint-up(md) {
 
 		th,

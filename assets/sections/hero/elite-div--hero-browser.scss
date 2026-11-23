@@ -1,0 +1,59 @@
+// Label: Hero Browser
+// elite/div → Block Classes, under "Hero". A browser window: a bar with three
+// dots and the address (the paragraph, a link), then the screenshot (an
+// Elite Image, priority loading: it's the page's largest paint).
+@use "../../styles/abstracts" as *;
+
+.elite-div--hero-browser {
+	overflow: hidden;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 16px;
+	background: var(--wp--preset--color--base);
+	box-shadow: 0 40px 80px -30px rgb(38 6 47 / 0.35);
+
+	> .div-inner {
+		display: block;
+	}
+
+	// The bar: three dots (drawn) and the address, centred.
+	.elite-paragraph--hero-url {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		margin: 0;
+		padding: 7px 14px 7px 60px;
+		border-bottom: 1px solid var(--wp--preset--color--line);
+		background: var(--wp--preset--color--surface);
+
+		@include text-style("caption");
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 50%;
+			left: 14px;
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: var(--wp--preset--color--line);
+			box-shadow: 16px 0 0 var(--wp--preset--color--line), 32px 0 0 var(--wp--preset--color--line);
+			transform: translateY(-50%);
+		}
+
+		a {
+			padding: 2px 14px;
+			border-radius: 6px;
+			background: var(--wp--preset--color--base);
+			color: var(--wp--preset--color--muted);
+			text-decoration: none;
+		}
+	}
+
+	.elite-image {
+		margin: 0;
+
+		img {
+			object-position: top;
+		}
+	}
+}

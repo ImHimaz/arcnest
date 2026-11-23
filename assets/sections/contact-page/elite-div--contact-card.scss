@@ -1,0 +1,39 @@
+// Label: Card
+// elite/div → Block Classes, under "Contact page". The white card holding
+// the heading, a line, the contact form (Elite Form) and a note.
+@use "../../styles/abstracts" as *;
+
+.elite-div--contact-card {
+	padding: 24px 20px;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 24px;
+	background: var(--wp--preset--color--base);
+	box-shadow: 0 40px 80px -40px rgb(38 6 47 / 0.35);
+
+	@include media-breakpoint-up(md) {
+		padding: 40px;
+	}
+
+	h2 {
+		margin: 0 0 6px;
+		color: var(--wp--preset--color--contrast);
+	}
+
+	.elite-paragraph--contact-card-lead {
+		margin: 0 0 28px;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("body-small");
+	}
+
+	.elite-paragraph--contact-card-note {
+		margin: 16px 0 0 4px;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("caption");
+
+		a {
+			color: inherit;
+		}
+	}
+}

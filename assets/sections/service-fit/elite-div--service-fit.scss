@@ -1,0 +1,49 @@
+// Label: Fit Card
+// elite/div → Block Classes, under "Who it's for". One card (in Fit Grid: three
+// across from laptops): a number in a lilac square, a title and a line.
+@use "../../styles/abstracts" as *;
+
+.elite-div--service-fit-grid > .div-inner {
+	display: grid;
+	gap: 24px;
+
+	@include media-breakpoint-up(lg) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+.elite-div--service-fit {
+	padding: 28px;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 18px;
+	background: var(--wp--preset--color--base);
+
+	@include media-breakpoint-up(md) {
+		padding: 32px;
+	}
+
+	h3 {
+		margin: 0 0 10px;
+	}
+
+	.elite-paragraph {
+		margin: 0;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("body-small");
+	}
+
+	.elite-paragraph--service-fit-num {
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		margin-bottom: 22px;
+		border-radius: 12px;
+		background: var(--wp--preset--color--lilac);
+		color: var(--wp--preset--color--primary);
+
+		@include text-style("small");
+		font-weight: 800;
+	}
+}

@@ -1,0 +1,21 @@
+// Label: Case story
+// elite/section → Block Classes. This class loads the folder on pages that
+// use it; the parts below are styled under it.
+// A case study's story (pattern "Case study: story"): three columns, then
+// the client's quote.
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-story {
+	background: var(--wp--preset--color--surface);
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		padding-top: clamp(72px, 10vw, 144px);
+		padding-bottom: clamp(72px, 10vw, 144px);
+	}
+
+	h3 {
+		margin: 0;
+		color: var(--wp--preset--color--contrast);
+	}
+}

@@ -231,3 +231,32 @@
 
 	@return map.get($z-layers, $layer);
 }
+
+// -----------------------------------------------------------------------
+// Scroll reveal (Arcnest)
+// -----------------------------------------------------------------------
+
+/// Items that rise in one after another when their section scrolls into
+/// view. Pair with `reveal( section, items )` from assets/utils/reveal.js in
+/// the section's view.js, which adds .is-reveal / .is-visible to the
+/// section and --i (the item's place) to each item. Use inside the
+/// section's rule: `@include reveal-items(".elite-div--service");`.
+@mixin reveal-items($items, $distance: 28px, $step: 90ms) {
+
+	@media (prefers-reduced-motion: no-preference) {
+
+		&.is-reveal #{$items} {
+			opacity: 0;
+			translate: 0 $distance;
+			transition:
+				opacity 0.6s $ease,
+				translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+			transition-delay: calc(var(--i, 0) * #{$step});
+		}
+
+		&.is-visible #{$items} {
+			opacity: 1;
+			translate: none;
+		}
+	}
+}

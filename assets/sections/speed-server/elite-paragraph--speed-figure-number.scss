@@ -1,0 +1,10 @@
+// Label: Speed Figure Number
+// elite/paragraph → Block Classes, under "Speed server". The figure itself.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-server .elite-div--speed-figure .elite-paragraph--speed-figure-number {
+	margin: 0;
+	color: var(--wp--preset--color--primary);
+
+	@include text-style("display-3");
+}

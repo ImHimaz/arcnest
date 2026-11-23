@@ -1,0 +1,75 @@
+// Label: Hero Core Web Vitals
+// elite/div → Block Classes, under "Hero". A white card over the browser's
+// top right corner (from tablets): a small label, a green "Passed" pill and
+// three measurements (a list: label, then the value in bold).
+@use "../../styles/abstracts" as *;
+
+// Shared by the three hero cards.
+%hero-card {
+	padding: 18px 20px;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 14px;
+	background: var(--wp--preset--color--base);
+	box-shadow: 0 24px 48px -20px rgb(38 6 47 / 0.3);
+}
+
+.elite-div--hero-cwv {
+
+	@extend %hero-card;
+
+	@include media-breakpoint-up(md) {
+		position: absolute;
+		top: 0;
+		right: -12px;
+		width: 236px;
+	}
+}
+
+.elite-section--hero .elite-paragraph--hero-card-label {
+	margin: 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("flag");
+	font-weight: 700;
+}
+
+.elite-paragraph--hero-pass {
+	display: inline-flex;
+	gap: 6px;
+	align-items: center;
+	margin: 6px 0 0;
+	padding: 3px 9px;
+	border-radius: $radius-pill;
+	background: #e6f6ef;
+	color: #0f6b4c;
+
+	@include text-style("tag");
+
+	&::before {
+		content: "";
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: currentcolor;
+	}
+}
+
+.core-list--hero-metrics {
+	display: grid;
+	gap: 8px;
+	margin: 12px 0 0;
+	padding: 0;
+	list-style: none;
+
+	@include text-style("caption");
+
+	li {
+		display: flex;
+		justify-content: space-between;
+		margin: 0;
+	}
+
+	strong {
+		color: #12805c;
+	}
+}

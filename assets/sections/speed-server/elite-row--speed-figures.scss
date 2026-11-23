@@ -1,0 +1,9 @@
+// Label: Speed Figures
+// elite/row → Block Classes, under "Speed server". The three figures under
+// the chart, with room above them.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-server .elite-row--speed-figures {
+	row-gap: 20px;
+	margin-top: 56px;
+}

@@ -1,0 +1,33 @@
+// Label: Hero Ticks
+// core/list → Block Classes, under "Hero". Short promises in a row, each
+// after a purple tick (Enter adds one).
+@use "../../styles/abstracts" as *;
+
+.core-list--hero-ticks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 24px;
+	margin: 0;
+	padding: 0;
+	color: var(--wp--preset--color--contrast);
+	list-style: none;
+
+	@include text-style("body-small");
+	font-weight: 600;
+
+	li {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		margin: 0;
+
+		&::before {
+			content: "";
+			flex: none;
+			width: 22px;
+			height: 22px;
+			border-radius: 50%;
+			background: var(--wp--preset--color--primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d7df23' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E") center / 12px no-repeat;
+		}
+	}
+}

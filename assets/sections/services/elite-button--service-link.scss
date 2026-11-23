@@ -1,30 +1,44 @@
-// Label: Link
-// elite/button → Block Classes, under "Services". The card's link: across
-// the bottom above a thin line, its arrow at the far end.
+// Label: Service Link
+// elite/button → Block Classes, under "Services". The card's link: bold text
+// and an arrow above a rule, at the card's foot. Its link covers the whole
+// card (the card is position: relative), so a click anywhere opens it.
 @use "../../styles/abstracts" as *;
 
-.elite-section--services .elite-button--service-link {
-	display: flex;
+.elite-button--service-link {
 	width: 100%;
 	margin-top: auto;
 	padding-top: 24px;
-	border-top: 1px solid var(--service-line);
+	border-top: 1px solid var(--wp--preset--color--line);
 
 	.elite-button__link {
-		justify-content: space-between;
-		width: 100%;
 		min-height: 0;
 		padding: 0;
 		border: 0;
-		border-radius: 0;
 		background: none;
-		color: var(--wp--preset--color--primary);
+		color: var(--wp--preset--color--contrast);
 
-		@include text-style("button-small");
-		line-height: 1.65;
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			border-radius: 18px;
+		}
 
 		&:hover {
 			transform: none;
 		}
+
+		&:focus-visible {
+			outline: none;
+
+			&::after {
+				outline: 2px solid var(--wp--preset--color--primary);
+				outline-offset: 4px;
+			}
+		}
+	}
+
+	.elite-div--service:hover & .elite-button__icon--end svg {
+		transform: translateX(4px);
 	}
 }

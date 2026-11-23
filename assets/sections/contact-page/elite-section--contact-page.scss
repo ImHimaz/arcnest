@@ -1,0 +1,39 @@
+// Label: Contact page
+// elite/section → Block Classes. This class loads the folder (styles and
+// view.js). Used with Service hero (its light grid, crumbs, heading and
+// lead): the intro, the form card and "What happens next" in one grid
+// (Contact Layout). Phones: intro, form, next steps. From laptops: the
+// intro over the next steps on the left, the form on the right.
+@use "../../styles/abstracts" as *;
+
+.elite-section--contact-page {
+
+	h1 {
+		margin-bottom: 18px;
+	}
+}
+
+.elite-div--contact-layout > .div-inner {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 40px;
+
+	@include media-breakpoint-up(lg) {
+		grid-template-rows: auto 1fr;
+		grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+		gap: 48px 72px;
+
+		> .elite-div--contact-intro {
+			grid-area: 1 / 1;
+		}
+
+		> .elite-div--contact-card {
+			grid-area: 1 / 2 / 3 / 3;
+			align-self: start;
+		}
+
+		> .elite-div--contact-next {
+			grid-area: 2 / 1;
+		}
+	}
+}

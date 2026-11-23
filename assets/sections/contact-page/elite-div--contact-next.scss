@@ -1,0 +1,65 @@
+// Label: Next Steps
+// elite/div → Block Classes, under "Contact page". "What happens next": a
+// small label, three steps (Contact Step: a number in a lilac square, a
+// title and a line) and the email address under a line.
+@use "../../styles/abstracts" as *;
+
+.elite-div--contact-next > .div-inner {
+	display: grid;
+	gap: 20px;
+}
+
+.elite-paragraph--contact-next-label {
+	margin: 0 0 4px;
+	color: var(--wp--preset--color--primary);
+
+	@include text-style("eyebrow");
+	font-weight: 800;
+}
+
+.elite-div--contact-step > .div-inner {
+	display: flex;
+	gap: 16px;
+	align-items: flex-start;
+
+	p {
+		margin: 0;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("body-small");
+	}
+
+	.elite-paragraph--contact-step-num {
+		display: grid;
+		flex: none;
+		place-items: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 10px;
+		background: var(--wp--preset--color--lilac);
+		color: var(--wp--preset--color--primary);
+
+		@include text-style("tag");
+		font-weight: 800;
+	}
+
+	.elite-paragraph--contact-step-title {
+		margin-bottom: 2px;
+		color: var(--wp--preset--color--contrast);
+
+		@include text-style("body");
+		font-weight: 700;
+	}
+}
+
+.elite-paragraph--contact-email {
+	margin: 8px 0 0;
+	padding-top: 24px;
+	border-top: 1px solid var(--wp--preset--color--line);
+	color: var(--wp--preset--color--muted);
+
+	a {
+		color: var(--wp--preset--color--primary);
+		font-weight: 700;
+	}
+}

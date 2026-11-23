@@ -1,35 +1,17 @@
-// The "header" template part (pattern header-default): a sticky dark bar
-// with a progressive blur (view.js), the logo, the menu and "Let's talk".
-// Mobile first: the menu opens from a button (WordPress's Navigation
-// overlay); from the laptop width (lg) the links and "Let's talk" show.
-@use "sass:list";
+// The "header" template part (pattern header-default): a white sticky bar
+// (slightly see-through, blurred behind), the purple logo, the menu and
+// "Start a project". Mobile first: the menu opens from a button (WordPress's
+// Navigation overlay, white); from the laptop width (lg) the links and the
+// button show in the bar.
 @use "../../styles/abstracts" as *;
 
-$header-height: 80px;
-// How far the blur and tint reach below the bar.
-$header-tail: 40px;
-
-// The progressive blur (view.js adds the layers): blur, where each layer
-// stops being full strength, where it's gone. The strongest blur is only at
-// the top; weaker ones reach further down, so the blur fades out evenly.
-$header-blur-layers: (
-	(0.25px, 87.5%, 100%),
-	(0.5px, 75%, 92%),
-	(1px, 62.5%, 84%),
-	(2px, 50%, 76%),
-	(4px, 37.5%, 68%),
-	(6px, 25%, 60%),
-	(10px, 12.5%, 52%),
-	(15px, 0%, 44%),
-);
+$header-height: 76px;
 
 // Section links (#services…) land below the sticky header.
 html {
 	scroll-padding-top: $header-height + 8px;
 }
 
-// The same everywhere, as on seemplicity.ai: blurred (view.js) and tinted
-// purple, solid at the top and fading out $header-tail below the bar.
 .site-header {
 	position: sticky;
 	top: 0;
@@ -40,56 +22,6 @@ html {
 	@media screen and (min-width: 601px) {
 		top: var(--wp-admin--admin-bar--height, 0);
 	}
-
-	&::before,
-	&::after {
-		content: "";
-		position: absolute;
-		top: 0;
-		right: 0;
-		left: 0;
-		height: $header-height + $header-tail;
-		pointer-events: none;
-	}
-
-	// Without JS: one blur layer, masked to fade.
-	&::before {
-		backdrop-filter: blur(12px);
-		mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
-	}
-
-	&.has-blur::before {
-		display: none;
-	}
-
-	// The tint, over the blur.
-	&::after {
-		z-index: 0;
-		background: linear-gradient(to bottom, var(--wp--preset--color--primary-900) 0%, rgb(38 6 47 / 0) 100%);
-	}
-}
-
-.site-header__blur {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	height: $header-height + $header-tail;
-	pointer-events: none;
-
-	i {
-		position: absolute;
-		inset: 0;
-	}
-
-	@each $layer in $header-blur-layers {
-		$i: list.index($header-blur-layers, $layer);
-
-		i:nth-child(#{$i}) {
-			backdrop-filter: blur(list.nth($layer, 1));
-			mask-image: linear-gradient(to bottom, #000 list.nth($layer, 2), transparent list.nth($layer, 3));
-		}
-	}
 }
 
 // The pattern's own groups carry the look, so it also shows when the
@@ -97,25 +29,19 @@ html {
 .site-header__bar {
 	position: relative;
 	z-index: 1;
-	color: var(--wp--preset--color--base);
+	border-bottom: 1px solid var(--wp--preset--color--line);
+	background: rgb(255 255 255 / 0.92);
+	color: var(--wp--preset--color--contrast);
+	backdrop-filter: blur(10px);
 }
 
-// Visitors who ask for less transparency (a system setting): a solid bar.
+// Visitors who ask for less transparency (a system setting): solid white.
 @media (prefers-reduced-transparency: reduce) {
 
-	.site-header::before,
-	.site-header::after,
-	.site-header__blur {
-		display: none;
-	}
-
 	.site-header__bar {
-		background: var(--wp--preset--color--primary-900);
+		background: var(--wp--preset--color--base);
+		backdrop-filter: none;
 	}
-}
-
-.editor-styles-wrapper .site-header__bar {
-	background: var(--wp--preset--color--primary-900);
 }
 
 .site-header__inner {
@@ -135,21 +61,23 @@ html {
 
 // The menu (two classes: WordPress's navigation styles set link colours).
 .site-header__bar .site-header__nav {
+	margin-left: auto;
 
 	@include text-style("body-small");
 	font-weight: 600;
 
 	.wp-block-navigation__container {
-		gap: 36px;
+		gap: 30px;
 	}
 
 	.wp-block-navigation-item__content {
-		color: rgb(255 255 255 / 0.8);
+		color: var(--wp--preset--color--contrast);
 		text-decoration: none;
 		transition: color $duration-fast $ease;
 
-		&:hover {
-			color: var(--wp--preset--color--accent);
+		&:hover,
+		&[aria-current] {
+			color: var(--wp--preset--color--primary);
 		}
 	}
 
@@ -160,7 +88,7 @@ html {
 		box-sizing: content-box;
 		margin: -8px;
 		padding: 8px;
-		color: var(--wp--preset--color--base);
+		color: var(--wp--preset--color--contrast);
 
 		svg {
 			width: 28px;
@@ -168,22 +96,18 @@ html {
 		}
 	}
 
-	// Only in the open menu: the logo at its top, "Let's talk" under the
-	// links.
+	// Only in the open menu: the logo at its top, "Start a project" under
+	// the links.
 	.site-header__menu-logo,
 	.site-header__menu-cta {
 		display: none;
 	}
 
-	// Open: on the header's purple (the block's overlay colours, set in the
-	// pattern) with a soft glow; the logo and close button where the bar
-	// has its logo and menu button, then the links large and "Let's talk".
+	// Open: white (the block's overlay colours, set in the pattern); the
+	// logo and close button where the bar has its logo and menu button, then
+	// the links large and "Start a project".
 	.wp-block-navigation__responsive-container.is-menu-open {
 		padding: 0 var(--wp--style--root--padding-right) 40px var(--wp--style--root--padding-left);
-		background-image: radial-gradient(closest-side, rgb(146 46 186 / 0.5), transparent);
-		background-position: right -160px bottom -200px;
-		background-size: 520px 520px;
-		background-repeat: no-repeat;
 
 		// Its icon centred on the logo's row, at the right edge (the
 		// negative margin puts the tap area's padding outside).
@@ -217,7 +141,7 @@ html {
 
 		.wp-block-navigation-item__content {
 			padding: 10px 0;
-			color: var(--wp--preset--color--base);
+			color: var(--wp--preset--color--contrast);
 
 			@include text-style("menu-large");
 		}
@@ -239,14 +163,12 @@ html {
 	}
 }
 
-// Phones and tablets: the menu button (WordPress shows it only below 600px).
-// "Let's talk" is in the open menu on phones, beside the menu button from
-// tablets.
+// Phones: the menu button only ("Start a project" is in the open menu).
 .site-header__bar .site-header__cta {
 	display: none;
 }
 
-// Tablets: "Let's talk", then the menu button, at the right.
+// Tablets: "Start a project", then the menu button, at the right.
 @include media-breakpoint-up(md) {
 
 	.site-header__bar .site-header__cta {
@@ -257,6 +179,7 @@ html {
 	// (The navigation's class is on its list too: only the bar's item.)
 	.site-header__inner > .site-header__nav {
 		order: 1;
+		margin-left: 0;
 	}
 }
 
@@ -271,7 +194,7 @@ html {
 	}
 }
 
-// Laptop and up: the links in the bar, and "Let's talk".
+// Laptop and up: the links in the bar, then "Start a project".
 @include media-breakpoint-up(lg) {
 
 	.site-header__bar .site-header__cta {
@@ -281,6 +204,7 @@ html {
 
 	.site-header__inner > .site-header__nav {
 		order: 0;
+		margin-left: auto;
 	}
 
 	.site-header__bar .site-header__nav {

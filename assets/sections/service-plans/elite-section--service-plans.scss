@@ -1,0 +1,48 @@
+// Label: Plans
+// elite/section → Block Classes. This class loads the folder.
+// The Care plans page's tiers (no prices), on the light surface: a centred
+// head, three plan cards (the middle one purple, "Most chosen") and a note.
+@use "../../styles/abstracts" as *;
+
+.elite-section--service-plans {
+	background: var(--wp--preset--color--surface);
+
+	> .section-inner {
+		padding: 80px 0;
+
+		@include media-breakpoint-up(lg) {
+			padding: 112px 0;
+		}
+	}
+}
+
+.elite-div--service-plans-head {
+	max-width: 760px;
+	margin: 0 auto 48px;
+	text-align: center;
+
+	@include media-breakpoint-up(lg) {
+		margin-bottom: 56px;
+	}
+
+	h2 {
+		margin: 0 0 20px;
+	}
+}
+
+.elite-div--service-plans > .div-inner {
+	display: grid;
+	gap: 24px;
+
+	@include media-breakpoint-up(lg) {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+.elite-paragraph--service-plans-note {
+	margin: 28px 0 0;
+	color: var(--wp--preset--color--muted);
+	text-align: center;
+
+	@include text-style("body-small");
+}

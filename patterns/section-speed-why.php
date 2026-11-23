@@ -49,18 +49,18 @@ $wp_elite_reason = static function ( string $number, string $title, string $text
 <!-- /wp:elite/div -->
 
 <!-- wp:elite/paragraph {"textStyle":"lead","className":"elite-paragraph--services-lead"} -->
-<p class="elite-paragraph elite-paragraph--services-lead" style="font-family:var(--text-lead-font-family);font-size:var(--text-lead-font-size);font-weight:var(--text-lead-font-weight);line-height:var(--text-lead-line-height);letter-spacing:var(--text-lead-letter-spacing);text-transform:var(--text-lead-text-transform)"><?php esc_html_e( 'Neither page is badly built. One simply asks the browser to do far less before it can show anything.', 'wp-elite' ); ?></p>
+<p class="elite-paragraph elite-paragraph--services-lead" style="font-family:var(--text-lead-font-family);font-size:var(--text-lead-font-size);font-weight:var(--text-lead-font-weight);line-height:var(--text-lead-line-height);letter-spacing:var(--text-lead-letter-spacing);text-transform:var(--text-lead-text-transform)"><?php esc_html_e( 'Neither site is badly built, and both carry the same plugins. One simply asks the phone and the server to do less.', 'wp-elite' ); ?></p>
 <!-- /wp:elite/paragraph --></div></div>
 <!-- /wp:elite/div -->
 
 <!-- wp:elite/row {"className":"elite-row--services-grid"} -->
 <div class="elite-row row elite-row--services-grid">
 <?php
-$wp_elite_reason( '01', __( 'Nothing blocks the first paint', 'wp-elite' ), __( 'The Elementor page waits for jQuery and over 20 stylesheets before it shows anything. Ours has no scripts in the way, and its CSS is in the page itself.', 'wp-elite' ) );
+$wp_elite_reason( '01', __( 'Nothing in the way of the first paint', 'wp-elite' ), __( 'Our pages carry their CSS inside the page and start drawing text as soon as it arrives. The Elementor pages first fetch 24 to 30 stylesheets and jQuery, and on a slow connection every one of them waits its turn.', 'wp-elite' ) );
 echo "\n";
-$wp_elite_reason( '02', __( 'Only the code a page uses', 'wp-elite' ), __( 'Each section brings its own small CSS and script, and only to pages where it appears. Nothing is loaded just in case.', 'wp-elite' ) );
+$wp_elite_reason( '02', __( 'About half the JavaScript', 'wp-elite' ), __( 'Google Tag Manager adds the same 179 KB to both. Even so, our pages run 216 to 246 KB of JavaScript against 394 to 472 KB. Without tracking it would be 45 KB against 290 KB.', 'wp-elite' ) );
 echo "\n";
-$wp_elite_reason( '03', __( 'A tenth of the JavaScript', 'wp-elite' ), __( '30 KB against 293 KB. Sliders fetch their library only as they near the screen, and video posters load as you scroll to them.', 'wp-elite' ) );
+$wp_elite_reason( '03', __( 'Less work for the server', 'wp-elite' ), __( 'Elementor keeps each page as data plus a rendered copy, and builds its templates on every visit. On the same hosting, our site served about 50% more pages a second before it slowed down.', 'wp-elite' ) );
 ?>
 </div>
 <!-- /wp:elite/row --></div></div></section>

@@ -1,0 +1,47 @@
+// Label: Sign
+// elite/div → Block Classes, under "Who it's for". One warning card (in Signs:
+// two by two from tablets): an amber "!" then a title and a line.
+@use "../../styles/abstracts" as *;
+
+.elite-div--service-signs > .div-inner {
+	display: grid;
+	gap: 16px;
+
+	@include media-breakpoint-up(md) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+.elite-div--service-sign {
+	position: relative;
+	padding: 24px 24px 24px 76px;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 16px;
+	background: var(--wp--preset--color--base);
+
+	&::before {
+		content: "!";
+		position: absolute;
+		top: 24px;
+		left: 24px;
+		display: grid;
+		place-items: center;
+		width: 36px;
+		height: 36px;
+		border-radius: 10px;
+		background: #fff3e0;
+		color: #b45309;
+		font-weight: 800;
+	}
+
+	h3 {
+		margin: 0 0 6px;
+	}
+
+	.elite-paragraph {
+		margin: 0;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("body-small");
+	}
+}

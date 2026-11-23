@@ -1,0 +1,9 @@
+// Label: Case Quote Text
+// elite/paragraph → Block Classes, under "Case story". The quote itself.
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-story .elite-paragraph--case-quote {
+	max-width: 860px;
+	margin: 0;
+	color: var(--wp--preset--color--contrast);
+}

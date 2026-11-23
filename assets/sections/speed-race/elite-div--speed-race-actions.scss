@@ -1,0 +1,33 @@
+// Label: Speed Race Actions
+// elite/div → Block Classes, under "Speed race". The PageSpeed buttons: full
+// width on phones, side by side from tablets.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-race .elite-div--speed-race-actions {
+	margin-top: 32px;
+
+	> .div-inner {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.elite-button,
+	.elite-button__link {
+		box-sizing: border-box;
+		width: 100%;
+		justify-content: center;
+	}
+
+	@include media-breakpoint-up(md) {
+
+		> .div-inner {
+			flex-flow: row wrap;
+		}
+
+		.elite-button,
+		.elite-button__link {
+			width: auto;
+		}
+	}
+}

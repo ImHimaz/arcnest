@@ -183,7 +183,11 @@ function featureEntry( feature ) {
 	// Parts are labelled under the feature: "Hero › Media".
 	let group = titleCase( feature.name );
 	if ( feature.kind === 'sections' ) {
-		const root = classes.find( ( c ) => c.name === feature.name );
+		// The section class first: a part may share the folder's name
+		// (elite-div--service-fit) and sorts before it.
+		const named = classes.filter( ( c ) => c.name === feature.name );
+		const root =
+			named.find( ( c ) => c.block === 'elite/section' ) ?? named[ 0 ];
 		if ( ! root ) {
 			fail(
 				`${ where }: needs a root class file named after the folder, e.g. elite-section--${ feature.name }.scss (the class that loads it).`

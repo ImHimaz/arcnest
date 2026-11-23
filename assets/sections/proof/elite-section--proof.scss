@@ -1,0 +1,10 @@
+// Label: Proof band
+// elite/section → Block Classes. This class loads the folder.
+// A dark band under the hero (pattern "Proof band"): four big numbers with
+// a line each, divided by thin rules.
+@use "../../styles/abstracts" as *;
+
+.elite-section--proof {
+	background: var(--wp--preset--color--primary-900);
+	color: var(--wp--preset--color--base);
+}

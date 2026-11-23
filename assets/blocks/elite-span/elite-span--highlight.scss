@@ -1,6 +1,10 @@
 // Label: Highlight
-// Span text format (More ⌄ → Span) → class checkboxes.
+// Span text format (More ⌄ → Span) → class checkboxes. A lime marker under
+// the words (the hero's "win you more customers.").
 
 .elite-span--highlight {
-	background: linear-gradient(transparent 60%, rgb(245 158 11 / 45%) 60%);
+	padding: 0 0.04em;
+	background: linear-gradient(transparent 62%, var(--wp--preset--color--accent) 62% 92%, transparent 92%);
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
 }

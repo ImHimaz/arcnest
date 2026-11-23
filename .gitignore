@@ -11,3 +11,6 @@ test-results/
 
 # Paid plugins: each developer copies them in (see README).
 /third-party/
+
+# Review screenshots of the mockups and built pages: regenerated, not kept.
+/design/b2b/*.png

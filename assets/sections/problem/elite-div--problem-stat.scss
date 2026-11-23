@@ -1,0 +1,36 @@
+// Label: Why it matters Stat
+// elite/div → Block Classes, under "Why it matters". A purple card: a big
+// lime number, a line and the source (a link).
+@use "../../styles/abstracts" as *;
+
+.elite-div--problem-stat {
+	margin-top: 36px;
+	padding: 28px;
+	border-radius: 14px;
+	background: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--base);
+
+	.elite-paragraph {
+		margin: 10px 0 0;
+		color: rgb(255 255 255 / 0.85);
+
+		@include text-style("body-small");
+	}
+
+	.elite-paragraph--problem-stat-number {
+		margin: 0;
+		color: var(--wp--preset--color--accent);
+
+		@include text-style("display-3");
+	}
+
+	.elite-paragraph--problem-source {
+		margin-top: 14px;
+
+		@include text-style("caption");
+
+		a {
+			color: var(--wp--preset--color--lilac-mid);
+		}
+	}
+}

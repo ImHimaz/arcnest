@@ -1,0 +1,43 @@
+// Label: Proof Figure
+// elite/div → Block Classes, under "Proof band". One figure: the number
+// (Proof Number) and a line.
+@use "../../styles/abstracts" as *;
+
+.elite-div--proof-figure {
+	padding: 28px 16px;
+	border-left: 1px solid rgb(255 255 255 / 0.1);
+
+	&:nth-child(odd) {
+		padding-left: 0;
+		border-left: 0;
+	}
+
+	@include media-breakpoint-up(lg) {
+		padding: 40px 28px;
+
+		&:nth-child(odd) {
+			padding-left: 28px;
+			border-left: 1px solid rgb(255 255 255 / 0.1);
+		}
+
+		&:first-child {
+			padding-left: 0;
+			border-left: 0;
+		}
+	}
+
+	.elite-paragraph {
+		margin: 10px 0 0;
+		color: rgb(255 255 255 / 0.75);
+
+		@include text-style("body-small");
+		line-height: 1.45;
+	}
+
+	.elite-paragraph--proof-number {
+		margin: 0;
+		color: var(--wp--preset--color--accent);
+
+		@include text-style("stat-number");
+	}
+}

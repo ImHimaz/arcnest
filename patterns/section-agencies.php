@@ -1,33 +1,27 @@
 <?php
 /**
- * Title: Agencies
+ * Title: For agencies
  * Slug: wp-elite/section-agencies
  * Categories: wp-elite, call-to-action
- * Keywords: agencies, white-label, partner, call to action
- * Description: "For agencies": a large lime box with the heading, a line and a purple button, beside four points (a list), with decorative circles. Section class elite-section--agencies, ID agencies.
+ * Keywords: agencies, white-label, partners
+ * Description: "For agencies": a purple box with an eyebrow, the heading, a line and two buttons (to the White-label page), beside four points on a darker panel (a list: Enter adds one). Section class elite-section--agencies, ID agencies.
  *
  * @package WpElite
  */
 
-$wp_elite_points = array(
-	__( 'Figma → WordPress, pixel-perfect', 'wp-elite' ),
-	__( 'Your brand, NDA by default', 'wp-elite' ),
-	__( 'Overlap with US, UK & AU hours', 'wp-elite' ),
-	__( 'Small first project at a reduced rate', 'wp-elite' ),
-);
-$wp_elite_button = array(
-	'text'      => __( 'Partner with us', 'wp-elite' ),
-	'link'      => array( 'url' => 'mailto:hello@arcnest.dev?subject=White-label%20partnership' ),
-	'iconEnd'   => 'arrow-right',
-	'className' => 'elite-button--secondary elite-button--agency-cta',
-);
-$wp_elite_items  = implode( "\n\n", array_map( static fn ( string $point ): string => "<!-- wp:list-item -->\n<li>" . esc_html( $point ) . "</li>\n<!-- /wp:list-item -->", $wp_elite_points ) );
+/**
+ * An Elite Button's block comment.
+ *
+ * @param array<string, mixed> $attributes Button attributes.
+ */
+$wp_elite_button = static function ( array $attributes ): void {
+	echo '<!-- wp:elite/button ' . wp_json_encode( $attributes, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP ) . ' /-->'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block attributes, JSON-encoded.
+};
 ?>
-<!-- wp:elite/section {"label":"Agencies","anchor":"agencies","className":"elite-section--agencies"} -->
+<!-- wp:elite/section {"label":"For agencies","anchor":"agencies","className":"elite-section--agencies"} -->
 <section class="elite-section alignfull elite-section--agencies" id="agencies"><div class="section-inner"><div class="container"><!-- wp:elite/div {"className":"elite-div--agency-box"} -->
-<div class="elite-div elite-div--agency-box"><div class="div-inner"><!-- wp:elite/row {"flex":{"desktop":{"align":"center"}}} -->
-<div class="elite-row row has-e-align" style="--e-align:center"><!-- wp:elite/column {"size":{"mobile":{"width":12},"laptop":{"width":7}}} -->
-<div class="elite-column col-12 col-lg-7"><div class="column-inner"><!-- wp:elite/paragraph {"textStyle":"eyebrow","className":"elite-paragraph--eyebrow"} -->
+<div class="elite-div elite-div--agency-box"><div class="div-inner"><!-- wp:elite/div {"className":"elite-div--agency-text"} -->
+<div class="elite-div elite-div--agency-text"><div class="div-inner"><!-- wp:elite/paragraph {"textStyle":"eyebrow","className":"elite-paragraph--eyebrow"} -->
 <p class="elite-paragraph elite-paragraph--eyebrow" style="font-family:var(--text-eyebrow-font-family);font-size:var(--text-eyebrow-font-size);font-weight:var(--text-eyebrow-font-weight);line-height:var(--text-eyebrow-line-height);letter-spacing:var(--text-eyebrow-letter-spacing);text-transform:var(--text-eyebrow-text-transform)"><?php esc_html_e( 'For agencies', 'wp-elite' ); ?></p>
 <!-- /wp:elite/paragraph -->
 
@@ -36,17 +30,49 @@ $wp_elite_items  = implode( "\n\n", array_map( static fn ( string $point ): stri
 <!-- /wp:elite/heading -->
 
 <!-- wp:elite/paragraph {"textStyle":"lead","className":"elite-paragraph--agency-lead"} -->
-<p class="elite-paragraph elite-paragraph--agency-lead" style="font-family:var(--text-lead-font-family);font-size:var(--text-lead-font-size);font-weight:var(--text-lead-font-weight);line-height:var(--text-lead-line-height);letter-spacing:var(--text-lead-letter-spacing);text-transform:var(--text-lead-text-transform)"><?php esc_html_e( 'Take on more projects without hiring. You design and manage the client, and we build fast, pixel-perfect WordPress under your brand.', 'wp-elite' ); ?></p>
+<p class="elite-paragraph elite-paragraph--agency-lead" style="font-family:var(--text-lead-font-family);font-size:var(--text-lead-font-size);font-weight:var(--text-lead-font-weight);line-height:var(--text-lead-line-height);letter-spacing:var(--text-lead-letter-spacing);text-transform:var(--text-lead-text-transform)"><?php esc_html_e( 'Take on more projects without hiring. You design and manage the client; we build fast, pixel-perfect WordPress under your brand.', 'wp-elite' ); ?></p>
 <!-- /wp:elite/paragraph -->
 
-<!-- wp:elite/button <?php echo wp_json_encode( $wp_elite_button, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP ); ?> /--></div></div>
-<!-- /wp:elite/column -->
+<!-- wp:elite/div {"className":"elite-div--agency-actions"} -->
+<div class="elite-div elite-div--agency-actions"><div class="div-inner">
+<?php
+$wp_elite_button(
+	array(
+		'text'      => __( 'Partner with us', 'wp-elite' ),
+		'link'      => array( 'url' => '/white-label/' ),
+		'iconEnd'   => 'arrow-right',
+		'className' => 'elite-button--primary',
+	)
+);
+echo "\n\n";
+$wp_elite_button(
+	array(
+		'text'      => __( 'How it works', 'wp-elite' ),
+		'link'      => array( 'url' => '/white-label/' ),
+		'className' => 'elite-button--ghost',
+	)
+);
+?>
+</div></div>
+<!-- /wp:elite/div --></div></div>
+<!-- /wp:elite/div -->
 
-<!-- wp:elite/column {"size":{"mobile":{"width":12},"laptop":{"width":4,"offset":1}},"className":"elite-column--agency-points"} -->
-<div class="elite-column col-12 col-lg-4 offset-lg-1 elite-column--agency-points"><div class="column-inner"><!-- wp:list {"className":"core-list--agency-points"} -->
-<ul class="wp-block-list core-list--agency-points"><?php echo $wp_elite_items; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Each item escaped. ?></ul>
+<!-- wp:list {"className":"core-list--agency-points"} -->
+<ul class="wp-block-list core-list--agency-points"><!-- wp:list-item -->
+<li><?php esc_html_e( 'Figma to WordPress, pixel-perfect', 'wp-elite' ); ?></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><?php esc_html_e( 'Your brand, NDA by default', 'wp-elite' ); ?></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><?php esc_html_e( 'Overlap with US, UK and AU hours', 'wp-elite' ); ?></li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li><?php esc_html_e( 'A small first project to try us out', 'wp-elite' ); ?></li>
+<!-- /wp:list-item --></ul>
 <!-- /wp:list --></div></div>
-<!-- /wp:elite/column --></div>
-<!-- /wp:elite/row --></div></div>
 <!-- /wp:elite/div --></div></div></section>
 <!-- /wp:elite/section -->

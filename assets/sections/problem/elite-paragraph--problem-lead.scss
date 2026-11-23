@@ -1,0 +1,9 @@
+// Label: Why it matters Lead
+// elite/paragraph → Block Classes, under "Why it matters". The line under
+// the heading.
+@use "../../styles/abstracts" as *;
+
+.elite-paragraph--problem-lead {
+	margin: 20px 0 0;
+	color: var(--wp--preset--color--muted);
+}

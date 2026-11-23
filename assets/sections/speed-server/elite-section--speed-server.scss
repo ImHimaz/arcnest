@@ -1,0 +1,75 @@
+// Label: Speed server
+// elite/section → Block Classes. This class loads the folder on pages that
+// use it; the parts below are styled under it.
+// The speed test's "what it means" section (pattern "Speed test: server and
+// business"): the waiting-time chart (inline SVG, .speed-chart) beside its
+// text, then three figures.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-server {
+	background: var(--wp--preset--color--base);
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		padding-top: clamp(72px, 10vw, 144px);
+		padding-bottom: clamp(72px, 10vw, 144px);
+	}
+
+	h2 {
+		margin: 0;
+	}
+
+	h3 {
+		margin: 0;
+	}
+
+	.elite-row--speed-server {
+		row-gap: 32px;
+		margin-top: 40px;
+	}
+
+	// The chart: recessive axes and grid, labels in text colours.
+	.speed-chart {
+		margin: 0;
+		padding: 24px 16px 16px;
+		border: 1px solid var(--wp--preset--color--line);
+		border-radius: $radius-xxl;
+		background: var(--wp--preset--color--surface);
+
+		svg {
+			display: block;
+			width: 100%;
+			height: auto;
+			overflow: visible;
+		}
+
+		figcaption {
+			margin: 12px 8px 0;
+			color: var(--wp--preset--color--muted);
+
+			@include text-style("caption");
+		}
+	}
+
+	.speed-chart__axis text {
+		fill: var(--wp--preset--color--muted);
+
+		@include text-style("caption");
+	}
+
+	.speed-chart__labels text {
+		fill: var(--wp--preset--color--text);
+
+		@include text-style("small");
+		font-weight: 600;
+	}
+
+	.speed-chart__labels .speed-chart__value {
+		fill: var(--wp--preset--color--contrast);
+		font-weight: 800;
+	}
+
+	circle {
+		cursor: default;
+	}
+}

@@ -1,0 +1,11 @@
+// Label: Legal Date
+// elite/paragraph → Block Classes, under "Legal". The "Last updated" line
+// under the title.
+@use "../../styles/abstracts" as *;
+
+.elite-section--legal .elite-paragraph--legal-date {
+	margin: 12px 0 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("small");
+}

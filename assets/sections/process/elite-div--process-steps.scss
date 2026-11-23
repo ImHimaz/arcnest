@@ -1,0 +1,17 @@
+// Label: Process Steps
+// elite/div → Block Classes, under "Process". The steps: stacked on phones,
+// two by two on tablets, four in a row from laptops.
+@use "../../styles/abstracts" as *;
+
+.elite-div--process-steps > .div-inner {
+	display: grid;
+	gap: 40px 24px;
+
+	@include media-breakpoint-up(md) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	@include media-breakpoint-up(lg) {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}

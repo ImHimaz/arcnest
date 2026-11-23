@@ -1,0 +1,89 @@
+// Label: Work Speed
+// elite/div → Block Classes, under "Work". Add to a Work Card (with Work
+// Card) for the speed test: dark purple, lime tags, then three "versus"
+// rows (Work Versus: a big lime difference, what it is and the two
+// measurements) and the link at the foot.
+@use "../../styles/abstracts" as *;
+
+.elite-div--work-card.elite-div--work-speed {
+	border-color: var(--wp--preset--color--primary-900);
+	background: var(--wp--preset--color--primary-900);
+
+	.elite-div--work-body {
+		padding-bottom: 8px;
+	}
+
+	h3 {
+		color: var(--wp--preset--color--base);
+	}
+
+	.elite-div--work-body .elite-paragraph {
+		color: rgb(255 255 255 / 0.7);
+	}
+
+	.core-list--work-tags li {
+		background: rgb(255 255 255 / 0.1);
+		color: var(--wp--preset--color--accent);
+	}
+
+	.elite-button--work-link {
+		margin: auto 28px 28px;
+
+		@include media-breakpoint-up(md) {
+			margin: auto 32px 32px;
+		}
+
+		.elite-button__link {
+			color: var(--wp--preset--color--accent);
+		}
+	}
+}
+
+.elite-div--work-versus {
+	margin: 0 28px;
+	padding: 18px 0;
+	border-top: 1px solid rgb(255 255 255 / 0.1);
+
+	@include media-breakpoint-up(md) {
+		margin: 0 32px;
+	}
+
+	&:last-of-type {
+		margin-bottom: 20px;
+	}
+
+	> .div-inner {
+		display: grid;
+		grid-template-columns: 112px minmax(0, 1fr);
+		gap: 16px;
+		align-items: center;
+
+		@include media-breakpoint-up(md) {
+			grid-template-columns: 132px minmax(0, 1fr);
+		}
+	}
+
+	.elite-paragraph {
+		margin: 0;
+		color: rgb(255 255 255 / 0.55);
+
+		@include text-style("caption");
+		font-weight: 600;
+
+		strong {
+			display: block;
+			margin-bottom: 4px;
+			color: var(--wp--preset--color--base);
+
+			@include text-style("body");
+			font-weight: 700;
+			line-height: 1.35;
+		}
+	}
+
+	.elite-paragraph--work-versus-number {
+		color: var(--wp--preset--color--accent);
+
+		@include text-style("stat-number");
+	}
+}

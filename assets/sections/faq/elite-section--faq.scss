@@ -9,12 +9,28 @@
 
 	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
 	.section-inner {
-		padding-top: clamp(72px, 10vw, 144px);
-		padding-bottom: clamp(72px, 10vw, 144px);
+		padding-top: 80px;
+		padding-bottom: 80px;
+
+		@include media-breakpoint-up(lg) {
+			padding-top: 112px;
+			padding-bottom: 112px;
+		}
 	}
 
 	h2 {
 		margin: 0;
+	}
+}
+
+// "Something else? Email…" under the heading.
+.elite-paragraph--faq-note {
+	margin: 16px 0 0;
+	color: var(--wp--preset--color--muted);
+
+	a {
+		color: var(--wp--preset--color--primary);
+		font-weight: 700;
 	}
 }
 

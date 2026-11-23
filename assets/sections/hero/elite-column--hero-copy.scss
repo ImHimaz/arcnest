@@ -1,14 +1,15 @@
-// Label: Copy
-// elite/column → Block Classes, under "Hero". The text column: room before
-// the card from the laptop width.
+// Label: Hero Copy
+// elite/column → Block Classes, under "Hero". The eyebrow, heading, lead,
+// buttons and ticks.
 @use "../../styles/abstracts" as *;
 
-.elite-section--hero .elite-column--hero-copy {
+.elite-column--hero-copy {
 
 	@include media-breakpoint-up(lg) {
+		padding-right: 32px;
+	}
 
-		> .column-inner {
-			padding-right: clamp(24px, 5vw, 72px);
-		}
+	.elite-paragraph--eyebrow {
+		margin-bottom: 22px;
 	}
 }

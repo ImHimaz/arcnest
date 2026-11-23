@@ -1,0 +1,38 @@
+// Label: Our story
+// elite/section → Block Classes. This class loads the folder.
+// The About page's story: eyebrow and heading on the left, paragraphs on
+// the right (the first one larger: Story Lead).
+@use "../../styles/abstracts" as *;
+
+.elite-section--about-story {
+
+	> .section-inner {
+		padding: 80px 0;
+
+		@include media-breakpoint-up(lg) {
+			padding: 112px 0;
+		}
+	}
+
+	h2 {
+		margin: 0;
+	}
+
+	p:not(.elite-paragraph--eyebrow) {
+		margin: 0 0 18px;
+		color: var(--wp--preset--color--muted);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.elite-paragraph--about-story-lead {
+		margin-bottom: 24px;
+		color: var(--wp--preset--color--contrast);
+	}
+}
+
+.elite-row--about-story {
+	row-gap: 28px;
+}

@@ -1,0 +1,23 @@
+// Label: Work Grid
+// elite/div → Block Classes, under "Work". The cards: with one concept site,
+// the site (wider) beside the speed test from laptops; add a site by
+// duplicating its Work Card (keep the speed test last) and the grid turns
+// into even pairs from tablets. Stacked on phones.
+@use "../../styles/abstracts" as *;
+
+.elite-div--work-grid > .div-inner {
+	display: grid;
+	gap: 24px;
+
+	@include media-breakpoint-up(lg) {
+		grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+	}
+
+	// Two or more sites: even columns.
+	&:has(> :nth-child(3)) {
+
+		@include media-breakpoint-up(md) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+}

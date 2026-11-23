@@ -1,0 +1,41 @@
+// Label: Hero Licence
+// elite/div → Block Classes, under "Hero". A purple card over the browser's
+// lower right (from laptops; hidden on phones): "$0" in lime and a line.
+@use "../../styles/abstracts" as *;
+
+.elite-div--hero-licence {
+	display: none;
+
+	@include media-breakpoint-up(md) {
+		position: absolute;
+		right: 24px;
+		bottom: 54px;
+		display: block;
+		padding: 16px 20px;
+		border-radius: 14px;
+		background: var(--wp--preset--color--primary);
+		box-shadow: 0 24px 48px -20px rgb(38 6 47 / 0.4);
+	}
+
+	> .div-inner {
+		display: flex;
+		gap: 12px;
+		align-items: center;
+	}
+
+	.elite-paragraph {
+		max-width: 110px;
+		margin: 0;
+		color: var(--wp--preset--color--base);
+
+		@include text-style("caption");
+		line-height: 1.35;
+	}
+
+	.elite-paragraph--hero-licence-number {
+		color: var(--wp--preset--color--accent);
+
+		@include text-style("title-3");
+		font-weight: 800;
+	}
+}

@@ -1,0 +1,102 @@
+// Label: Service hero
+// elite/section → Block Classes. This class loads the folder.
+// The top of a service page (patterns page-design-and-build, page-rebuild…):
+// on the light grid, crumbs, an eyebrow, the heading (part highlighted), a
+// lead and two buttons, beside a card of outcomes (Service Card).
+@use "../../styles/abstracts" as *;
+
+.elite-section--service-hero {
+	position: relative;
+	overflow: hidden;
+	background:
+		linear-gradient(var(--wp--preset--color--line) 1px, transparent 1px) 0 0 / 64px 64px,
+		linear-gradient(90deg, var(--wp--preset--color--line) 1px, transparent 1px) 0 0 / 64px 64px,
+		var(--wp--preset--color--surface);
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to right, var(--wp--preset--color--surface) 35%, rgb(250 248 252 / 0.55));
+		pointer-events: none;
+	}
+
+	> .section-inner {
+		position: relative;
+		z-index: 1;
+		padding: 40px 0 64px;
+
+		@include media-breakpoint-up(lg) {
+			padding: 72px 0 96px;
+		}
+	}
+
+	h1 {
+		margin: 0 0 22px;
+		color: var(--wp--preset--color--contrast);
+	}
+}
+
+.elite-row--service-hero {
+	row-gap: 40px;
+
+	@include media-breakpoint-up(lg) {
+		align-items: center;
+	}
+}
+
+// Home / Services / This page.
+.elite-paragraph--service-crumbs {
+	margin: 0 0 28px;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("small");
+	font-weight: 600;
+
+	a {
+		color: inherit;
+		text-decoration: none;
+
+		&:hover {
+			color: var(--wp--preset--color--primary);
+		}
+	}
+
+	.elite-span--crumb {
+		margin: 0 6px;
+		color: var(--wp--preset--color--lilac-mid);
+	}
+}
+
+.elite-paragraph--service-hero-lead {
+	max-width: 600px;
+	margin: 0;
+	color: var(--wp--preset--color--muted);
+}
+
+// The two buttons: side by side, full width on phones.
+.elite-div--service-actions > .div-inner {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin-top: 32px;
+
+	.elite-button,
+	.elite-button__link {
+		width: 100%;
+	}
+
+	.elite-button__link {
+		justify-content: center;
+	}
+
+	@include media-breakpoint-up(sm) {
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		.elite-button,
+		.elite-button__link {
+			width: auto;
+		}
+	}
+}

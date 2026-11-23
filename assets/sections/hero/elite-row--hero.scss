@@ -1,0 +1,12 @@
+// Label: Hero Row
+// elite/row → Block Classes, under "Hero". The copy and the visual: stacked
+// on phones and tablets, side by side and centred from laptops.
+@use "../../styles/abstracts" as *;
+
+.elite-row--hero {
+	row-gap: 56px;
+
+	@include media-breakpoint-up(lg) {
+		align-items: center;
+	}
+}

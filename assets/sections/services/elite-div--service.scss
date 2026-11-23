@@ -1,54 +1,87 @@
-// Label: Card
-// elite/div → Block Classes, under "Services". A service: its number, title
-// and text, then a link along the bottom. Lifts on hover; add "Featured" for
-// the highlighted one.
+// Label: Service
+// elite/div → Block Classes, under "Services". One card: an icon and a
+// number (Service Top), the title, a one-line promise (Service Tag), a line,
+// three points (a list) and the link (Service Link), which covers the whole
+// card. It lifts on hover.
 @use "../../styles/abstracts" as *;
 
-.elite-section--services .elite-div--service {
-	--service-line: var(--wp--preset--color--line);
-
-	height: 100%;
-	overflow: hidden;
+.elite-div--service {
+	position: relative;
+	padding: 28px;
 	border: 1px solid var(--wp--preset--color--line);
-	border-radius: $radius-xxl;
+	border-radius: 18px;
+	background: var(--wp--preset--color--base);
 	transition:
-		transform 0.25s $ease,
-		box-shadow 0.25s $ease,
-		border-color 0.25s $ease;
+		border-color $duration-fast $ease,
+		box-shadow $duration-fast $ease,
+		transform $duration-fast $ease;
 
-	> .div-inner {
-		display: flex;
-		position: relative;
-		flex-direction: column;
-		height: 100%;
-		padding: 32px;
-		background: var(--wp--preset--color--base);
-		color: var(--wp--preset--color--text);
-	}
-
-	h3 {
-		margin: 28px 0 0;
+	@include media-breakpoint-up(md) {
+		padding: 40px;
 	}
 
 	&:hover {
-		transform: translateY(-6px);
 		border-color: var(--wp--preset--color--lilac-mid);
-		box-shadow: 0 30px 60px -30px rgb(79 15 105 / 0.35);
+		box-shadow: 0 30px 60px -32px rgb(38 6 47 / 0.35);
+		transform: translateY(-4px);
 	}
 
-	&:hover .elite-button__icon--end svg {
-		transform: translateX(4px);
+	> .div-inner {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 	}
 
-	@include media-breakpoint-up(md) {
+	h3 {
+		margin: 0;
+		color: var(--wp--preset--color--contrast);
+	}
 
-		// 380px with its border, as designed.
-		> .div-inner {
-			min-height: 378px;
+	.elite-paragraph--service-tag {
+		margin: 8px 0 16px;
+		color: var(--wp--preset--color--primary);
+
+		@include text-style("body");
+		font-weight: 650;
+	}
+
+	.elite-paragraph--service-text {
+		margin: 0;
+		color: var(--wp--preset--color--muted);
+	}
+
+	.core-list--service-points {
+		display: grid;
+		gap: 10px;
+		margin: 24px 0 28px;
+		padding: 0;
+		color: var(--wp--preset--color--contrast);
+		list-style: none;
+
+		@include text-style("body-small");
+		font-weight: 600;
+
+		li {
+			display: flex;
+			gap: 10px;
+			margin: 0;
+
+			&::before {
+				content: "";
+				flex: none;
+				width: 18px;
+				height: 18px;
+				margin-top: 3px;
+				border-radius: 50%;
+				background: var(--wp--preset--color--lilac) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f0f69' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E") center / 11px no-repeat;
+			}
 		}
 	}
+}
 
-	@media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
+
+	.elite-div--service {
 		transition: none;
 
 		&:hover {

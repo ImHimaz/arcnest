@@ -1,0 +1,8 @@
+// Label: Speed Server Row
+// elite/row → Block Classes, under "Speed server". The chart beside its text
+// (spacing in elite-section--speed-server.scss).
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-server .elite-row--speed-server {
+	align-items: center;
+}

@@ -1,0 +1,63 @@
+// Label: Hero Score
+// elite/div → Block Classes, under "Hero". A white card over the browser's
+// lower left (from tablets): the demo's mobile PageSpeed score in a ring,
+// a small label and a line.
+@use "../../styles/abstracts" as *;
+
+.elite-div--hero-score {
+	padding: 18px 20px;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 14px;
+	background: var(--wp--preset--color--base);
+	box-shadow: 0 24px 48px -20px rgb(38 6 47 / 0.3);
+
+	@include media-breakpoint-up(md) {
+		position: absolute;
+		bottom: 0;
+		left: -8px;
+		width: 290px;
+	}
+
+	> .div-inner {
+		display: flex;
+		gap: 16px;
+		align-items: center;
+	}
+
+	// The score in a ring (96 of 100 drawn in lime).
+	.elite-paragraph--hero-score-number {
+		position: relative;
+		display: grid;
+		flex: none;
+		place-items: center;
+		width: 68px;
+		height: 68px;
+		margin: 0;
+		border-radius: 50%;
+		background: conic-gradient(var(--wp--preset--color--accent-deep) 0 96%, var(--wp--preset--color--lilac) 96% 100%);
+		color: var(--wp--preset--color--contrast);
+		isolation: isolate;
+
+		@include text-style("title-3");
+		font-weight: 800;
+
+		// The ring's white middle, behind the number.
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 7px;
+			z-index: -1;
+			border-radius: 50%;
+			background: var(--wp--preset--color--base);
+		}
+	}
+
+	.elite-paragraph--hero-score-title {
+		margin: 2px 0 0;
+		color: var(--wp--preset--color--contrast);
+
+		@include text-style("body-small");
+		font-weight: 700;
+		line-height: 1.35;
+	}
+}

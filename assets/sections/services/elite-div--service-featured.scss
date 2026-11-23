@@ -1,30 +1,41 @@
-// Label: Featured
-// elite/div → Block Classes, under "Services". With "Card": the highlighted
-// service, purple with white text and a lime number.
+// Label: Service Featured
+// elite/div → Block Classes, under "Services". Add to a Service card (with
+// Service) to make it purple: lime icon square, lime promise, white text.
 @use "../../styles/abstracts" as *;
 
-// Two classes: it loads before Card's own file (alphabetical) and must win.
-.elite-section--services .elite-div--service.elite-div--service-featured {
-	--service-line: rgb(255 255 255 / 0.16);
-
+.elite-div--service.elite-div--service-featured {
 	border-color: var(--wp--preset--color--primary);
-
-	> .div-inner {
-		background: var(--wp--preset--color--primary);
-		color: rgb(255 255 255 / 0.8);
-	}
+	background: var(--wp--preset--color--primary);
 
 	h3,
+	.core-list--service-points,
 	.elite-button__link {
 		color: var(--wp--preset--color--base);
 	}
 
+	.elite-paragraph--service-tag {
+		color: var(--wp--preset--color--accent);
+	}
+
 	.elite-paragraph--service-text {
-		color: rgb(255 255 255 / 0.72);
+		color: rgb(255 255 255 / 0.75);
+	}
+
+	.elite-icon {
+		background: var(--wp--preset--color--accent);
+		color: var(--wp--preset--color--primary);
 	}
 
 	.elite-paragraph--service-num {
-		background: var(--wp--preset--color--accent);
-		color: var(--wp--preset--color--primary-900);
+		color: rgb(255 255 255 / 0.14);
+	}
+
+	.core-list--service-points li::before {
+		background-color: rgb(255 255 255 / 0.15);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d7df23' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12 5 5L20 7'/%3E%3C/svg%3E");
+	}
+
+	.elite-button--service-link {
+		border-color: rgb(255 255 255 / 0.15);
 	}
 }

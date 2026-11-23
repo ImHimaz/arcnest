@@ -31,3 +31,4 @@ require_once __DIR__ . '/inc/integrations/elite-blocks.php';
 require_once __DIR__ . '/inc/integrations/megamenu.php';
 require_once __DIR__ . '/inc/integrations/contact-form-7.php';
 require_once __DIR__ . '/inc/site.php';
+require_once __DIR__ . '/inc/patterns.php';

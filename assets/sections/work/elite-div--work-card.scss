@@ -1,0 +1,119 @@
+// Label: Work Card
+// elite/div → Block Classes, under "Work". A card: the screenshot (an Elite
+// Image, it zooms a little on hover), then Work Body (tags, title, a line,
+// the link). The link (Work Link) covers the whole card.
+@use "../../styles/abstracts" as *;
+
+.elite-div--work-card {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 18px;
+	background: var(--wp--preset--color--base);
+
+	> .div-inner {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.elite-image {
+		overflow: hidden;
+		margin: 0;
+		border-bottom: 1px solid var(--wp--preset--color--line);
+		background: var(--wp--preset--color--surface);
+
+		img {
+			object-position: top;
+			transition: transform 0.4s $ease;
+		}
+	}
+
+	&:hover .elite-image img {
+		transform: scale(1.03);
+	}
+}
+
+.elite-div--work-body {
+	padding: 28px;
+
+	@include media-breakpoint-up(md) {
+		padding: 28px 32px 32px;
+	}
+
+	h3 {
+		margin: 0 0 8px;
+	}
+
+	.elite-paragraph {
+		margin: 0;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("body-small");
+	}
+}
+
+// Tags: small lilac pills in a row.
+.core-list--work-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 14px;
+	padding: 0;
+	list-style: none;
+
+	li {
+		margin: 0;
+		padding: 4px 11px;
+		border-radius: $radius-pill;
+		background: var(--wp--preset--color--lilac);
+		color: var(--wp--preset--color--primary);
+
+		@include text-style("tag");
+	}
+}
+
+// The card's link: text and an arrow; its ::after covers the card.
+.elite-button--work-link {
+	margin-top: 20px;
+
+	.elite-button__link {
+		min-height: 0;
+		padding: 0;
+		border: 0;
+		background: none;
+		color: var(--wp--preset--color--primary);
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 1;
+		}
+
+		&:hover {
+			transform: none;
+		}
+
+		&:focus-visible {
+			outline: none;
+
+			&::after {
+				border-radius: 18px;
+				outline: 2px solid var(--wp--preset--color--primary);
+				outline-offset: 3px;
+			}
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.elite-div--work-card .elite-image img {
+		transition: none;
+	}
+
+	.elite-div--work-card:hover .elite-image img {
+		transform: none;
+	}
+}

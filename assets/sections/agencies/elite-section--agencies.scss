@@ -1,16 +1,17 @@
-// Label: Agencies
-// elite/section → Block Classes. This class loads the folder on pages that
-// use it; the parts below are styled under it.
-// "For agencies" (pattern "Agencies"): a large lime box with the heading,
-// a line and a button, beside four points. No space under it: the next
-// section brings its own. CSS only.
+// Label: For agencies
+// elite/section → Block Classes. This class loads the folder.
+// "For agencies" (pattern "For agencies"): a purple box with the pitch and
+// two buttons, beside four points on a darker panel.
 @use "../../styles/abstracts" as *;
 
 .elite-section--agencies {
+	--elite-eyebrow-color: var(--wp--preset--color--accent);
 
-	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
-	.section-inner {
-		padding-top: clamp(72px, 10vw, 144px);
-		padding-bottom: 0;
+	> .section-inner {
+		padding: 0 0 80px;
+
+		@include media-breakpoint-up(lg) {
+			padding: 0 0 112px;
+		}
 	}
 }

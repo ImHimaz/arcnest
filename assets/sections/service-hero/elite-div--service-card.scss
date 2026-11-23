@@ -1,0 +1,113 @@
+// Label: Service Card
+// elite/div → Block Classes, under "Service hero". The card beside the hero:
+// a small label, then rows (Service Card Row: an icon in a purple square or
+// a short tag, a bold title and a line). Add Service Card Dark for the dark
+// version.
+@use "../../styles/abstracts" as *;
+
+.elite-div--service-card {
+	padding: 24px;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 20px;
+	background: var(--wp--preset--color--base);
+	box-shadow: 0 40px 80px -40px rgb(38 6 47 / 0.35);
+
+	@include media-breakpoint-up(md) {
+		padding: 32px;
+	}
+
+	.elite-paragraph--service-card-label {
+		margin: 0 0 20px;
+		color: var(--wp--preset--color--primary);
+
+		@include text-style("eyebrow");
+		font-weight: 800;
+	}
+}
+
+.elite-div--service-card-row {
+	padding: 18px 0;
+	border-top: 1px solid var(--wp--preset--color--line);
+
+	&:nth-child(2) {
+		padding-top: 0;
+		border-top: 0;
+	}
+
+	&:last-child {
+		padding-bottom: 0;
+	}
+
+	> .div-inner {
+		display: grid;
+		grid-template-columns: 48px minmax(0, 1fr);
+		gap: 16px;
+		align-items: start;
+	}
+
+	.elite-icon,
+	.elite-paragraph--service-card-tag {
+		display: grid;
+		place-items: center;
+		width: 48px;
+		height: 48px;
+		margin: 0;
+		border-radius: 12px;
+		background: var(--wp--preset--color--primary);
+		color: var(--wp--preset--color--accent);
+
+		svg {
+			width: 22px;
+			height: 22px;
+		}
+	}
+
+	.elite-paragraph--service-card-tag {
+
+		@include text-style("small");
+		font-weight: 800;
+	}
+
+	.elite-paragraph {
+		margin: 4px 0 0;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("small");
+	}
+
+	.elite-paragraph--service-card-title {
+		margin: 0;
+		color: var(--wp--preset--color--contrast);
+
+		@include text-style("body");
+		font-weight: 700;
+		line-height: 1.35;
+	}
+}
+
+// Dark: the Rebuild page's numbers and the White-label steps.
+.elite-div--service-card.elite-div--service-card-dark {
+	border-color: var(--wp--preset--color--primary-900);
+	background: var(--wp--preset--color--primary-900);
+
+	.elite-paragraph--service-card-label {
+		color: var(--wp--preset--color--accent);
+	}
+
+	.elite-div--service-card-row {
+		border-color: rgb(255 255 255 / 0.1);
+	}
+
+	.elite-icon,
+	.elite-paragraph--service-card-tag {
+		background: rgb(255 255 255 / 0.08);
+	}
+
+	.elite-paragraph {
+		color: rgb(255 255 255 / 0.6);
+	}
+
+	.elite-paragraph--service-card-title {
+		color: var(--wp--preset--color--base);
+	}
+}

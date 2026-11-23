@@ -1,0 +1,10 @@
+// Label: Case Figure Number
+// elite/paragraph → Block Classes, under "Case results". The change itself.
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-results .elite-div--case-figure .elite-paragraph--case-figure-number {
+	margin: 0;
+	color: var(--wp--preset--color--primary);
+
+	@include text-style("display-3");
+}

@@ -19,8 +19,8 @@ $wp_elite_check( 'No Contact Form 7 CSS, no global script, no <p>/<br> in templa
 
 $wp_elite_template = contact_template();
 $wp_elite_check(
-	'The contact template: four fields in the theme’s markup, labels tied to them, a submit button',
-	array( 4, 2, true, true, true ),
+	'The contact template: six fields in the theme’s markup, labels tied to them, a submit button',
+	array( 6, 2, true, true, true ),
 	array(
 		substr_count( $wp_elite_template, '<div class="form-field' ),
 		substr_count( $wp_elite_template, 'form-field--full' ),

@@ -1,0 +1,8 @@
+// Label: Case Story Row
+// elite/row → Block Classes, under "Case story". The three parts of the
+// story, side by side from laptops.
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-story .elite-row--case-story {
+	row-gap: 32px;
+}

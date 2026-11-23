@@ -1,29 +1,18 @@
 /**
- * Call to Action (sections/cta): the content fades up as the section scrolls
- * into view. Sections already on screen at load, and visitors who ask for
- * less motion, see it straight away (no flash, no waiting).
+ * Call to action (sections/cta): the heading, line and buttons rise in one
+ * after another as the band scrolls into view (styles:
+ * elite-section--cta.scss).
  */
-import { onReady, prefersReducedMotion, whenVisible } from '../../utils';
-
-/**
- * Set up one section (each copy on the page works on its own).
- *
- * @param {HTMLElement} section The section.
- */
-function setUp( section ) {
-	const belowTheFold =
-		section.getBoundingClientRect().top > window.innerHeight;
-	if ( prefersReducedMotion() || ! belowTheFold ) {
-		return;
-	}
-	section.classList.add( 'is-reveal' );
-	whenVisible(
-		section,
-		() => section.classList.add( 'is-visible' ),
-		'0px 0px -15% 0px'
-	);
-}
+import { onReady } from '../../utils';
+import { reveal } from '../../utils/reveal';
 
 onReady( () => {
-	document.querySelectorAll( '.elite-section--cta' ).forEach( setUp );
+	document
+		.querySelectorAll( '.elite-section--cta' )
+		.forEach( ( section ) =>
+			reveal(
+				section,
+				'.elite-heading--cta-title, .elite-paragraph--cta-lead, .elite-div--cta-actions'
+			)
+		);
 } );

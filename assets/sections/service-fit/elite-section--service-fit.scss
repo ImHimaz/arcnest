@@ -1,0 +1,32 @@
+// Label: Who it's for
+// elite/section → Block Classes. This class loads the folder.
+// A service page's "Who it's for" (three numbered cards) or "Signs it's
+// time" (warning cards, two by two): an eyebrow and heading, then the cards,
+// which rise in one by one (view.js).
+@use "../../styles/abstracts" as *;
+
+.elite-section--service-fit {
+
+	> .section-inner {
+		padding: 80px 0;
+
+		@include media-breakpoint-up(lg) {
+			padding: 112px 0;
+		}
+	}
+
+	@include reveal-items(".elite-div--service-fit, .elite-div--service-sign");
+}
+
+.elite-div--service-fit-head {
+	max-width: 760px;
+	margin-bottom: 48px;
+
+	@include media-breakpoint-up(lg) {
+		margin-bottom: 56px;
+	}
+
+	h2 {
+		margin: 0;
+	}
+}

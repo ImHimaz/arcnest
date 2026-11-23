@@ -1,0 +1,17 @@
+// Label: Case Figure
+// elite/div → Block Classes, under "Case results". A headline figure on
+// lilac: the change, then what changed.
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-results .elite-div--case-figure {
+	box-sizing: border-box;
+	height: 100%;
+	padding: 28px;
+	border-radius: $radius-xxl;
+	background: var(--wp--preset--color--lilac);
+
+	.elite-paragraph {
+		margin: 12px 0 0;
+		color: var(--wp--preset--color--text);
+	}
+}

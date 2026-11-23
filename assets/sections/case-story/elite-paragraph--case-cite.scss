@@ -1,0 +1,16 @@
+// Label: Case Cite
+// elite/paragraph → Block Classes, under "Case story". The client's name
+// (bold) and role, under the quote.
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-story .elite-paragraph--case-cite {
+	margin: 20px 0 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("small");
+
+	strong {
+		margin-right: 6px;
+		color: var(--wp--preset--color--contrast);
+	}
+}

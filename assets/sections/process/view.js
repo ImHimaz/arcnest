@@ -1,38 +1,14 @@
 /**
- * Process (sections/process): the steps rise in one after another as they
- * scroll into view (the styles are in elite-section--process.scss). Steps
- * already on screen at load, and visitors who ask for less motion, see them
- * in place.
+ * Process (sections/process): the four steps rise in one after another as
+ * they scroll into view (styles: elite-section--process.scss).
  */
-import { onReady, prefersReducedMotion, whenVisible } from '../../utils';
-
-/**
- * Set up one section (each copy on the page works on its own).
- *
- * @param {HTMLElement} section The section.
- */
-function setUp( section ) {
-	const steps = section.querySelector( '.elite-column--process-steps' );
-	if (
-		! steps ||
-		prefersReducedMotion() ||
-		steps.getBoundingClientRect().top < window.innerHeight
-	) {
-		return;
-	}
-	steps
-		.querySelectorAll( '.elite-div--process-step' )
-		.forEach( ( step, index ) =>
-			step.style.setProperty( '--i', String( index ) )
-		);
-	section.classList.add( 'is-reveal' );
-	whenVisible(
-		steps,
-		() => section.classList.add( 'is-visible' ),
-		'0px 0px -12% 0px'
-	);
-}
+import { onReady } from '../../utils';
+import { reveal } from '../../utils/reveal';
 
 onReady( () => {
-	document.querySelectorAll( '.elite-section--process' ).forEach( setUp );
+	document
+		.querySelectorAll( '.elite-section--process' )
+		.forEach( ( section ) =>
+			reveal( section, '.elite-div--process-step' )
+		);
 } );

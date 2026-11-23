@@ -19,9 +19,9 @@ $wp_elite_button = static function ( array $attributes ): void {
 };
 
 $wp_elite_facts = array(
-	__( 'Lighthouse, mobile', 'wp-elite' ),
-	__( 'Median of 5 runs', 'wp-elite' ),
-	__( 'Same server, same content', 'wp-elite' ),
+	__( 'Budget and mid-range phones', 'wp-elite' ),
+	__( 'PageSpeed Insights', 'wp-elite' ),
+	__( 'Same server, same plugins', 'wp-elite' ),
 	__( 'Elementor 4.3 + Pro 4.3', 'wp-elite' ),
 );
 ?>
@@ -31,11 +31,11 @@ $wp_elite_facts = array(
 <!-- /wp:elite/paragraph -->
 
 <!-- wp:elite/heading {"level":1,"textStyle":"title-1"} -->
-<h1 class="elite-heading" style="font-family:var(--text-title-1-font-family);font-size:var(--text-title-1-font-size);font-weight:var(--text-title-1-font-weight);line-height:var(--text-title-1-line-height);letter-spacing:var(--text-title-1-letter-spacing);text-transform:var(--text-title-1-text-transform)"><?php esc_html_e( 'Same page, two builders. One loads twice as fast', 'wp-elite' ); ?><span class="elite-span elite-span--dot">.</span></h1>
+<h1 class="elite-heading" style="font-family:var(--text-title-1-font-family);font-size:var(--text-title-1-font-size);font-weight:var(--text-title-1-font-weight);line-height:var(--text-title-1-line-height);letter-spacing:var(--text-title-1-letter-spacing);text-transform:var(--text-title-1-text-transform)"><?php esc_html_e( 'Same site, two builders. Ours loads 3.5 s sooner on a budget phone', 'wp-elite' ); ?><span class="elite-span elite-span--dot">.</span></h1>
 <!-- /wp:elite/heading -->
 
 <!-- wp:elite/paragraph {"textStyle":"lead","className":"elite-paragraph--speed-lead"} -->
-<p class="elite-paragraph elite-paragraph--speed-lead" style="font-family:var(--text-lead-font-family);font-size:var(--text-lead-font-size);font-weight:var(--text-lead-font-weight);line-height:var(--text-lead-line-height);letter-spacing:var(--text-lead-letter-spacing);text-transform:var(--text-lead-text-transform)"><?php esc_html_e( 'We built one home page twice: with Elementor Pro, the way most agencies would, and with our own block theme. Same design, same content, same server. Then we measured both.', 'wp-elite' ); ?></p>
+<p class="elite-paragraph elite-paragraph--speed-lead" style="font-family:var(--text-lead-font-family);font-size:var(--text-lead-font-size);font-weight:var(--text-lead-font-weight);line-height:var(--text-lead-line-height);letter-spacing:var(--text-lead-letter-spacing);text-transform:var(--text-lead-text-transform)"><?php esc_html_e( 'We built one small website twice: with Elementor Pro, the way most agencies would, and with our own block theme. Six pages, 25 blog posts, forms, analytics and a cookie banner on both. Same design, same plugins, same server. Then we measured them.', 'wp-elite' ); ?></p>
 <!-- /wp:elite/paragraph -->
 
 <!-- wp:list {"className":"core-list--speed-facts"} -->

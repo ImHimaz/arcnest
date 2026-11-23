@@ -1,0 +1,20 @@
+// Label: Before and after
+// elite/section → Block Classes. This class loads the folder.
+// A comparison table on its own (the Rebuild page, under How it works): a
+// Table block with the Comparison class.
+@use "../../styles/abstracts" as *;
+
+.elite-section--service-compare {
+
+	> .section-inner {
+		padding: 0 0 80px;
+
+		@include media-breakpoint-up(lg) {
+			padding: 0 0 112px;
+		}
+	}
+
+	.core-table--compare {
+		margin: 0;
+	}
+}

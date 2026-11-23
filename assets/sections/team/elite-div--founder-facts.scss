@@ -1,0 +1,64 @@
+// Label: Founder Facts
+// elite/div → Block Classes, under "Founder". Three short facts (Founder
+// Fact: a big purple line, a small one) between two rules; they wrap on
+// narrow screens.
+@use "../../styles/abstracts" as *;
+
+.elite-div--founder-facts {
+	margin: 32px 0;
+	padding: 24px 0;
+	border-block: 1px solid var(--wp--preset--color--line);
+
+	> .div-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px 40px;
+	}
+}
+
+.elite-div--founder-fact {
+
+	.elite-paragraph {
+		margin: 0;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("small");
+	}
+
+	.elite-paragraph--founder-fact-big {
+		color: var(--wp--preset--color--primary);
+
+		@include text-style("title-3");
+		font-weight: 800;
+	}
+}
+
+// The quote and the name (above the facts).
+.elite-paragraph--founder-quote {
+	margin: 0 0 28px;
+	color: var(--wp--preset--color--contrast);
+
+	@include text-style("title-3");
+	line-height: 1.3;
+}
+
+.elite-paragraph--founder-name {
+	margin: 0;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("body-small");
+
+	strong {
+		display: block;
+		color: var(--wp--preset--color--contrast);
+
+		@include text-style("body");
+		font-weight: 800;
+	}
+}
+
+.elite-div--founder-actions > .div-inner {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}

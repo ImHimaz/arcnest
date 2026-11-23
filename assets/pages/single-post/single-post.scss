@@ -10,9 +10,21 @@ body.single-post {
 
 	.wp-block-post-content {
 
+		// The post's own headings: a step below the page's section titles
+		// (a post's h2 isn't a page section).
+		> h2 {
+
+			@include text-style("title-3");
+		}
+
+		> h3 {
+
+			@include text-style("title-4");
+		}
+
 		// More room above a heading than below it: it belongs to what follows.
 		> :where(h2, h3, h4) {
-			margin-top: 2.5em;
+			margin-top: 1.8em;
 		}
 
 		> :where(h2, h3, h4) + * {

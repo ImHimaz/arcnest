@@ -1,0 +1,8 @@
+// Label: Case Figures
+// elite/row → Block Classes, under "Case results". The three headline
+// figures (spacing in elite-section--case-results.scss).
+@use "../../styles/abstracts" as *;
+
+.elite-section--case-results .elite-row--case-figures {
+	align-items: stretch;
+}

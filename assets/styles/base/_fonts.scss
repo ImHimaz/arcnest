@@ -1,0 +1,17 @@
+// A fallback sized like the body font. Until Plus Jakarta Sans arrives
+// (font-display: swap), text is drawn in this: Arial, or Helvetica on Apple
+// devices (the same metrics), scaled to Plus Jakarta Sans's average width and
+// line height, so the swap moves nothing. It is the second name in the Body
+// family (theme.json).
+
+// Values: Plus Jakarta Sans at weight 400 against Arial, average width over
+// English letter frequencies (the method Next.js and Capsize use). A
+// different body font needs its own values.
+@font-face {
+	font-family: "Plus Jakarta Sans Fallback";
+	src: local("Arial"), local("ArialMT"), local("Helvetica"), local("Helvetica Neue");
+	size-adjust: 105%;
+	ascent-override: 98.86%;
+	descent-override: 21.14%;
+	line-gap-override: 0%;
+}

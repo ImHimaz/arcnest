@@ -1,0 +1,9 @@
+// Label: Section Lead
+// elite/paragraph → Block Classes (multi-select). The muted line beside or
+// under a section heading (use with the Lead text style).
+@use "../../styles/abstracts" as *;
+
+.elite-paragraph--service-lead {
+	margin: 0;
+	color: var(--wp--preset--color--muted);
+}

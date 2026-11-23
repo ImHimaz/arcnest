@@ -4,19 +4,19 @@
  * Slug: wp-elite/section-speed-scores
  * Categories: wp-elite, about
  * Keywords: speed, test, scores, comparison, elementor
- * Description: The speed test's headline numbers, in the home page's comparison look: the heading and a line, then the Elementor page's score and numbers against Arcnest's (scores count up, cards slide in), and a note on the figures. Section class elite-section--compare, ID results.
+ * Description: The speed test's headline numbers (the home page on a phone), in the home page's comparison look: the heading and a line, then the Elementor page's weight and numbers against Arcnest's (the weights count up, cards slide in). Weight leads: the PageSpeed scores are close (96 vs 91), the amount a phone downloads is not, and a note on the figures. Section class elite-section--compare, ID results.
  *
  * @package WpElite
  */
 
 /**
- * One card: its title and tag, the score (an Elite Counter), its caption
- * and three numbers.
+ * One card: its title and tag, the page weight (an Elite Counter, in KB),
+ * its caption and four numbers.
  *
  * @param bool                         $good    Arcnest's card (purple) rather than the page builder's.
  * @param string                       $title   Title.
  * @param string                       $tag     Tag beside the title.
- * @param int                          $score   PageSpeed score.
+ * @param int                          $score   Page weight in KB.
  * @param string                       $caption Line under the score.
  * @param list<array{0: string, 1: string}> $numbers Label and value.
  */
@@ -35,7 +35,7 @@ $wp_elite_card = static function ( bool $good, string $title, string $tag, int $
 <!-- /wp:elite/paragraph --></div></div>
 <!-- /wp:elite/div -->
 
-<!-- wp:elite/counter {"end":<?php echo (int) $score; ?>,"duration":1400,"className":"elite-counter--compare-score"} /-->
+<!-- wp:elite/counter {"end":<?php echo (int) $score; ?>,"suffix":" KB","duration":1400,"className":"elite-counter--compare-score"} /-->
 
 <!-- wp:elite/paragraph {"className":"elite-paragraph--compare-sub"} -->
 <p class="elite-paragraph elite-paragraph--compare-sub"><?php echo esc_html( $caption ); ?></p>
@@ -63,13 +63,13 @@ $wp_elite_card = static function ( bool $good, string $title, string $tag, int $
 <!-- /wp:elite/paragraph -->
 
 <!-- wp:elite/heading {"textStyle":"title-2"} -->
-<h2 class="elite-heading" style="font-family:var(--text-title-2-font-family);font-size:var(--text-title-2-font-size);font-weight:var(--text-title-2-font-weight);line-height:var(--text-title-2-line-height);letter-spacing:var(--text-title-2-letter-spacing);text-transform:var(--text-title-2-text-transform)"><?php esc_html_e( 'Mobile PageSpeed, side by side', 'wp-elite' ); ?><span class="elite-span elite-span--dot">.</span></h2>
+<h2 class="elite-heading" style="font-family:var(--text-title-2-font-family);font-size:var(--text-title-2-font-size);font-weight:var(--text-title-2-font-weight);line-height:var(--text-title-2-line-height);letter-spacing:var(--text-title-2-letter-spacing);text-transform:var(--text-title-2-text-transform)"><?php esc_html_e( 'Half the weight, half the requests', 'wp-elite' ); ?><span class="elite-span elite-span--dot">.</span></h2>
 <!-- /wp:elite/heading --></div></div>
 <!-- /wp:elite/column -->
 
 <!-- wp:elite/column {"size":{"mobile":{"width":12},"laptop":{"width":5,"offset":1}}} -->
 <div class="elite-column col-12 col-lg-5 offset-lg-1"><div class="column-inner"><!-- wp:elite/paragraph {"textStyle":"lead","className":"elite-paragraph--compare-lead"} -->
-<p class="elite-paragraph elite-paragraph--compare-lead" style="font-family:var(--text-lead-font-family);font-size:var(--text-lead-font-size);font-weight:var(--text-lead-font-weight);line-height:var(--text-lead-line-height);letter-spacing:var(--text-lead-letter-spacing);text-transform:var(--text-lead-text-transform)"><?php esc_html_e( 'Both pages look the same. The difference is what a visitor’s phone has to download and run before it can show them.', 'wp-elite' ); ?></p>
+<p class="elite-paragraph elite-paragraph--compare-lead" style="font-family:var(--text-lead-font-family);font-size:var(--text-lead-font-size);font-weight:var(--text-lead-font-weight);line-height:var(--text-lead-line-height);letter-spacing:var(--text-lead-letter-spacing);text-transform:var(--text-lead-text-transform)"><?php esc_html_e( 'Both home pages look the same and run the same plugins. Ours sends a phone half as much to download: 351 KB in 41 requests, against 698 KB in 89.', 'wp-elite' ); ?></p>
 <!-- /wp:elite/paragraph --></div></div>
 <!-- /wp:elite/column --></div>
 <!-- /wp:elite/row -->
@@ -81,13 +81,13 @@ $wp_elite_card(
 	false,
 	__( 'Elementor Pro', 'wp-elite' ),
 	__( 'Hello theme', 'wp-elite' ),
-	89,
-	__( 'Mobile PageSpeed score', 'wp-elite' ),
+	698,
+	__( 'Downloaded by a phone on a first visit', 'wp-elite' ),
 	array(
-		array( __( 'First content', 'wp-elite' ), '2.3 s' ),
-		array( __( 'Main image', 'wp-elite' ), '3.4 s' ),
-		array( __( 'Page weight', 'wp-elite' ), '492 KB' ),
-		array( __( 'Requests', 'wp-elite' ), '66' ),
+		array( __( 'Requests', 'wp-elite' ), '89' ),
+		array( __( 'JavaScript', 'wp-elite' ), '472 KB' ),
+		array( __( 'First content', 'wp-elite' ), '1.4 s' ),
+		array( __( 'PageSpeed score', 'wp-elite' ), '91' ),
 	)
 );
 echo "\n";
@@ -95,13 +95,13 @@ $wp_elite_card(
 	true,
 	__( 'Arcnest', 'wp-elite' ),
 	__( 'WP Elite + Elite Blocks', 'wp-elite' ),
-	98,
-	__( 'Mobile PageSpeed score', 'wp-elite' ),
+	351,
+	__( 'Downloaded by a phone on a first visit', 'wp-elite' ),
 	array(
-		array( __( 'First content', 'wp-elite' ), '0.9 s' ),
-		array( __( 'Main image', 'wp-elite' ), '2.3 s' ),
-		array( __( 'Page weight', 'wp-elite' ), '212 KB' ),
-		array( __( 'Requests', 'wp-elite' ), '30' ),
+		array( __( 'Requests', 'wp-elite' ), '41' ),
+		array( __( 'JavaScript', 'wp-elite' ), '223 KB' ),
+		array( __( 'First content', 'wp-elite' ), '1.1 s' ),
+		array( __( 'PageSpeed score', 'wp-elite' ), '96' ),
 	)
 );
 ?>
@@ -109,6 +109,6 @@ $wp_elite_card(
 <!-- /wp:elite/row -->
 
 <!-- wp:elite/paragraph {"className":"elite-paragraph--compare-note"} -->
-<p class="elite-paragraph elite-paragraph--compare-note"><?php esc_html_e( 'Draft figures from our local test. They will be replaced with PageSpeed Insights results from our server.', 'wp-elite' ); ?></p>
+<p class="elite-paragraph elite-paragraph--compare-note"><?php esc_html_e( 'Google PageSpeed Insights, mobile, median of 5 runs, November 2026. The pricing page and a blog post are in the full results below.', 'wp-elite' ); ?></p>
 <!-- /wp:elite/paragraph --></div></div></section>
 <!-- /wp:elite/section -->

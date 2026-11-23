@@ -2,5 +2,6 @@
 // colours and spacing belong in theme.json, tokens and tools in abstracts/,
 // and anything that isn't site-wide in its feature folder (assets/blocks,
 // sections, pages, layout, vendor), which loads only where it's used.
+@use "base/fonts";
 @use "base/typography";
 @use "base/elements";

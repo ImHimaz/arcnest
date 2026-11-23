@@ -34,6 +34,17 @@
 			],
 			"script": false
 		},
+		"core/table": {
+			"folder": "core-table",
+			"styles": [],
+			"modifiers": [
+				{
+					"value": "core-table--compare",
+					"label": "Comparison"
+				}
+			],
+			"script": false
+		},
 		"elite/accordion": {
 			"folder": "elite-accordion",
 			"styles": [],
@@ -187,6 +198,21 @@
 				{
 					"value": "elite-paragraph--eyebrow",
 					"label": "Eyebrow"
+				},
+				{
+					"value": "elite-paragraph--service-lead",
+					"label": "Section Lead"
+				}
+			],
+			"script": false
+		},
+		"elite/row": {
+			"folder": "elite-row",
+			"styles": [],
+			"modifiers": [
+				{
+					"value": "elite-row--service-head",
+					"label": "Service Head"
 				}
 			],
 			"script": false
@@ -225,6 +251,10 @@
 				{
 					"value": "elite-span--highlight",
 					"label": "Highlight"
+				},
+				{
+					"value": "elite-span--lime",
+					"label": "Lime"
 				}
 			],
 			"script": false
@@ -237,51 +267,135 @@
 		},
 		"header": {
 			"modifiers": {},
-			"script": true
+			"script": false
 		}
 	},
 	"sections": {
+		"about-story": {
+			"modifiers": {
+				"elite/section": [
+					{
+						"value": "elite-section--about-story",
+						"label": "Our story"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--about-story"
+		},
 		"agencies": {
 			"modifiers": {
-				"core/list": [
-					{
-						"value": "core-list--agency-points",
-						"label": "Agencies › Point List"
-					}
-				],
-				"elite/button": [
-					{
-						"value": "elite-button--agency-cta",
-						"label": "Agencies › Button"
-					}
-				],
-				"elite/column": [
-					{
-						"value": "elite-column--agency-points",
-						"label": "Agencies › Points"
-					}
-				],
 				"elite/div": [
 					{
 						"value": "elite-div--agency-box",
-						"label": "Agencies › Box"
-					}
-				],
-				"elite/paragraph": [
-					{
-						"value": "elite-paragraph--agency-lead",
-						"label": "Agencies › Lead"
+						"label": "For agencies › Agency Box"
 					}
 				],
 				"elite/section": [
 					{
 						"value": "elite-section--agencies",
-						"label": "Agencies"
+						"label": "For agencies"
 					}
 				]
 			},
 			"script": false,
 			"trigger": "elite-section--agencies"
+		},
+		"case-results": {
+			"modifiers": {
+				"core/table": [
+					{
+						"value": "core-table--case",
+						"label": "Case results › Case Table"
+					}
+				],
+				"elite/div": [
+					{
+						"value": "elite-div--case-figure",
+						"label": "Case results › Case Figure"
+					}
+				],
+				"elite/paragraph": [
+					{
+						"value": "elite-paragraph--case-figure-number",
+						"label": "Case results › Case Figure Number"
+					},
+					{
+						"value": "elite-paragraph--case-note",
+						"label": "Case results › Case Note"
+					}
+				],
+				"elite/row": [
+					{
+						"value": "elite-row--case-figures",
+						"label": "Case results › Case Figures"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--case-results",
+						"label": "Case results"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--case-results"
+		},
+		"case-story": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--case-quote",
+						"label": "Case story › Case Quote"
+					}
+				],
+				"elite/paragraph": [
+					{
+						"value": "elite-paragraph--case-cite",
+						"label": "Case story › Case Cite"
+					},
+					{
+						"value": "elite-paragraph--case-quote",
+						"label": "Case story › Case Quote Text"
+					},
+					{
+						"value": "elite-paragraph--case-text",
+						"label": "Case story › Case Text"
+					}
+				],
+				"elite/row": [
+					{
+						"value": "elite-row--case-story",
+						"label": "Case story › Case Story Row"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--case-story",
+						"label": "Case story"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--case-story"
+		},
+		"check": {
+			"modifiers": {
+				"elite/paragraph": [
+					{
+						"value": "elite-paragraph--check-lead",
+						"label": "Check your site › Check Lead"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--check",
+						"label": "Check your site"
+					}
+				]
+			},
+			"script": true,
+			"trigger": "elite-section--check"
 		},
 		"compare": {
 			"modifiers": {
@@ -351,99 +465,39 @@
 			"script": true,
 			"trigger": "elite-section--compare"
 		},
-		"contact": {
+		"contact-page": {
 			"modifiers": {
 				"elite/div": [
 					{
-						"value": "elite-div--contact-founding",
-						"label": "Contact › Founding"
-					}
-				],
-				"elite/form": [
-					{
-						"value": "elite-form--contact-form",
-						"label": "Contact › Form"
-					}
-				],
-				"elite/heading": [
-					{
-						"value": "elite-heading--contact-founding-title",
-						"label": "Contact › Founding Title"
-					}
-				],
-				"elite/paragraph": [
-					{
-						"value": "elite-paragraph--contact-badge",
-						"label": "Contact › Badge"
+						"value": "elite-div--contact-card",
+						"label": "Contact page › Card"
 					},
 					{
-						"value": "elite-paragraph--contact-founding-text",
-						"label": "Contact › Founding Text"
-					},
-					{
-						"value": "elite-paragraph--contact-lead",
-						"label": "Contact › Lead"
-					},
-					{
-						"value": "elite-paragraph--contact-note",
-						"label": "Contact › Note"
+						"value": "elite-div--contact-next",
+						"label": "Contact page › Next Steps"
 					}
 				],
 				"elite/section": [
 					{
-						"value": "elite-section--contact",
-						"label": "Contact"
+						"value": "elite-section--contact-page",
+						"label": "Contact page"
 					}
 				]
 			},
 			"script": true,
-			"trigger": "elite-section--contact"
+			"trigger": "elite-section--contact-page"
 		},
 		"cta": {
 			"modifiers": {
-				"elite/div": [
-					{
-						"value": "elite-div--cta-actions",
-						"label": "Call to Action › Actions"
-					}
-				],
 				"elite/section": [
 					{
 						"value": "elite-section--cta",
-						"label": "Call to Action"
+						"label": "Call to action"
 					}
 				]
 			},
 			"script": true,
 			"trigger": "elite-section--cta"
-		},
-		"demo": {
-			"modifiers": {
-				"elite/div": [
-					{
-						"value": "elite-div--demo-head",
-						"label": "Demo › Head"
-					},
-					{
-						"value": "elite-div--demo-media",
-						"label": "Demo › Media"
-					}
-				],
-				"elite/paragraph": [
-					{
-						"value": "elite-paragraph--demo-lead",
-						"label": "Demo › Lead"
-					}
-				],
-				"elite/section": [
-					{
-						"value": "elite-section--demo",
-						"label": "Demo"
-					}
-				]
-			},
-			"script": true,
-			"trigger": "elite-section--demo"
 		},
 		"faq": {
 			"modifiers": {
@@ -473,78 +527,52 @@
 			"modifiers": {
 				"core/list": [
 					{
-						"value": "core-list--hero-metrics",
-						"label": "Hero › Metrics"
+						"value": "core-list--hero-ticks",
+						"label": "Hero › Hero Ticks"
 					}
 				],
 				"elite/column": [
 					{
 						"value": "elite-column--hero-copy",
-						"label": "Hero › Copy"
+						"label": "Hero › Hero Copy"
 					},
 					{
 						"value": "elite-column--hero-visual",
-						"label": "Hero › Visual"
+						"label": "Hero › Hero Visual"
 					}
 				],
 				"elite/div": [
 					{
 						"value": "elite-div--hero-actions",
-						"label": "Hero › Actions"
+						"label": "Hero › Hero Actions"
 					},
 					{
-						"value": "elite-div--hero-gauge",
-						"label": "Hero › Gauge"
+						"value": "elite-div--hero-browser",
+						"label": "Hero › Hero Browser"
 					},
 					{
-						"value": "elite-div--hero-report-top",
-						"label": "Hero › Report Top"
+						"value": "elite-div--hero-cwv",
+						"label": "Hero › Hero Core Web Vitals"
 					},
 					{
-						"value": "elite-div--hero-report",
-						"label": "Hero › Report"
+						"value": "elite-div--hero-licence",
+						"label": "Hero › Hero Licence"
 					},
 					{
-						"value": "elite-div--hero-stat",
-						"label": "Hero › Stat"
+						"value": "elite-div--hero-score",
+						"label": "Hero › Hero Score"
 					}
 				],
 				"elite/paragraph": [
 					{
-						"value": "elite-paragraph--hero-badge",
-						"label": "Hero › Badge"
-					},
-					{
-						"value": "elite-paragraph--hero-gauge-label",
-						"label": "Hero › Gauge Label"
-					},
-					{
-						"value": "elite-paragraph--hero-gauge-title",
-						"label": "Hero › Gauge Title"
-					},
-					{
 						"value": "elite-paragraph--hero-lead",
-						"label": "Hero › Lead"
-					},
+						"label": "Hero › Hero Lead"
+					}
+				],
+				"elite/row": [
 					{
-						"value": "elite-paragraph--hero-score",
-						"label": "Hero › Score"
-					},
-					{
-						"value": "elite-paragraph--hero-stat-number",
-						"label": "Hero › Stat Number"
-					},
-					{
-						"value": "elite-paragraph--hero-tag",
-						"label": "Hero › Tag"
-					},
-					{
-						"value": "elite-paragraph--hero-trust",
-						"label": "Hero › Trust"
-					},
-					{
-						"value": "elite-paragraph--hero-url",
-						"label": "Hero › URL"
+						"value": "elite-row--hero",
+						"label": "Hero › Hero Row"
 					}
 				],
 				"elite/section": [
@@ -556,6 +584,24 @@
 			},
 			"script": false,
 			"trigger": "elite-section--hero"
+		},
+		"legal": {
+			"modifiers": {
+				"elite/paragraph": [
+					{
+						"value": "elite-paragraph--legal-date",
+						"label": "Legal › Legal Date"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--legal",
+						"label": "Legal"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--legal"
 		},
 		"not-found": {
 			"modifiers": {
@@ -589,52 +635,50 @@
 			"script": false,
 			"trigger": "elite-section--not-found"
 		},
-		"process": {
+		"problem": {
 			"modifiers": {
-				"elite/button": [
-					{
-						"value": "elite-button--process-cta",
-						"label": "Process › Button"
-					}
-				],
-				"elite/column": [
-					{
-						"value": "elite-column--process-head",
-						"label": "Process › Head"
-					},
-					{
-						"value": "elite-column--process-steps",
-						"label": "Process › Steps"
-					}
-				],
 				"elite/div": [
 					{
-						"value": "elite-div--process-step",
-						"label": "Process › Step"
-					}
-				],
-				"elite/heading": [
+						"value": "elite-div--problem-point",
+						"label": "Why it matters › Why it matters Point"
+					},
 					{
-						"value": "elite-heading--process-title",
-						"label": "Process › Step Title"
+						"value": "elite-div--problem-stat",
+						"label": "Why it matters › Why it matters Stat"
 					}
 				],
 				"elite/paragraph": [
 					{
-						"value": "elite-paragraph--process-lead",
-						"label": "Process › Lead"
+						"value": "elite-paragraph--problem-lead",
+						"label": "Why it matters › Why it matters Lead"
+					}
+				],
+				"elite/row": [
+					{
+						"value": "elite-row--problem",
+						"label": "Why it matters › Why it matters Row"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--problem",
+						"label": "Why it matters"
+					}
+				]
+			},
+			"script": true,
+			"trigger": "elite-section--problem"
+		},
+		"process": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--process-step",
+						"label": "Process › Process Step"
 					},
 					{
-						"value": "elite-paragraph--process-meta",
-						"label": "Process › Duration"
-					},
-					{
-						"value": "elite-paragraph--process-num",
-						"label": "Process › Number"
-					},
-					{
-						"value": "elite-paragraph--process-text",
-						"label": "Process › Step Text"
+						"value": "elite-div--process-steps",
+						"label": "Process › Process Steps"
 					}
 				],
 				"elite/section": [
@@ -647,50 +691,192 @@
 			"script": true,
 			"trigger": "elite-section--process"
 		},
+		"proof": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--proof-figure",
+						"label": "Proof band › Proof Figure"
+					},
+					{
+						"value": "elite-div--proof-figures",
+						"label": "Proof band › Proof Figures"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--proof",
+						"label": "Proof band"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--proof"
+		},
+		"reasons": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--reason",
+						"label": "Why Arcnest › Reason"
+					},
+					{
+						"value": "elite-div--reasons-grid",
+						"label": "Why Arcnest › Why Arcnest Grid"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--reasons",
+						"label": "Why Arcnest"
+					}
+				]
+			},
+			"script": true,
+			"trigger": "elite-section--reasons"
+		},
+		"service-compare": {
+			"modifiers": {
+				"elite/section": [
+					{
+						"value": "elite-section--service-compare",
+						"label": "Before and after"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--service-compare"
+		},
+		"service-fit": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--service-fit",
+						"label": "Who it's for › Fit Card"
+					},
+					{
+						"value": "elite-div--service-sign",
+						"label": "Who it's for › Sign"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--service-fit",
+						"label": "Who it's for"
+					}
+				]
+			},
+			"script": true,
+			"trigger": "elite-section--service-fit"
+		},
+		"service-hero": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--service-card",
+						"label": "Service hero › Service Card"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--service-hero",
+						"label": "Service hero"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--service-hero"
+		},
+		"service-included": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--service-included",
+						"label": "What's included › Included Grid"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--service-included",
+						"label": "What's included"
+					}
+				]
+			},
+			"script": true,
+			"trigger": "elite-section--service-included"
+		},
+		"service-plans": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--service-plan",
+						"label": "Plans › Plan"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--service-plans",
+						"label": "Plans"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--service-plans"
+		},
+		"service-related": {
+			"modifiers": {
+				"elite/section": [
+					{
+						"value": "elite-section--service-related",
+						"label": "Other services"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--service-related"
+		},
+		"service-standards": {
+			"modifiers": {
+				"elite/section": [
+					{
+						"value": "elite-section--service-standards",
+						"label": "Standards band"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--service-standards"
+		},
 		"services": {
 			"modifiers": {
 				"elite/button": [
 					{
 						"value": "elite-button--service-link",
-						"label": "Services › Link"
+						"label": "Services › Service Link"
 					}
 				],
 				"elite/div": [
 					{
 						"value": "elite-div--service-featured",
-						"label": "Services › Featured"
+						"label": "Services › Service Featured"
+					},
+					{
+						"value": "elite-div--service-top",
+						"label": "Services › Service Top"
 					},
 					{
 						"value": "elite-div--service",
-						"label": "Services › Card"
+						"label": "Services › Service"
 					},
 					{
-						"value": "elite-div--services-head",
-						"label": "Services › Head"
-					}
-				],
-				"elite/paragraph": [
-					{
-						"value": "elite-paragraph--service-flag",
-						"label": "Services › Flag"
-					},
-					{
-						"value": "elite-paragraph--service-num",
-						"label": "Services › Number"
-					},
-					{
-						"value": "elite-paragraph--service-text",
-						"label": "Services › Text"
-					},
-					{
-						"value": "elite-paragraph--services-lead",
-						"label": "Services › Lead"
+						"value": "elite-div--services-grid",
+						"label": "Services › Services Grid"
 					}
 				],
 				"elite/row": [
 					{
-						"value": "elite-row--services-grid",
-						"label": "Services › Grid"
+						"value": "elite-row--services-head",
+						"label": "Services › Services Head"
 					}
 				],
 				"elite/section": [
@@ -755,6 +941,40 @@
 			"script": false,
 			"trigger": "elite-section--speed-hero"
 		},
+		"speed-race": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--speed-race-actions",
+						"label": "Speed race › Speed Race Actions"
+					}
+				],
+				"elite/paragraph": [
+					{
+						"value": "elite-paragraph--speed-race-lead",
+						"label": "Speed race › Speed Race Lead"
+					},
+					{
+						"value": "elite-paragraph--speed-race-note",
+						"label": "Speed race › Speed Race Note"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--speed-race",
+						"label": "Speed race"
+					}
+				],
+				"elite/video": [
+					{
+						"value": "elite-video--speed-race",
+						"label": "Speed race › Speed Race Video"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--speed-race"
+		},
 		"speed-results": {
 			"modifiers": {
 				"core/table": [
@@ -779,123 +999,93 @@
 			"script": false,
 			"trigger": "elite-section--speed-results"
 		},
-		"stats": {
+		"speed-server": {
 			"modifiers": {
-				"elite/counter": [
-					{
-						"value": "elite-counter--stat-value",
-						"label": "Stats › Value"
-					}
-				],
 				"elite/div": [
 					{
-						"value": "elite-div--stat",
-						"label": "Stats › Stat"
+						"value": "elite-div--speed-figure",
+						"label": "Speed server › Speed Figure"
 					}
 				],
 				"elite/paragraph": [
 					{
-						"value": "elite-paragraph--stat-caption",
-						"label": "Stats › Caption"
+						"value": "elite-paragraph--speed-figure-number",
+						"label": "Speed server › Speed Figure Number"
+					},
+					{
+						"value": "elite-paragraph--speed-server-text",
+						"label": "Speed server › Speed Server Text"
 					}
 				],
 				"elite/row": [
 					{
-						"value": "elite-row--stats-grid",
-						"label": "Stats › Grid"
+						"value": "elite-row--speed-figures",
+						"label": "Speed server › Speed Figures"
+					},
+					{
+						"value": "elite-row--speed-server",
+						"label": "Speed server › Speed Server Row"
 					}
 				],
 				"elite/section": [
 					{
-						"value": "elite-section--stats",
-						"label": "Stats"
-					}
-				]
-			},
-			"script": true,
-			"trigger": "elite-section--stats"
-		},
-		"strip": {
-			"modifiers": {
-				"core/list": [
-					{
-						"value": "core-list--strip-pills",
-						"label": "Strip › Pills"
-					}
-				],
-				"elite/div": [
-					{
-						"value": "elite-div--strip-inner",
-						"label": "Strip › Inner"
-					}
-				],
-				"elite/paragraph": [
-					{
-						"value": "elite-paragraph--strip-label",
-						"label": "Strip › Label"
-					}
-				],
-				"elite/section": [
-					{
-						"value": "elite-section--strip",
-						"label": "Strip"
+						"value": "elite-section--speed-server",
+						"label": "Speed server"
 					}
 				]
 			},
 			"script": false,
-			"trigger": "elite-section--strip"
+			"trigger": "elite-section--speed-server"
 		},
-		"theme": {
+		"team": {
 			"modifiers": {
-				"core/list": [
-					{
-						"value": "core-list--theme-blocks",
-						"label": "Theme › Tiles"
-					}
-				],
 				"elite/column": [
 					{
-						"value": "elite-column--theme-visual",
-						"label": "Theme › Visual"
+						"value": "elite-column--founder-photo",
+						"label": "Founder › Founder Photo"
 					}
 				],
 				"elite/div": [
 					{
-						"value": "elite-div--theme-panel-top",
-						"label": "Theme › Panel Top"
-					},
-					{
-						"value": "elite-div--theme-panel",
-						"label": "Theme › Panel"
-					}
-				],
-				"elite/paragraph": [
-					{
-						"value": "elite-paragraph--theme-lead",
-						"label": "Theme › Lead"
-					},
-					{
-						"value": "elite-paragraph--theme-panel-tag",
-						"label": "Theme › Panel Tag"
-					},
-					{
-						"value": "elite-paragraph--theme-panel-title",
-						"label": "Theme › Panel Title"
-					},
-					{
-						"value": "elite-paragraph--theme-search",
-						"label": "Theme › Search"
+						"value": "elite-div--founder-facts",
+						"label": "Founder › Founder Facts"
 					}
 				],
 				"elite/section": [
 					{
-						"value": "elite-section--theme",
-						"label": "Theme"
+						"value": "elite-section--team",
+						"label": "Founder"
+					}
+				]
+			},
+			"script": false,
+			"trigger": "elite-section--team"
+		},
+		"work": {
+			"modifiers": {
+				"elite/div": [
+					{
+						"value": "elite-div--work-card",
+						"label": "Work › Work Card"
+					},
+					{
+						"value": "elite-div--work-grid",
+						"label": "Work › Work Grid"
+					},
+					{
+						"value": "elite-div--work-speed",
+						"label": "Work › Work Speed"
+					}
+				],
+				"elite/section": [
+					{
+						"value": "elite-section--work",
+						"label": "Work"
 					}
 				]
 			},
 			"script": true,
-			"trigger": "elite-section--theme"
+			"trigger": "elite-section--work"
 		}
 	},
 	"pages": {

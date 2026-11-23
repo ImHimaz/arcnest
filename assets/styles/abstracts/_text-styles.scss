@@ -20,22 +20,19 @@
 $-heading: var(--wp--preset--font-family--heading);
 
 $text-styles: (
+	// The B2B redesign (Nov 2026): solid, heavy headings, tighter on top.
 	"title-1": (
 		font-family: $-heading,
-		// 6.3vw: the hero's "WordPress that" (about 7em) stays on one line
-		// in its laptop column, so the heading is 3 lines, not 4.
-		font-size: clamp(44px, 6.3vw, 94px),
-		// 600: at this size 700 shouts; the heading font is variable, so
-		// any weight is the same file.
-		font-weight: 600,
-		line-height: 0.98,
-		letter-spacing: -0.035em,
+		font-size: clamp(44px, 6vw, 76px),
+		font-weight: 800,
+		line-height: 1.02,
+		letter-spacing: -0.045em,
 	),
 	"title-2": (
 		font-family: $-heading,
-		font-size: clamp(34px, 4.6vw, 64px),
-		font-weight: 700,
-		line-height: 1.05,
+		font-size: clamp(34px, 4.2vw, 54px),
+		font-weight: 800,
+		line-height: 1.08,
 		letter-spacing: -0.035em,
 	),
 	"title-3": (

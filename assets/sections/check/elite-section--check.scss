@@ -1,0 +1,211 @@
+// Label: Check your site
+// elite/section → Block Classes. This class loads the folder (styles and
+// view.js) on pages that use it; the parts below are styled under it.
+// "Free check" (pattern "Check your site"), a lime band: the heading and a
+// line beside the form (HTML in an HTML block, .site-check) on a white
+// card; the results table appears under the form once the test is done.
+@use "../../styles/abstracts" as *;
+
+.elite-section--check {
+	background: var(--wp--preset--color--accent);
+
+	// Padding: on .section-inner (Elite Section). Spacing set in the CMS wins.
+	.section-inner {
+		padding-top: 72px;
+		padding-bottom: 72px;
+	}
+
+	h2 {
+		margin: 0;
+	}
+
+	.elite-row {
+		row-gap: 32px;
+
+		@include media-breakpoint-up(lg) {
+			align-items: center;
+		}
+	}
+}
+
+.elite-section--check .site-check {
+	padding: 12px;
+	border-radius: 14px;
+	background: var(--wp--preset--color--base);
+	box-shadow: 0 24px 50px -24px rgb(38 6 47 / 0.4);
+
+	@include media-breakpoint-up(md) {
+		padding: 16px;
+	}
+
+	.site-check__form {
+		margin: 0;
+	}
+
+	// The label is for screen readers (the placeholder and heading say it).
+	.site-check__label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	// The address and the button: side by side from tablets.
+	.site-check__field {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		@include media-breakpoint-up(md) {
+			flex-direction: row;
+		}
+	}
+
+	input {
+		box-sizing: border-box;
+		flex: 1;
+		min-width: 0;
+		min-height: 52px;
+		padding: 12px 16px;
+		border: 0;
+		border-radius: 10px;
+		background: var(--wp--preset--color--base);
+		color: var(--wp--preset--color--contrast);
+
+		@include text-style("input");
+
+		&:focus {
+			outline: 2px solid var(--wp--preset--color--primary);
+			outline-offset: 1px;
+		}
+	}
+
+	button,
+	.site-check__cta {
+		background: var(--wp--preset--color--primary);
+		color: var(--wp--preset--color--base);
+
+		&:hover {
+			background: var(--wp--preset--color--primary-900);
+			color: var(--wp--preset--color--base);
+		}
+	}
+
+	button {
+		flex-shrink: 0;
+		min-height: 52px;
+		cursor: pointer;
+
+		&:disabled {
+			cursor: progress;
+			opacity: 0.7;
+		}
+	}
+
+	.site-check__status {
+		min-height: 0;
+		margin: 0;
+		padding: 0 4px;
+
+		&:not(:empty) {
+			margin-top: 10px;
+		}
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("small");
+	}
+
+	&.is-busy .site-check__status::before {
+		content: "";
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		margin-right: 8px;
+		border: 2px solid var(--wp--preset--color--lilac-mid);
+		border-top-color: var(--wp--preset--color--primary);
+		border-radius: 50%;
+		vertical-align: -1px;
+		animation: site-check-spin 0.8s linear infinite;
+	}
+
+	.site-check__result {
+		margin-top: 20px;
+		padding-top: 20px;
+		border-top: 1px solid var(--wp--preset--color--line);
+	}
+
+	.site-check__table {
+		width: 100%;
+		border-collapse: collapse;
+
+		@include text-style("small");
+
+		th,
+		td {
+			padding: 10px 8px;
+			border-bottom: 1px solid var(--wp--preset--color--line);
+			text-align: right;
+		}
+
+		th[scope="row"] {
+			padding-left: 0;
+			color: var(--wp--preset--color--text);
+			font-weight: 600;
+			text-align: left;
+		}
+
+		thead th {
+			color: var(--wp--preset--color--muted);
+			font-weight: 700;
+		}
+
+		td {
+			color: var(--wp--preset--color--contrast);
+			font-weight: 800;
+		}
+
+		tr > :last-child {
+			padding-right: 0;
+		}
+
+		.site-check__yours,
+		td[data-check] {
+			color: var(--wp--preset--color--primary);
+		}
+	}
+
+	.site-check__cta {
+		display: flex;
+		justify-content: center;
+		box-sizing: border-box;
+		width: 100%;
+
+		@include media-breakpoint-up(md) {
+			display: inline-flex;
+			width: auto;
+		}
+	}
+
+	.site-check__note {
+		margin: 12px 0 16px;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("caption");
+	}
+}
+
+@keyframes site-check-spin {
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.elite-section--check .site-check.is-busy .site-check__status::before {
+		animation-duration: 2.4s;
+	}
+}

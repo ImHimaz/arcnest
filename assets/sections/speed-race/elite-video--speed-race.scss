@@ -1,0 +1,11 @@
+// Label: Speed Race Video
+// elite/video → Block Classes, under "Speed race". The race video in a
+// rounded frame; its own background matches the section.
+@use "../../styles/abstracts" as *;
+
+.elite-section--speed-race .elite-video--speed-race {
+	overflow: hidden;
+	border-radius: $radius-xxl;
+	background: var(--wp--preset--color--primary-900);
+	box-shadow: 0 0 0 1px rgb(255 255 255 / 0.12);
+}

@@ -1,0 +1,13 @@
+// Label: Services Grid
+// elite/div → Block Classes, under "Services". The cards: two across from
+// laptops, stacked below.
+@use "../../styles/abstracts" as *;
+
+.elite-div--services-grid > .div-inner {
+	display: grid;
+	gap: 24px;
+
+	@include media-breakpoint-up(lg) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}

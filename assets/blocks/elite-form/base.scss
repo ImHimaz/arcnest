@@ -108,6 +108,50 @@
 	height: 56px;
 }
 
+// A select: the field's look, with a chevron.
+.elite-form select.wpcf7-form-control {
+	padding-right: 44px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23625a6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+	background-position: right 16px center;
+	background-repeat: no-repeat;
+	background-size: 18px;
+	appearance: none;
+	cursor: pointer;
+}
+
+// A checkbox field (`form-field--check`): the box beside its own label.
+.elite-form .form-field--check {
+
+	.wpcf7-form-control-wrap {
+		padding-bottom: 8px;
+	}
+
+	.wpcf7-list-item {
+		margin: 0;
+	}
+
+	label {
+		display: inline-flex;
+		gap: 12px;
+		align-items: center;
+		margin: 0 0 0 4px;
+		color: var(--form-field-color);
+		cursor: pointer;
+
+		@include text-style("body-small");
+		font-weight: 600;
+	}
+
+	input[type="checkbox"] {
+		flex: none;
+		width: 20px;
+		height: 20px;
+		margin: 0;
+		accent-color: var(--form-field-focus);
+		cursor: pointer;
+	}
+}
+
 .elite-form textarea.wpcf7-form-control {
 	min-height: 128px;
 	padding-block: 14px;

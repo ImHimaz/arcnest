@@ -1,0 +1,69 @@
+// Label: Included Grid
+// elite/div → Block Classes, under "What's included". The items (Included
+// Item: an icon, a title and a line) in one bordered box with rules between:
+// stacked on phones, two across on tablets, three from laptops.
+@use "../../styles/abstracts" as *;
+
+.elite-div--service-included {
+	overflow: hidden;
+	border: 1px solid var(--wp--preset--color--line);
+	border-radius: 18px;
+	background: var(--wp--preset--color--base);
+
+	> .div-inner {
+		display: grid;
+		// The rules: each item's 1px gap shows the line colour behind.
+		gap: 1px;
+		background: var(--wp--preset--color--line);
+
+		@include media-breakpoint-up(md) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+
+		@include media-breakpoint-up(lg) {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+}
+
+.elite-div--service-item {
+	padding: 28px;
+	background: var(--wp--preset--color--base);
+
+	@include media-breakpoint-up(md) {
+		padding: 32px 30px;
+
+		// Two across: an odd last item fills the row (no empty cell).
+		&:last-child:nth-child(odd) {
+			grid-column: 1 / -1;
+		}
+	}
+
+	@include media-breakpoint-up(lg) {
+
+		&:last-child:nth-child(odd) {
+			grid-column: auto;
+		}
+	}
+
+	.elite-icon {
+		margin: 0 0 18px;
+		color: var(--wp--preset--color--primary);
+
+		svg {
+			width: 28px;
+			height: 28px;
+		}
+	}
+
+	h3 {
+		margin: 0 0 8px;
+	}
+
+	.elite-paragraph {
+		margin: 0;
+		color: var(--wp--preset--color--muted);
+
+		@include text-style("body-small");
+	}
+}
