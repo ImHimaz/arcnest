@@ -87,16 +87,19 @@
 	@include text-style("input");
 	transition:
 		border-color $duration-fast $ease,
-		background-color $duration-fast $ease;
+		background-color $duration-fast $ease,
+		box-shadow $duration-fast $ease;
 
 	&::placeholder {
 		color: var(--form-field-placeholder);
 		opacity: 1;
 	}
 
-	// The border is the focus ring.
+	// The border turns the focus colour, with a soft 3px ring around it so
+	// the field in use is easy to see (a 1px border alone is easy to miss).
 	&:focus {
 		border-color: var(--form-field-focus);
+		box-shadow: 0 0 0 3px var(--form-field-focus-ring, var(--wp--preset--color--lilac-mid));
 	}
 
 	&[aria-invalid="true"] {

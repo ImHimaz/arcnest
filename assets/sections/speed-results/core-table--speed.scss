@@ -1,35 +1,110 @@
 // Label: Speed Table
 // core/table → Block Classes, under "Speed results". A white card: the
 // metric, Arcnest's number (in bold), Elementor's, and the difference in
-// purple. Scrolls sideways on narrow phones rather than squeezing.
+// purple. Phones: each row's metric across the width, its three numbers in
+// columns under the heads (no sideways scrolling, every column in view);
+// from md a normal table.
 @use "../../styles/abstracts" as *;
 
 .elite-section--speed-results .core-table--speed {
 	margin: 40px 0 0;
-	overflow-x: auto;
+	overflow: hidden;
 	border: 1px solid var(--wp--preset--color--line);
 	border-radius: $radius-xxl;
 	background: var(--wp--preset--color--base);
 
 	table {
+		display: block;
 		width: 100%;
-		min-width: 560px;
 		border-collapse: collapse;
 
 		@include text-style("body-small");
 	}
 
+	thead,
+	tbody {
+		display: block;
+	}
+
+	// The difference ("0.4 s sooner") is the longest: a little more room.
+	// Never narrower than a column's longest word ("Elementor", 320px wide).
+	tr {
+		display: grid;
+		grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr) minmax(min-content, 1.4fr);
+	}
+
 	th,
 	td {
-		padding: 14px 16px;
+		padding: 14px 10px;
 		border: 0;
 		border-bottom: 1px solid var(--wp--preset--color--line);
-		text-align: right;
-		white-space: nowrap;
+		text-align: left;
 
+		// The metric (or the table's title, in the head): a line of its own.
 		&:first-child {
-			text-align: left;
-			white-space: normal;
+			grid-column: 1 / -1;
+		}
+	}
+
+	thead th:first-child {
+		padding-bottom: 4px;
+		border-bottom: 0;
+	}
+
+	thead th:nth-child(n + 2) {
+		padding-top: 4px;
+	}
+
+	tbody td:first-child {
+		padding-bottom: 4px;
+		border-bottom: 0;
+	}
+
+	tbody td:nth-child(n + 2) {
+		padding-top: 4px;
+	}
+
+	// A group heading row's empty cells.
+	tbody td:empty {
+		display: none;
+	}
+
+	@include media-breakpoint-up(md) {
+
+		table {
+			display: table;
+		}
+
+		thead {
+			display: table-header-group;
+		}
+
+		tbody {
+			display: table-row-group;
+		}
+
+		tr {
+			display: table-row;
+		}
+
+		// (The phone selectors again, to match their weight.)
+		th,
+		td,
+		thead th:first-child,
+		thead th:nth-child(n + 2),
+		tbody td:first-child,
+		tbody td:nth-child(n + 2),
+		tbody td:empty {
+			display: table-cell;
+			padding: 16px 24px;
+			border-bottom: 1px solid var(--wp--preset--color--line);
+			text-align: right;
+			white-space: nowrap;
+
+			&:first-child {
+				text-align: left;
+				white-space: normal;
+			}
 		}
 	}
 
@@ -66,14 +141,6 @@
 			color: var(--wp--preset--color--primary-900);
 
 			@include text-style("eyebrow");
-		}
-	}
-
-	@include media-breakpoint-up(md) {
-
-		th,
-		td {
-			padding: 16px 24px;
 		}
 	}
 }

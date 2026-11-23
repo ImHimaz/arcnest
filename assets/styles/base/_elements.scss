@@ -21,10 +21,13 @@ html {
 	clip-path: none;
 }
 
-// Keyboard focus: one lime ring everywhere.
+// Keyboard focus: one lime ring everywhere, with a dark purple edge inside
+// it (in the outline's offset), so it shows on white as well as on purple:
+// lime alone is too faint on white.
 :focus-visible {
 	outline: 3px solid var(--wp--preset--color--accent);
 	outline-offset: 3px;
+	box-shadow: 0 0 0 3px var(--wp--preset--color--primary-900);
 }
 
 // Buttons (colours, size and shape are theme.json's `elements.button`):

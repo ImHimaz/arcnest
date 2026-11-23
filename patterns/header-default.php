@@ -34,7 +34,7 @@ $wp_elite_link = static function ( string $label, string $path ): void {
 <div class="wp-block-group site-header__inner"><!-- wp:pattern {"slug":"wp-elite/site-logo"} /-->
 
 <!-- wp:navigation {"overlayMenu":"mobile","overlayBackgroundColor":"base","overlayTextColor":"contrast","className":"site-header__nav","layout":{"type":"flex","justifyContent":"right"}} -->
-<!-- wp:site-logo {"width":132,"className":"site-header__menu-logo"} /-->
+<!-- wp:site-logo {"width":144,"className":"site-header__menu-logo"} /-->
 
 <?php
 $wp_elite_link( __( 'Services', 'wp-elite' ), '/#services' );

@@ -409,18 +409,27 @@ function service_hero( array $a ): void {
 }
 
 /**
- * "Who it's for": eyebrow, heading and three numbered cards.
+ * "Who it's for": eyebrow, heading and three numbered cards. With a line,
+ * the heading row has it on the right (laptops), as the other sections do
+ * (the speed test's "Why it's faster").
  *
  * @param string                            $eyebrow Eyebrow.
  * @param string                            $title   Heading.
  * @param list<array{0: string, 1: string}> $cards   Title, line.
+ * @param string                            $lead    Line, or empty for none.
+ * @param string                            $anchor  Section ID, or empty for none.
+ * @param string                            $label   Section label in the editor, or empty for the default.
  */
-function fit( string $eyebrow, string $title, array $cards ): void {
-	section_open( __( 'Who it’s for', 'wp-elite' ), 'elite-section--service-fit' );
-	div_open( 'elite-div--service-fit-head' );
-	eyebrow( $eyebrow );
-	title( $title );
-	div_close();
+function fit( string $eyebrow, string $title, array $cards, string $lead = '', string $anchor = '', string $label = '' ): void {
+	section_open( $label ? $label : __( 'Who it’s for', 'wp-elite' ), 'elite-section--service-fit', $anchor );
+	if ( $lead ) {
+		head_split( $eyebrow, $title, $lead );
+	} else {
+		div_open( 'elite-div--service-fit-head' );
+		eyebrow( $eyebrow );
+		title( $title );
+		div_close();
+	}
 	div_open( 'elite-div--service-fit-grid' );
 	foreach ( $cards as $i => $c ) {
 		div_open( 'elite-div--service-fit' );

@@ -7,9 +7,14 @@
 
 $header-height: 76px;
 
-// Section links (#services…) land below the sticky header.
-html {
-	scroll-padding-top: $header-height + 8px;
+// Section links (#services…), and keyboard focus scrolling to an element,
+// land below the sticky header. A margin on the page's own content, not
+// scroll-padding on the page: with scroll-padding, focus moving into the
+// open menu and back to the menu button (both at the very top) scrolled the
+// page up each time the menu opened or closed.
+:where(main, footer),
+:where(main, footer) * {
+	scroll-margin-top: $header-height + 8px;
 }
 
 .site-header {
@@ -124,6 +129,11 @@ html {
 	.wp-block-navigation__responsive-container.is-menu-open {
 		padding: 0 var(--wp--style--root--padding-right) 40px var(--wp--style--root--padding-left);
 
+		// A fade only: WordPress's own animation also slides the menu up
+		// 0.5em, so its logo slid over the bar's logo (a double, moving logo
+		// for a moment). Now the two logos sit exactly on each other.
+		animation-name: site-header-menu-fade;
+
 		// Its icon centred on the logo's row, at the right edge (the
 		// negative margin puts the tap area's padding outside).
 		.wp-block-navigation__responsive-container-close {
@@ -209,12 +219,14 @@ html {
 	}
 }
 
-// Laptop and up: the links in the bar, then "Start a project".
+// Laptop and up: the links in the bar, then "Start a project", set a little
+// further from the last link (40px: the group's 16px gap plus 24px) than the
+// links are from each other (30px), so it reads as its own thing.
 @include media-breakpoint-up(lg) {
 
 	.site-header__bar .site-header__cta {
 		display: flex;
-		margin-left: 0;
+		margin-left: 24px;
 	}
 
 	.site-header__inner > .site-header__nav {
@@ -231,5 +243,16 @@ html {
 		.wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
 			display: block;
 		}
+	}
+}
+
+@keyframes site-header-menu-fade {
+
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
 	}
 }

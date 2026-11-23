@@ -20,8 +20,22 @@
 	}
 
 	.elite-accordion__title {
+		transition: color $duration-fast $ease;
 
 		@include text-style("question");
+	}
+
+	// Hover: the question turns purple, a closed item's button a shade
+	// darker, so it reads as clickable.
+	.elite-accordion__button:hover {
+
+		.elite-accordion__title {
+			color: var(--wp--preset--color--primary);
+		}
+	}
+
+	.elite-accordion__item:not(.is-open) .elite-accordion__button:hover .elite-accordion__indicator {
+		background: var(--wp--preset--color--lilac-mid);
 	}
 
 	// The square button; its icon in currentColor. The block turns it over
