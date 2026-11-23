@@ -4,7 +4,7 @@
  * Slug: wp-elite/section-speed-cta
  * Categories: wp-elite, call-to-action
  * Keywords: speed, contact, rebuild, cta
- * Description: The speed test page's close on the dark purple: the heading, a line and buttons to the contact form and the services. Section class elite-section--speed-cta.
+ * Description: The speed test page's close on the dark purple: the heading, a line and buttons to the contact page (Rebuild chosen) and the services. Section class elite-section--speed-cta.
  *
  * @package WpElite
  */
@@ -33,7 +33,7 @@ $wp_elite_button = static function ( array $attributes ): void {
 $wp_elite_button(
 	array(
 		'text'      => __( 'Start a project', 'wp-elite' ),
-		'link'      => array( 'url' => home_url( '/#contact' ) ),
+		'link'      => array( 'url' => home_url( '/contact/?service=rebuild' ) ),
 		'iconEnd'   => 'arrow-right',
 		'className' => 'elite-button--primary',
 	)

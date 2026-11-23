@@ -32,7 +32,50 @@ export function reveal( section, items ) {
 	section.classList.add( 'is-reveal' );
 	whenVisible(
 		list[ 0 ],
-		() => section.classList.add( 'is-visible' ),
+		() => {
+			section.classList.add( 'is-visible' );
+			whenDone( list[ list.length - 1 ], () =>
+				section.classList.remove( 'is-reveal', 'is-visible' )
+			);
+		},
 		'0px 0px -12% 0px'
+	);
+}
+
+/**
+ * Run a callback once the last item has risen in. Then the reveal's classes
+ * come off, and with them its transition, which would otherwise replace the
+ * items' own (a card's hover lift and shadow would jump, and wait out the
+ * item's delay). Without them the items look the same: in place.
+ *
+ * @param {HTMLElement} item     The last item.
+ * @param {() => void}  callback Called once.
+ */
+function whenDone( item, callback ) {
+	let done = false;
+	const finish = () => {
+		if ( ! done ) {
+			done = true;
+			item.removeEventListener( 'transitionend', onEnd );
+			callback();
+		}
+	};
+	const onEnd = ( event ) => {
+		if ( event.target === item && event.propertyName === 'translate' ) {
+			finish();
+		}
+	};
+	item.addEventListener( 'transitionend', onEnd );
+	// A hidden item never fires transitionend: stop waiting after the
+	// longest delay and duration this could take.
+	const style = window.getComputedStyle( item );
+	const seconds = ( value ) =>
+		Math.max( ...value.split( ',' ).map( ( v ) => parseFloat( v ) || 0 ) );
+	window.setTimeout(
+		finish,
+		( seconds( style.transitionDelay ) +
+			seconds( style.transitionDuration ) ) *
+			1000 +
+			200
 	);
 }

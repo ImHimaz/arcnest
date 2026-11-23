@@ -26,7 +26,10 @@
 		transform: translateY(-4px);
 	}
 
+	// Static, so the Service Link's ::after covers the whole card, padding
+	// included (Elite Div makes .div-inner relative by default).
 	> .div-inner {
+		position: static;
 		display: flex;
 		flex-direction: column;
 		height: 100%;

@@ -17,17 +17,17 @@ $wp_elite_button = static function ( array $attributes ): void {
 	echo '<!-- wp:elite/button ' . wp_json_encode( $attributes, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP ) . ' /-->'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block attributes, JSON-encoded.
 };
 
-// Links into the home page's sections.
+// Links into the home page's sections, and the contact page.
 $wp_elite_links = esc_html__( 'Or jump to:', 'wp-elite' );
 foreach (
 	array(
-		'services' => __( 'Services', 'wp-elite' ),
-		'process'  => __( 'How we work', 'wp-elite' ),
-		'faq'      => __( 'FAQ', 'wp-elite' ),
-		'contact'  => __( 'Contact', 'wp-elite' ),
-	) as $wp_elite_anchor => $wp_elite_text
+		'/#services' => __( 'Services', 'wp-elite' ),
+		'/#process'  => __( 'How we work', 'wp-elite' ),
+		'/#faq'      => __( 'FAQ', 'wp-elite' ),
+		'/contact/'  => __( 'Contact', 'wp-elite' ),
+	) as $wp_elite_path => $wp_elite_text
 ) {
-	$wp_elite_links .= sprintf( ' <a href="%s">%s</a>', esc_url( home_url( '/#' . $wp_elite_anchor ) ), esc_html( $wp_elite_text ) );
+	$wp_elite_links .= sprintf( ' <a href="%s">%s</a>', esc_url( home_url( $wp_elite_path ) ), esc_html( $wp_elite_text ) );
 }
 ?>
 <!-- wp:group {"tagName":"main","layout":{"type":"default"}} -->
@@ -59,7 +59,7 @@ echo "\n\n";
 $wp_elite_button(
 	array(
 		'text'      => __( 'Start a project', 'wp-elite' ),
-		'link'      => array( 'url' => home_url( '/#contact' ) ),
+		'link'      => array( 'url' => home_url( '/contact/' ) ),
 		'className' => 'elite-button--ghost',
 	)
 );

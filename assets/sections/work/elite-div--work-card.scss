@@ -17,6 +17,19 @@
 		height: 100%;
 	}
 
+	// Static, so the Work Link's ::after covers the whole card, screenshot
+	// included (Elite Div makes .div-inner relative by default).
+	.div-inner {
+		position: static;
+	}
+
+	// The keyboard ring goes on the card: its overflow: hidden would clip a
+	// ring drawn outside the link's ::after.
+	&:has(.elite-button--work-link .elite-button__link:focus-visible) {
+		outline: 2px solid var(--wp--preset--color--primary);
+		outline-offset: 3px;
+	}
+
 	.elite-image {
 		overflow: hidden;
 		margin: 0;
@@ -97,12 +110,6 @@
 
 		&:focus-visible {
 			outline: none;
-
-			&::after {
-				border-radius: 18px;
-				outline: 2px solid var(--wp--preset--color--primary);
-				outline-offset: 3px;
-			}
 		}
 	}
 }

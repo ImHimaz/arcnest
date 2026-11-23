@@ -30,15 +30,25 @@ html {
 	position: relative;
 	z-index: 1;
 	border-bottom: 1px solid var(--wp--preset--color--line);
-	background: rgb(255 255 255 / 0.92);
 	color: var(--wp--preset--color--contrast);
-	backdrop-filter: blur(10px);
+
+	// The see-through white and blur sit on a layer behind the bar, not on
+	// the bar: backdrop-filter on the bar would make it the box that the open
+	// menu (position: fixed, inside it) fills, squeezing it into the bar.
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		background: rgb(255 255 255 / 0.92);
+		backdrop-filter: blur(10px);
+	}
 }
 
 // Visitors who ask for less transparency (a system setting): solid white.
 @media (prefers-reduced-transparency: reduce) {
 
-	.site-header__bar {
+	.site-header__bar::before {
 		background: var(--wp--preset--color--base);
 		backdrop-filter: none;
 	}
@@ -59,9 +69,14 @@ html {
 	}
 }
 
+// The navigation's class is on its list too: only the bar's item moves right
+// (on the list it pushed the open menu's links to the right edge).
+.site-header__inner > .site-header__nav {
+	margin-left: auto;
+}
+
 // The menu (two classes: WordPress's navigation styles set link colours).
 .site-header__bar .site-header__nav {
-	margin-left: auto;
 
 	@include text-style("body-small");
 	font-weight: 600;
