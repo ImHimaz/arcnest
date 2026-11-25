@@ -1,6 +1,8 @@
 // Every Elite Button's shape (loads with the block; no editor option): a
 // pill, 48px tall on phones and 56px from tablets, an icon after the text
-// that nudges on hover. Looks (colours) are the elite-button--* modifiers.
+// that nudges on hover (the up-right arrow of a link to another site turns
+// 45° to point right instead). Looks (colours) are the elite-button--*
+// modifiers.
 @use "../../styles/abstracts" as *;
 
 .elite-button__link {
@@ -42,6 +44,11 @@
 	&:hover .elite-button__icon--end svg {
 		transform: translateX(4px);
 	}
+
+	// Arrow up-right (another site): turns to point right, in place.
+	&:hover .elite-button__icon--end svg:has(path[d="M7 17 17 7"]) {
+		transform: rotate(45deg);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -52,7 +59,8 @@
 	}
 
 	.elite-button__link:hover,
-	.elite-button__link:hover .elite-button__icon--end svg {
+	.elite-button__link:hover .elite-button__icon--end svg,
+	.elite-button__link:hover .elite-button__icon--end svg:has(path[d="M7 17 17 7"]) {
 		transform: none;
 	}
 }

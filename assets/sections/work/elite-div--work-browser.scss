@@ -1,9 +1,9 @@
 // Label: Work Browser
 // elite/div → Block Classes, under "Work". The top of a Work Card: a browser
-// window, its bar (three dots, the site's address: Work Address, and the
-// video's pause button at the right) over the screen (Work Screen: an Elite
-// Div whose background video plays the site's home page scrolling top to
-// bottom, muted, in a loop).
+// window, its bar (three dots, the site's address: Work Address) over the
+// screen (Work Screen: an Elite Div whose background video plays the site's
+// home page scrolling top to bottom, muted, in a loop; its pause button at
+// the bottom right).
 @use "../../styles/abstracts" as *;
 
 .elite-div--work-browser {
@@ -61,38 +61,15 @@
 		object-position: top;
 	}
 
-	// The pause button (Elite Blocks puts it on the video, bottom right)
-	// moves up into the bar's right end, small and quiet like a browser's
-	// own button, so it never covers the site.
+	// The pause button: Elite Blocks' own, bottom right of the video. It
+	// takes clicks (the window passes them to the card link), and its icon
+	// is a block: inline, it sat on the text baseline and the pause bars
+	// rode 2px high.
 	.elite-bg-toggle {
-		top: -36px;
-		right: 8px;
-		bottom: auto;
-		width: 30px;
-		height: 30px;
-		padding: 8px;
-		border: 1px solid var(--wp--preset--color--line);
-		background: var(--wp--preset--color--base);
-		color: var(--wp--preset--color--muted);
 		pointer-events: auto;
-		transition:
-			color 0.2s $ease,
-			border-color 0.2s $ease;
 
-		// The icon as a block: inline, it sat on the text baseline and the
-		// pause bars rode 2px high.
 		svg {
 			display: block;
-		}
-
-		&:hover {
-			border-color: var(--wp--preset--color--primary);
-			color: var(--wp--preset--color--primary);
-		}
-
-		&:focus-visible {
-			outline: 2px solid var(--wp--preset--color--primary);
-			outline-offset: 2px;
 		}
 	}
 }
