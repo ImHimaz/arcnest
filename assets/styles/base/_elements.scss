@@ -12,6 +12,25 @@ html {
 	}
 }
 
+// Smooth wheel scrolling (Lenis, assets/utils/smooth-scroll.js): its own
+// styles (lenis/dist/lenis.css, MIT), for when it runs.
+html.lenis,
+html.lenis body {
+	height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+	overflow: clip;
+}
+
+.lenis :is([data-lenis-prevent], [data-lenis-prevent-wheel]) {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+	pointer-events: none;
+}
+
 :where(img, svg, video) {
 	max-width: 100%;
 	height: auto;

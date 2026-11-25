@@ -267,7 +267,7 @@
 		},
 		"header": {
 			"modifiers": {},
-			"script": false
+			"script": true
 		}
 	},
 	"sections": {

@@ -19,7 +19,7 @@ namespace WpElite;
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WP_ELITE_VERSION', '0.2.10' );
+define( 'WP_ELITE_VERSION', '0.2.11' );
 
 require_once __DIR__ . '/inc/setup.php';
 require_once __DIR__ . '/inc/manifest.php';
