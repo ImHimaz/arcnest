@@ -1,6 +1,6 @@
 /**
- * Smooth wheel scrolling (Lenis): a mouse wheel's steps ease into one glide
- * instead of jumping. The page still scrolls natively underneath (Lenis
+ * Smooth wheel scrolling (Lenis): mouse wheel and trackpad movements ease
+ * into a 1.2s glide instead of moving the page directly. The page still scrolls natively underneath (Lenis
  * sets the position each frame), so the sticky header, anchor links (their
  * own CSS smooth scroll), keyboard scrolling and Find in page work as
  * before.
@@ -29,9 +29,12 @@ export function smoothScroll() {
 	}
 
 	const lenis = new Lenis( {
-		// How much of the way to the target each frame covers: lower is
-		// floatier. 0.12 keeps it light.
-		lerp: 0.12,
+		// Each wheel or trackpad movement glides to its place over 1.2s,
+		// starting at once and easing out (an exponential curve). A slow
+		// start ("ease in") would repeat at every wheel tick and feel like
+		// lag. Longer is floatier, shorter snappier.
+		duration: 1.2,
+		easing: ( t ) => Math.min( 1, 1.001 - Math.pow( 2, -10 * t ) ),
 		smoothWheel: true,
 		autoRaf: true,
 		prevent: ( node ) =>
