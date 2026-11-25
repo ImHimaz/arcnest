@@ -1065,6 +1065,10 @@
 			"modifiers": {
 				"elite/div": [
 					{
+						"value": "elite-div--work-browser",
+						"label": "Work › Work Browser"
+					},
+					{
 						"value": "elite-div--work-card",
 						"label": "Work › Work Card"
 					},
@@ -1073,8 +1077,8 @@
 						"label": "Work › Work Grid"
 					},
 					{
-						"value": "elite-div--work-speed",
-						"label": "Work › Work Speed"
+						"value": "elite-div--work-stats",
+						"label": "Work › Work Stats"
 					}
 				],
 				"elite/section": [

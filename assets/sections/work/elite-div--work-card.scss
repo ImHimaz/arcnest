@@ -1,7 +1,8 @@
 // Label: Work Card
-// elite/div → Block Classes, under "Work". A card: the screenshot (an Elite
-// Image, it zooms a little on hover), then Work Body (tags, title, a line,
-// the link). The link (Work Link) covers the whole card.
+// elite/div → Block Classes, under "Work". A concept site: Work Browser (its
+// home page playing in a browser window), then Work Body (tags, title, a
+// line; Work Foot: the link and the PageSpeed score). The link (Work Link)
+// covers the whole card.
 @use "../../styles/abstracts" as *;
 
 .elite-div--work-card {
@@ -17,8 +18,8 @@
 		height: 100%;
 	}
 
-	// Static, so the Work Link's ::after covers the whole card, screenshot
-	// included (Elite Div makes .div-inner relative by default).
+	// Static, so the Work Link's ::after covers the whole card (Elite Div
+	// makes .div-inner relative by default).
 	.div-inner {
 		position: static;
 	}
@@ -30,24 +31,14 @@
 		outline-offset: 3px;
 	}
 
-	.elite-image {
-		overflow: hidden;
-		margin: 0;
-		border-bottom: 1px solid var(--wp--preset--color--line);
-		background: var(--wp--preset--color--surface);
-
-		img {
-			object-position: top;
-			transition: transform 0.4s $ease;
-		}
-	}
-
-	&:hover .elite-image img {
-		transform: scale(1.03);
+	// Static, except the screen (its video layer needs its own box).
+	.elite-div--work-screen > .div-inner {
+		position: relative;
 	}
 }
 
 .elite-div--work-body {
+	flex: 1;
 	padding: 28px;
 
 	@include media-breakpoint-up(md) {
@@ -88,7 +79,6 @@
 
 // The card's link: text and an arrow; its ::after covers the card.
 .elite-button--work-link {
-	margin-top: 20px;
 
 	.elite-button__link {
 		min-height: 0;
@@ -115,13 +105,47 @@
 	}
 }
 
-@media (prefers-reduced-motion: reduce) {
+// The foot: the link at the left, the PageSpeed score at the right.
+.elite-div--work-foot {
+	margin-top: auto;
 
-	.elite-div--work-card .elite-image img {
-		transition: none;
+	> .div-inner {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px 16px;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: 20px;
 	}
 
-	.elite-div--work-card:hover .elite-image img {
-		transform: none;
+	.elite-button--work-link {
+		margin: 0;
+	}
+}
+
+.elite-div--work-body > .div-inner {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+// "98 mobile PageSpeed": the score in a green circle.
+.elite-div--work-body .elite-paragraph--work-score {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	color: var(--wp--preset--color--muted);
+
+	@include text-style("caption");
+
+	strong {
+		display: grid;
+		place-items: center;
+		width: 34px;
+		height: 34px;
+		border: 2px solid #0cce6b;
+		border-radius: 50%;
+		color: #0a8a4b;
+		font-weight: 700;
 	}
 }

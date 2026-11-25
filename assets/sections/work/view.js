@@ -1,5 +1,5 @@
 /**
- * Work (sections/work): the two cards rise in one after the other as they
+ * Work (sections/work): the cards rise in one after another as they
  * scroll into view (styles: elite-section--work.scss).
  */
 import { onReady } from '../../utils';

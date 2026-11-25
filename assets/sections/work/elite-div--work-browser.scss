@@ -1,0 +1,67 @@
+// Label: Work Browser
+// elite/div → Block Classes, under "Work". The top of a Work Card: a browser
+// window, its bar (three dots, the site's address in a pill: Work Address)
+// over the screen (Work Screen: an Elite Div whose background video plays
+// the site's home page scrolling top to bottom, muted, in a loop).
+@use "../../styles/abstracts" as *;
+
+.elite-div--work-browser {
+	// Above Work Body (each Elite Div's inner box is its own layer, so the
+	// card link's cover, in the body, would paint over the window), but
+	// clicks fall through to that cover: the whole card is the link. Only
+	// the video's pause button takes them.
+	position: relative;
+	z-index: 2;
+	border-bottom: 1px solid var(--wp--preset--color--line);
+	background: var(--wp--preset--color--surface);
+	pointer-events: none;
+
+	> .div-inner {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+// The bar: three dots at the left (drawn), the address centred.
+.elite-paragraph--work-address {
+	position: relative;
+	margin: 0;
+	padding: 10px 76px;
+	color: var(--wp--preset--color--muted);
+	text-align: center;
+
+	@include text-style("caption");
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 16px;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: #ff6159;
+		box-shadow:
+			16px 0 0 #ffbd2e,
+			32px 0 0 #28c941;
+		translate: 0 -50%;
+	}
+}
+
+// The screen: 16:10 (the recording's), the video filling it.
+.elite-div--work-screen {
+
+	> .div-inner {
+		aspect-ratio: 16 / 10;
+		overflow: hidden;
+		background: var(--wp--preset--color--base);
+	}
+
+	video {
+		object-position: top;
+	}
+
+	.elite-bg-toggle {
+		pointer-events: auto;
+	}
+}
