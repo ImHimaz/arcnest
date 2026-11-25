@@ -5,4 +5,4 @@
  * @package WpElite
  */
 
-define( 'WP_ELITE_VERSION', '0.2.6' );
+define( 'WP_ELITE_VERSION', '0.2.7' );

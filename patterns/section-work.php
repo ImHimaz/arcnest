@@ -4,7 +4,7 @@
  * Slug: wp-elite/section-work
  * Categories: wp-elite, portfolio
  * Keywords: work, portfolio, demo, speed test, case
- * Description: "See it for yourself": the heading beside a line; the speed test as a dark strip (three differences between our build and Elementor Pro on the same design and hosting, and a link to the speed test page); then our concept sites (Hearthline Realty, Quillpay), each in a browser window playing a muted loop of its home page scrolling top to bottom (an Elite Div's background video: WebM, MP4 fallback and poster from the Media Library, slugs <site>-scroll-vp9 / -h264 / -poster), with tags, name, a line, its mobile PageSpeed score and a link to the live site. Each site card is clickable as a whole. Add a site when it's live with another $wp_elite_site() call (two across from tablets). Section class elite-section--work, ID work.
+ * Description: "See it for yourself": the heading beside a line; the speed test as a dark strip (three differences between our build and Elementor Pro on the same design and hosting, and a link to the speed test page); then our concept sites (Hearthline Realty, Quillpay), each in a browser window playing a muted loop of its home page scrolling top to bottom (an Elite Div's background video: WebM, MP4 fallback and poster from the Media Library, slugs <site>-scroll-h264 and <site>-scroll-poster; its pause button sits in the window's bar), with tags, name, a line, its mobile PageSpeed score and a link to the live site. Each site card is clickable as a whole. Add a site when it's live with another $wp_elite_site() call (two across from tablets). Section class elite-section--work, ID work.
  *
  * @package WpElite
  */
@@ -81,7 +81,7 @@ $wp_elite_media = static function ( string $slug ): array {
  * scrolling: an Elite Div with a background video), tags, name, a line, its
  * mobile PageSpeed score and a link to the live site.
  *
- * @param string       $slug  The site's media slug prefix (hearthline → hearthline-scroll-vp9…).
+ * @param string       $slug  The site's media slug prefix (hearthline → hearthline-scroll-h264…).
  * @param array<int, string> $tags Tags.
  * @param string       $name  The site's name.
  * @param string       $line  One line about it.
@@ -89,7 +89,6 @@ $wp_elite_media = static function ( string $slug ): array {
  * @param int          $score Its mobile PageSpeed score.
  */
 $wp_elite_site = static function ( string $slug, array $tags, string $name, string $line, string $url, int $score ) use ( $wp_elite_tags, $wp_elite_button, $wp_elite_media ): void {
-	$webm   = $wp_elite_media( "{$slug}-scroll-vp9" );
 	$mp4    = $wp_elite_media( "{$slug}-scroll-h264" );
 	$poster = $wp_elite_media( "{$slug}-scroll-poster" );
 	$host   = (string) wp_parse_url( $url, PHP_URL_HOST );
@@ -98,12 +97,10 @@ $wp_elite_site = static function ( string $slug, array $tags, string $name, stri
 		'muted'    => true,
 		'loop'     => true,
 	);
-	if ( $webm ) {
-		$video['source'] = $webm;
-	}
+	// H.264 only: VP9 WebM failed to decode on Macs' hardware decoder now
+	// and then (and a decode error doesn't fall back to the next source).
 	if ( $mp4 ) {
-		$video['fallbackEnabled'] = true;
-		$video['fallback']        = $mp4;
+		$video['source'] = $mp4;
 	}
 	if ( $poster ) {
 		$video['poster'] = $poster;
@@ -125,15 +122,10 @@ $wp_elite_site = static function ( string $slug, array $tags, string $name, stri
 	<?php
 	echo '<!-- wp:elite/div ' . wp_json_encode( $screen, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP ) . " -->\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Block attributes, JSON-encoded.
 	// The background video's saved markup (Elite Div's save: BackgroundMedia).
-	echo '<div class="elite-div elite-div--work-screen"><div class="div-inner' . ( $webm || $mp4 ? ' has-div-bg has-div-bg--video' : '' ) . '">';
-	if ( $webm || $mp4 ) {
+	echo '<div class="elite-div elite-div--work-screen"><div class="div-inner' . ( $mp4 ? ' has-div-bg has-div-bg--video' : '' ) . '">';
+	if ( $mp4 ) {
 		echo '<div class="div-bg div-bg--video"><video playsinline autoplay muted loop' . ( $poster ? ' poster="' . esc_url( $poster['url'] ) . '"' : '' ) . '>';
-		if ( $webm ) {
-			echo '<source src="' . esc_url( $webm['url'] . '#t=0.01' ) . '" type="video/webm"/>';
-		}
-		if ( $mp4 ) {
-			echo '<source src="' . esc_url( $mp4['url'] . '#t=0.01' ) . '" type="video/mp4"/>';
-		}
+		echo '<source src="' . esc_url( $mp4['url'] . '#t=0.01' ) . '" type="video/mp4"/>';
 		echo '</video></div>';
 	}
 	echo "</div></div>\n<!-- /wp:elite/div --></div></div>\n<!-- /wp:elite/div -->\n\n";

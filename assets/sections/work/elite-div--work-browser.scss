@@ -1,8 +1,9 @@
 // Label: Work Browser
 // elite/div → Block Classes, under "Work". The top of a Work Card: a browser
-// window, its bar (three dots, the site's address in a pill: Work Address)
-// over the screen (Work Screen: an Elite Div whose background video plays
-// the site's home page scrolling top to bottom, muted, in a loop).
+// window, its bar (three dots, the site's address: Work Address, and the
+// video's pause button at the right) over the screen (Work Screen: an Elite
+// Div whose background video plays the site's home page scrolling top to
+// bottom, muted, in a loop).
 @use "../../styles/abstracts" as *;
 
 .elite-div--work-browser {
@@ -53,7 +54,6 @@
 
 	> .div-inner {
 		aspect-ratio: 16 / 10;
-		overflow: hidden;
 		background: var(--wp--preset--color--base);
 	}
 
@@ -61,7 +61,32 @@
 		object-position: top;
 	}
 
+	// The pause button (Elite Blocks puts it on the video, bottom right)
+	// moves up into the bar's right end, small and quiet like a browser's
+	// own button, so it never covers the site.
 	.elite-bg-toggle {
+		top: -36px;
+		right: 8px;
+		bottom: auto;
+		width: 30px;
+		height: 30px;
+		padding: 8px;
+		border: 1px solid var(--wp--preset--color--line);
+		background: var(--wp--preset--color--base);
+		color: var(--wp--preset--color--muted);
 		pointer-events: auto;
+		transition:
+			color 0.2s $ease,
+			border-color 0.2s $ease;
+
+		&:hover {
+			border-color: var(--wp--preset--color--primary);
+			color: var(--wp--preset--color--primary);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--wp--preset--color--primary);
+			outline-offset: 2px;
+		}
 	}
 }
